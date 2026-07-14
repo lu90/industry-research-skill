@@ -1,0 +1,39 @@
+# Local planning and private documentation
+planning/
+docs/skills-cn/
+
+# Local agent configuration
+.agents/
+.codex/
+
+# Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*.pyd
+build/
+dist/
+*.egg-info/
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Test and tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environment files and secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
