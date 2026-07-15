@@ -1,5 +1,7 @@
 # Disclaimer
 
+English | [简体中文](DISCLAIMER.zh-CN.md)
+
 This project is provided on an "AS IS" basis, without warranties or
 conditions of any kind, whether express or implied.
 

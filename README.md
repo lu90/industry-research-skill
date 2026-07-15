@@ -1,5 +1,7 @@
 # Industry Research Skill
 
+English | [简体中文](README.zh-CN.md)
+
 An industry research skill for general AI agents. It supports industry
 overviews, company and product positioning, industry mapping, lifecycle
 assessment, profitability and valuation analysis, competitive analysis,
