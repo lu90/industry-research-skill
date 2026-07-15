@@ -49,7 +49,11 @@ Read only the needed reference files:
 - Analysis layer selection: `references/layered-analysis.md`.
 - Industry map: `references/industry-map.md`.
 - Research pipeline, fact/opinion/inference rules, and multi-agent collection loop: `references/research-pipeline.md`.
-- Information source selection: `references/information-sources.md`.
+- Information source selection and Claim routing: `references/information-sources.md`.
+- Source Registry, Claim, and Evidence Ledger contracts for standard and deep reports: `references/source-registry-schema.md`.
+- Industry size, policy, regulation, supply, demand, trade, and macro sources: `references/source-registry-official-and-industry.md`.
+- Company, filing, capital-market, financing, and M&A sources: `references/source-registry-company-and-market.md`.
+- Paper, patent, standard, and technology sources: `references/source-registry-research-and-technology.md`.
 - Lifecycle judgment: `references/lifecycle.md`.
 - Seven core modules: `references/seven-modules.md`.
 - Profitability details: `references/profitability-indicators.md`.
@@ -78,6 +82,7 @@ Maintenance scripts:
 
 - Deterministic Markdown report checker, maintenance only: `scripts/report_contract_check.py`.
 - Batch Markdown report checker, maintenance only: `scripts/report_batch_check.py`.
+- Source Registry and Evidence Ledger contract checker, maintenance only: `scripts/source_contract_check.py`.
 
 For industry overview reports, read `references/research-brief-builder.md`, `assets/industry-overview-template.md`, `references/industry-overview-output-contract.md`, `references/output-format.md`, `references/section-depth-playbook.md`, `references/report-depth-rubric.md`, `references/report-compliance.md`, and `references/layered-analysis.md` before writing the report.
 
@@ -87,7 +92,9 @@ For industry-specific questions, read `references/research-brief-builder.md`, `a
 
 When the user asks to generate a prompt, summarize requirements, set the research target, clarify the research scope, or create a reusable instruction for another agent, read `references/research-brief-builder.md` and `assets/research-prompt-template.md`, then output the filled prompt instead of the report.
 
-When maintaining or validating this skill after edits, read `references/report-regression-tests.md` and use it with `references/routing-sanity-check.md`. Use `scripts/report_contract_check.py` on generated Markdown reports for deterministic structure checks, or `scripts/report_batch_check.py` for a directory of generated reports. Do not load these maintenance resources for normal report generation.
+When maintaining or validating this skill after edits, read `references/report-regression-tests.md` and use it with `references/routing-sanity-check.md`. Use `scripts/report_contract_check.py` on generated Markdown reports, `scripts/report_batch_check.py` for a directory of generated reports, and `scripts/source_contract_check.py` for Source Registry or Evidence Ledger contracts. Do not load these maintenance resources for normal report generation.
+
+For every standard or deep report, read `references/information-sources.md` and `references/source-registry-schema.md`, then load only the registry matching each high-impact Claim. Mixed questions may load multiple registries. Keep the Evidence Ledger internal.
 
 ## Hard Rules
 
@@ -116,6 +123,7 @@ When maintaining or validating this skill after edits, read `references/report-r
 - Explicit Short Answer Mode is allowed only when the user explicitly asks for a short, brief, quick, simple, one-paragraph, one-sentence, or no-detail answer. Do not choose this mode by inference.
 - If Explicit Short Answer Mode is not triggered, do not open with phrases like "brief version", "quick take", "first quick judgment", or "simple view"; produce the standard report structure directly.
 - For standard or deep reports, run the Deep Research Engine before writing the report.
+- For standard or deep reports, assign stable `claim_id` and `source_id` values and record actual access and independence outcomes through the Evidence Ledger contract in `references/source-registry-schema.md`.
 - For standard or deep reports, apply the Retrieval Gap Closure Loop in `references/deep-research-engine.md`: high-impact gaps require up to three targeted closure rounds before final drafting, and unresolved gaps must show round-by-round attempted sources, status, unresolved reason, impact, and next primary or near-primary source.
 - Use the layer selector: include macro and meso layers for industry research, include micro only when the request involves a company/product/project/player, and include capital-market layer only for stock price, valuation, expectation, investability, market-cap repair, or rise/fall questions.
 - Stock price, valuation, expectation gap, and rise/fall questions about a listed company must be treated as company/product analysis with a conditional capital-market module, not as a quick market comment.
@@ -130,5 +138,3 @@ When maintaining or validating this skill after edits, read `references/report-r
 - Use BCG matrix only for business or product portfolio analysis.
 - Use multi-agent division of work by default. If the active environment has no multi-agent capability, explicitly degrade to single-agent simulated perspectives.
 - For pure industry-specific questions, answer the user's question first, then present the industry analysis. Do not apply this direct-answer rule to company/product reports or listed-company capital-market questions; those must preserve the company/product output contract and start with `0. 研报前置区`.
-
-

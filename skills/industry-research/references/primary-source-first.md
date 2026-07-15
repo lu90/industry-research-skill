@@ -2,6 +2,8 @@
 
 Use this reference for company/product reports, listed-company capital-market reports, and any report that makes claims about company financials, stock price, valuation, delivery/order data, market size, regulation, or industry statistics.
 
+Route each high-impact Claim through `information-sources.md`. Read `source-registry-schema.md`, then load `source-registry-company-and-market.md` for company and capital-market Claims or `source-registry-official-and-industry.md` for industry, policy, supply, demand, trade, and macro Claims. Use the registry for concrete entries and access conditions; do not duplicate its source list here.
+
 ## First-Pass Retrieval Order
 
 Before using media summaries as evidence, attempt to locate primary or near-primary sources in this order:
@@ -29,6 +31,7 @@ Use this hierarchy when writing the source matrix and evidence notes:
 - Do not use media summaries as the only support for stock price movement, valuation multiples, or market-cap data when exchange or market-data sources are available.
 - Do not use media summaries as the only support for industry size, penetration, policy, exports, or sales data when official statistics, regulators, associations, or credible databases are available.
 - If only media or secondary sources are available in the active environment, mark the claim as `secondary evidence` or `evidence gap`.
+- Record each attempted or obtained document using the internal Evidence Ledger contract in `source-registry-schema.md`.
 - In `2.2 来源矩阵和证据质量`, state whether primary-source retrieval was attempted.
 - In `2.3 二次检索缺口`, list only the high-impact gaps that remain after up to three targeted closure rounds, including round-by-round attempted sources, status, unresolved reason, and exact primary sources that should be checked next.
 
@@ -39,6 +42,8 @@ When primary evidence is unavailable, write:
 ```md
 一手来源检索状态: 未取得 {source}. 当前使用 {secondary source} 作为补充信号, 不作为最终核心证明. 下一步应核验 {specific primary source}.
 ```
+
+Use the precise Evidence-record `access_status` from `source-registry-schema.md` internally. Do not describe paid, login-required, blocked, missing, or technically failed material as obtained.
 
 For three-round retrieval gaps, use this residual-gap pattern:
 
