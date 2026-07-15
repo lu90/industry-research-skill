@@ -3,6 +3,11 @@ planning/
 docs/local/
 docs/skills-cn/
 
+# Local test artifacts
+tests/forward/
+tests/smoke/
+tests/local/
+
 # Local agent configuration
 .agents/
 .codex/
