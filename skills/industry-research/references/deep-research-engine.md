@@ -10,10 +10,10 @@ Deep Research Engine turns a user request into a traceable research process: pla
 
 1. Research plan: define the mother question, sub-questions, boundary, selected analysis layers, required evidence, and 5-15 high-impact Claims. Assign each Claim a stable `claim_id`, type, geography, time range, and required evidence tier.
 2. Source matrix: use `information-sources.md` to route each Claim, load only the matching Source Registry, and map `claim_id` to preferred registered `source_id` values and fallbacks.
-3. First retrieval pass: prioritize the registered canonical entries for official, regulatory, company, industry association, international organization, research, and credible database sources. Registries are preferred routes, not a closed whitelist.
+3. First retrieval pass: call `deep-search-protocol.md` once with the high-impact Claim queue, v61 source routes, evidence requirements, known Evidence, and open Gaps. The Protocol performs the provider-neutral breadth pass and returns auditable Evidence, Learnings, Attempts, Gaps, contradictions, and a stop reason. Registries are preferred routes, not a closed whitelist.
 4. Compression pass: write attempted and obtained documents to the internal Evidence Ledger, then summarize findings into facts, opinions, inferences, forecasts, weak evidence, and evidence gaps.
 5. Build a retrieval-gap queue: after the first retrieval pass, list high-impact missing evidence that can materially change the conclusion.
-6. Three-Round Retrieval Gap Closure Loop: for every high-impact gap, run up to three targeted closure rounds before drafting the final report. Each round should check at least two retrieval actions or two specified source categories when public access exists. Stop early only when the gap is resolved, or when a clear access barrier proves further public retrieval is not useful.
+6. Three-Round Retrieval Gap Closure Loop: for every high-impact gap, the Engine may authorize up to three targeted closure rounds before drafting the final report. For each authorized round, call `deep-search-protocol.md` with the selected Gap, current Evidence, Learnings, and source routes. The Protocol executes only that bounded round and returns control to the Engine. Stop early only when the gap is resolved, or when a clear access barrier proves further public retrieval is not useful.
 7. Gap status classification: after up to three closure rounds, label each gap as `已补齐`, `部分补齐`, or `仍未补齐`. Keep `仍未补齐` only when the source is inaccessible, requires a paid database, requires login, or public search returns no reliable result.
 8. Cross-verification: for key data and conclusions, compare `origin_source_id` values and try to verify with at least two independent data-generating origins. Use the schema `independence_status`; multiple copies of one original document are not independent.
 9. Contradiction handling: do not force inconsistent sources into one number. Explain definition, geography, period, or source-incentive differences and assign a shared `contradiction_group` in the Ledger.
@@ -26,7 +26,7 @@ The gap section is not a place to park shallow research. It is the residual queu
 For each high-impact gap:
 
 1. Name the exact missing metric, filing, dataset, quote page, regulatory document, or primary source.
-2. Run up to three targeted retrieval rounds against primary or near-primary sources before writing the final conclusion.
+2. Authorize up to three targeted retrieval rounds against primary or near-primary sources before writing the final conclusion. Execute each authorized round through `deep-search-protocol.md`.
 3. Record what was attempted in each round, such as company IR, exchange filings, official statistics, industry associations, regulators, credible databases, or market-data sources.
 4. Classify the status:
    - `已补齐`: primary or near-primary evidence was found. Use it in the relevant analysis section instead of keeping it as a gap.
@@ -78,3 +78,5 @@ Keep these blocks concise. They are report-facing discipline, not internal chain
 If network access, database access, filings, or primary sources are unavailable, do not fill gaps with generic claims. Record the exact Evidence-record `access_status`, keep `evidence_span` empty, and do not describe the source as obtained. Write the evidence gap, the three-round closure attempts already made or the access barrier that stopped the loop early, the reason it remains unresolved, the likely impact on confidence, and the next source to verify.
 
 This Engine owns evidence admission, independent verification, contradiction handling, and the three-round gap-closure decision. It does not define provider-specific search calls, query generation, Search and Visit loops, recursion, saturation, budgets, worker coordination, or run bundles; those are v62 responsibilities.
+
+The Engine also owns the minimum evidence threshold and formal-report permission. A Search Protocol result marked saturated or budget-exhausted is not permission to draft. If the threshold is unmet, the Controller must finalize the Research Run as `incomplete`, keep `report_path` null, and return only the Run Summary and Gaps.
