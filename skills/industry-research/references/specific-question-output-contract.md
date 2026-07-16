@@ -2,6 +2,8 @@
 
 Use this file before writing a standard or deep industry-specific question report. This is a lightweight output contract for pure industry questions. It must not override the company/product output contract.
 
+Select `output_language` through `references/report-language.md`. The headings and structured fields below are the Chinese contract. For English output, copy the exact industry-specific headings, table headers, row labels, bold labels, and retrieval-round markers from the language contract while preserving the same numbering, order, and obligations. Do not paraphrase contract fields.
+
 ## Contract Trigger
 
 Apply this contract when the user asks about an industry phenomenon, cause, trend, opportunity, risk, competition, price war, policy impact, profitability, lifecycle, or future direction, and no company/product is the target of analysis.
@@ -10,13 +12,17 @@ If the request targets a company, product, brand, business line, listed ticker, 
 
 ## Opening Rule
 
-Pure industry-specific question reports must start by answering the user question:
+Pure industry-specific question reports must start with exactly one dynamic H1 title and then answer the user question:
 
 ```md
+# {行业名称}行业问题研究报告: {用户问题}
+
 ## 1. 直接回答
 ```
 
-Do not force `## 0. 研报前置区` for pure industry-specific questions. That opening belongs to standard or deep company/product reports.
+For English, use a natural English H1 title followed immediately by `## 1. Direct Answer`. Do not force the company front matter heading for pure industry-specific questions.
+
+End the report with the exact language-matched disclaimer from `references/report-language.md`.
 
 ## Required Heading Scan
 

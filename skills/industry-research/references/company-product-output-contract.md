@@ -2,11 +2,13 @@
 
 Use this file before writing any standard or deep company/product report. This is an output contract, not a style suggestion.
 
+Select `output_language` through `references/report-language.md`. The headings and structured fields below are the Chinese contract. For English output, copy the exact company and product headings, table headers, row labels, bold labels, and retrieval-round markers from the language contract while preserving the same numbering, order, conditional sections, and obligations. Do not paraphrase contract fields.
+
 ## Contract Trigger
 
 Apply this contract when the request is a standard or deep company/product report, including listed-company stock price, valuation, expectation gap, market-cap repair, investability, or rise/fall potential questions.
 
-When a request is both a specific question and a company/product or listed-company capital-market question, this contract overrides the generic specific-question direct-answer rule. Keep the report front matter and start with `## 0. 研报前置区`.
+When a request is both a specific question and a company/product or listed-company capital-market question, this contract overrides the generic specific-question direct-answer rule. Keep the report front matter and use the language-matched opening.
 
 If the user explicitly asks for a short, brief, quick, simple, one-paragraph, one-sentence, or no-detail answer, use Explicit Short Answer Mode instead.
 
@@ -15,9 +17,9 @@ If the user explicitly asks for a short, brief, quick, simple, one-paragraph, on
 Before drafting the report:
 
 1. Classify the request and selected layers.
-2. Build the internal research brief from `references/research-brief-builder.md`, including report type, source plan, conditional modules, and depth contract.
+2. Build the internal research brief from `references/research-brief-builder.md`, including report type, output language, source plan, conditional modules, and depth contract.
 3. Read `assets/company-product-template.md`.
-4. Copy only the required Markdown heading skeleton from `## 0. 研报前置区` onward.
+4. Copy only the required language-matched Markdown heading skeleton from the dynamic H1 title onward.
 5. Add conditional headings for multi-business or capital-market questions.
 6. Fill the skeleton with evidence, analysis, source quality notes, and retrieval-gap closure results.
 7. Run the heading scan, section-level depth gate, and compliance gate.
@@ -27,11 +29,15 @@ Do not begin from a self-created outline.
 
 ## Opening Heading Rule
 
-The first formal report heading must be:
+The first nonempty line must be exactly one dynamic H1 title, followed immediately by the company front matter:
 
 ```md
+# {公司/产品名称}{研究主题}研究报告
+
 ## 0. 研报前置区
 ```
+
+For English output, use a natural English H1 title followed immediately by `## 0. Research Front Matter`.
 
 Do not start a standard or deep company/product report with:
 
@@ -41,11 +47,13 @@ Do not start a standard or deep company/product report with:
 
 If the draft starts with `## 1. 直接结论`, it is a compressed report failure. Rewrite it before final output.
 
-The final report body must begin with `## 0. 研报前置区`. Do not output a H1 title, template title, template metadata, output-contract notes, or internal compliance notes before it. If a saved file needs a filename or title, keep that outside the Markdown report body.
+The final report body must begin with one dynamic H1 title and then the language-matched company front matter heading. Do not output template metadata, output-contract notes, internal compliance notes, or prose between them.
+
+End the report with the exact language-matched disclaimer from `references/report-language.md`. Do not paraphrase it or repeat it elsewhere as a substitute for the fixed final line.
 
 ## Required Heading Scan
 
-Before final output, scan the draft for these exact heading strings:
+Before final output, scan the draft for the exact heading strings in the selected language. The Chinese strings are below; the English strings are defined in `references/report-language.md`:
 
 ```md
 ## 0. 研报前置区

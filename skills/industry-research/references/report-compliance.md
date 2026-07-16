@@ -2,6 +2,8 @@
 
 Use this file before producing any standard or deep report. For company/product analysis, this gate is mandatory.
 
+Apply `references/report-language.md` first. Every heading, label, table, and checklist named below must use its exact language-matched form. Chinese strings are canonical examples, not permission to mix Chinese contract headings into an English report. Apply the same evidence, structure, and depth gates in every language.
+
 ## Industry Overview Report Gate
 
 For standard or deep pure industry overview reports, apply `references/industry-overview-output-contract.md` before final output.
@@ -52,7 +54,7 @@ Before producing any standard or deep report, verify that `references/research-b
 The internal research brief must lock:
 
 - Original request and inferred intent.
-- Report depth and delivery mode.
+- Report depth, delivery mode, and output language.
 - Target, geography, time horizon, and boundary assumptions.
 - Core research questions.
 - Required layers.
@@ -80,23 +82,26 @@ Verify:
 
 Do not output the numeric score unless the user explicitly asks for quality scoring. The visible compliance checklist should state whether the depth rubric passed.
 
-## Opening Heading Gate
+## Report Shell Gate
 
-The Markdown report body for a standard or deep company/product report must begin with:
+Every standard or deep formal report must begin with exactly one dynamic H1 title. A company or product report then begins its routed body with:
 
 ```md
+# {公司/产品名称}{研究主题}研究报告
+
 ## 0. 研报前置区
 ```
 
-Do not put a H1 title, template title, template metadata, output-contract notes, or internal compliance notes before `## 0. 研报前置区`.
+Industry overview and industry-specific reports also use one dynamic H1 title, followed immediately by their language-matched section `1` opening. Do not put template metadata, output-contract notes, internal compliance notes, or prose between the H1 and routed opening.
 
-If the report begins with `## 1. 直接结论`, or if it outputs template metadata before `## 0. 研报前置区`, the draft fails the gate even if later sections are detailed. Rewrite the report from the company/product template before final output.
+End the report with the exact language-matched disclaimer from `references/report-language.md`. If the report omits the H1, contains more than one H1, leaves title placeholders unresolved, uses the wrong routed opening after H1, or paraphrases the disclaimer, the draft fails the gate.
 
 ## Rewrite Trigger List
 
 Rewrite before final output when a standard or deep company/product report:
 
-- Starts from `## 1. 直接结论`.
+- Omits the dynamic H1 or does not place the route opening immediately after it.
+- Starts the routed company body from `## 1. 直接结论`.
 - Uses a self-created long-brief structure instead of the template skeleton.
 - Uses "why it fell / can it rise / what to watch" as the main structure for a capital-market question.
 - Omits `0. 研报前置区`, `0.1`, `0.2`, `0.3`, or `0.4`.
@@ -105,6 +110,7 @@ Rewrite before final output when a standard or deep company/product report:
 - Omits `11.1-11.4` for stock price, valuation, expectation gap, investability, market-cap repair, or rise/fall questions.
 - Omits `12. 多视角压力测试`.
 - Omits `17. 报告合规自检表`.
+- Omits or paraphrases the fixed final disclaimer.
 - Uses media summaries as core evidence when primary company filings, official statistics, regulators, industry associations, exchange filings, or company IR sources are available.
 
 Do not show a failing draft to the user. Rewrite the missing sections first.

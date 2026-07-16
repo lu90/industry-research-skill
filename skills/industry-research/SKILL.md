@@ -10,16 +10,17 @@ Use this skill to produce structured industry research like a business analyst. 
 ## Core Workflow
 
 1. Classify the user request.
-2. Build an internal research brief that translates the user's request into a report route, template, source plan, and depth contract; use visible brief or prompt mode only when triggered by `references/research-brief-builder.md`.
-3. Define the problem and research boundary.
-4. Decompose the problem if the user asks a specific question.
-5. Build a WBS research plan and run the Deep Research Engine for standard or deep reports.
-6. Build and show the industry map before lifecycle analysis.
-7. Collect, clean, classify, compress, and synthesize information.
-8. Judge industry lifecycle stage.
-9. Analyze the seven core modules.
-10. Run multi-agent pressure testing by default.
-11. Output the report using the matching template.
+2. Select the output language using `references/report-language.md`.
+3. Build an internal research brief that translates the user's request into a report route, template, source plan, output language, and depth contract; use visible brief or prompt mode only when triggered by `references/research-brief-builder.md`.
+4. Define the problem and research boundary.
+5. Decompose the problem if the user asks a specific question.
+6. Build a WBS research plan and run the Deep Research Engine for standard or deep reports.
+7. Build and show the industry map before lifecycle analysis.
+8. Collect, clean, classify, compress, and synthesize information.
+9. Judge industry lifecycle stage.
+10. Analyze the seven core modules.
+11. Run multi-agent pressure testing by default.
+12. Output the report using the matching template and selected language.
 
 ## Request Types
 
@@ -61,6 +62,7 @@ Read only the needed reference files:
 - Prosperity indicators: `references/prosperity-indicators.md`.
 - Multi-agent pressure testing: `references/pressure-test.md`.
 - Report output modes: `references/report-output-modes.md`.
+- Chinese-or-English output selection and translated heading contract: `references/report-language.md`.
 - Output rules and report depth: `references/output-format.md`.
 - Section depth expansion playbook: `references/section-depth-playbook.md`.
 - Report depth scoring rubric: `references/report-depth-rubric.md`.
@@ -99,16 +101,18 @@ For every standard or deep report, read `references/information-sources.md` and 
 ## Hard Rules
 
 - Classify ambiguous user requests by intent. Do not require users to phrase requests in formal industry-research language.
+- Select `output_language` as `zh` or `en` before drafting. Follow an explicit Chinese or English request; map unsupported languages to English through `references/report-language.md`. Apply the language contract to every reader-facing heading, label, table, caption, paragraph, visible brief, and Prompt Builder output. Do not mix Chinese and English contract headings.
+- Start every standard or deep formal report with exactly one dynamic H1 title, place the language-matched route opening immediately after it, and end with the exact language-matched disclaimer from `references/report-language.md`. Do not apply this report shell to short answers, Prompt Builder outputs, or visible research briefs.
 - Before drafting any standard or deep report, build an internal research brief using `references/research-brief-builder.md`. Do not output the brief unless the user asks for a prompt, requirement summary, or reusable instruction.
 - For complex standard or deep reports with materially missing boundaries, apply the visible brief gate in `references/research-brief-builder.md` before drafting; visible brief mode is a pre-report contract, not a short answer.
 - Before choosing a template, apply `references/routing-sanity-check.md` to confirm the request type, selected layers, conditional modules, and opening rule.
 - For industry overview reports, apply `references/industry-overview-output-contract.md`: preserve the industry overview template, include research plan, source matrix, fact/opinion/inference separation, pressure test, and final compliance checklist.
-- For pure industry-specific questions, apply `references/specific-question-output-contract.md`: start with `1. 直接回答`, preserve the specific-question template, and keep facts, opinions, and inferences separated in the evidence chain.
+- For pure industry-specific questions, apply `references/specific-question-output-contract.md`: start with one H1 and then the language-matched `1. 直接回答` or `1. Direct Answer`, preserve the specific-question template, and keep facts, opinions, and inferences separated in the evidence chain.
 - Always state research boundary: geography, time horizon, industry scope, included items, excluded items, and assumptions.
 - Always include an industry map as a formal report chapter before lifecycle and seven-module analysis.
 - For company/product analysis, do not compress the industry overview base into one sentence or one generic paragraph; include the minimum industry overview base before target-specific analysis.
 - For standard or deep company/product reports, use the main section skeleton from `assets/company-product-template.md` first, then fill the content. Do not freely invent a different report structure.
-- For standard or deep company/product reports, apply `references/company-product-output-contract.md`: copy the required heading skeleton first, start with `0. 研报前置区`, scan for required headings before final output, and rewrite if any required heading is missing.
+- For standard or deep company/product reports, apply `references/company-product-output-contract.md`: copy the required language-matched heading skeleton first, start with one H1 followed by `0. 研报前置区` or `0. Research Front Matter`, scan for required headings before final output, and rewrite if any required heading is missing.
 - If a standard or deep company/product report misses required template skeleton sections, treat it as a compressed report failure and rewrite before final output.
 - Standard and deep reports must not be compressed only because the answer is delivered in chat. Follow the required professional report depth in `references/output-format.md`.
 - Standard and deep reports must satisfy the section-level depth contract in `references/output-format.md`; correct headings without enough analytical body are not sufficient.
@@ -117,7 +121,7 @@ For every standard or deep report, read `references/information-sources.md` and 
 - Use Workspace Report File by default for all standard or deep reports when file writing is available: create a Markdown report under `reports/` using `YYYYMMDD_HHMMSS_主题.md`, then answer in chat with the path, short summary, and compliance/checker status. Use Chat Report as the fallback when file writing is unavailable, the user explicitly asks not to create files, the user explicitly triggers short-answer mode, or the user asks for Prompt Builder Mode without asking to save the prompt.
 - Use File Report/PDF export only when the user explicitly asks for export/PDF or a specific file path. File Report must create Markdown first using `YYYYMMDD_HHMMSS_主题.md`.
 - Existing report files, active editor tabs, prior generated reports, or forward-test artifacts must not downgrade a standard or deep report request into a summary. Use them only as context unless the user explicitly asks to summarize, condense, review, compare, or continue that file.
-- Standard and deep reports must end with a visible `报告合规自检表`.
+- Standard and deep reports must include the language-matched visible `报告合规自检表` or `Report Compliance Checklist` immediately before the fixed final disclaimer.
 - For standard or deep company/product reports, do not replace the seven core modules with a single summary table; write each module as its own analytical subsection.
 - If the user does not explicitly trigger Explicit Short Answer Mode, run company/product analysis as a standard report; do not output a brief, quick-comment, or executive-brief-only structure.
 - Explicit Short Answer Mode is allowed only when the user explicitly asks for a short, brief, quick, simple, one-paragraph, one-sentence, or no-detail answer. Do not choose this mode by inference.
@@ -137,4 +141,4 @@ For every standard or deep report, read `references/information-sources.md` and 
 - Use SWOT only for company/product/project analysis, not as the default industry analysis structure.
 - Use BCG matrix only for business or product portfolio analysis.
 - Use multi-agent division of work by default. If the active environment has no multi-agent capability, explicitly degrade to single-agent simulated perspectives.
-- For pure industry-specific questions, answer the user's question first, then present the industry analysis. Do not apply this direct-answer rule to company/product reports or listed-company capital-market questions; those must preserve the company/product output contract and start with `0. 研报前置区`.
+- For pure industry-specific questions, answer the user's question first, then present the industry analysis. Do not apply this direct-answer rule to company/product reports or listed-company capital-market questions; those must preserve the company/product output contract and start with the language-matched company front matter heading.

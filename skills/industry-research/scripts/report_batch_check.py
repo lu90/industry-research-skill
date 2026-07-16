@@ -13,7 +13,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from report_contract_check import read_text, run_profile
+from report_contract_check import read_text, run_profile, sample_english_specific_report
 
 
 def collect_reports(root: Path, pattern: str, recursive: bool) -> list[Path]:
@@ -85,12 +85,16 @@ def run_self_test(json_output: bool = False) -> int:
             "## 1. 直接结论\n\n这是一个不完整报告.",
             encoding="utf-8",
         )
+        (root / "pass_english_specific.md").write_text(
+            sample_english_specific_report(),
+            encoding="utf-8",
+        )
         summary = run_batch(root, "*.md", False)
 
     expected = {
         "status": "fail",
-        "total": 2,
-        "passed": 1,
+        "total": 3,
+        "passed": 2,
         "failed": 1,
     }
     failures = [

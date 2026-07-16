@@ -1,18 +1,18 @@
 # Company/Product Report Template Metadata
 
-Template metadata starts here. Do not output this metadata section to the user. The final report body starts at `## 0. 研报前置区`.
+Template metadata starts here. Do not output this metadata section to the user. The final report body starts at the dynamic H1 title immediately before `## 0. 研报前置区`.
 
 ## Output Contract
 
-This template is the required output contract for standard or deep company/product reports. Start by copying the Markdown heading skeleton from `## 0. 研报前置区` onward, then fill the sections. Do not use this file only as a reference.
+This template is the required output contract for standard or deep company/product reports. Start by copying the Markdown heading skeleton from the dynamic H1 title onward, then fill the sections. Do not use this file only as a reference.
 
-The final report's first line must be `## 0. 研报前置区`. Do not output a H1 title, template title, template instructions, or internal contract text before it. A standard or deep company/product report must not start with `## 1. 直接结论`. If a draft starts with section 1, rewrite it from this template before final output.
+The final report's first nonempty line must be exactly one dynamic H1 title. The next nonempty line must be `## 0. 研报前置区`. Do not output template metadata, template instructions, or internal contract text between them. A standard or deep company/product report must not start with `## 1. 直接结论`. If a draft starts with section 1, rewrite it from this template before final output.
 
 ## Build Order
 
 1. Classify the request and selected layers.
 2. Build the internal research brief from `references/research-brief-builder.md`, including report type, source plan, conditional modules, and depth contract.
-3. Copy only the required output skeleton from `## 0. 研报前置区` onward.
+3. Copy only the required output skeleton from the dynamic H1 title onward.
 4. Add conditional sections for multi-business or capital-market questions.
 5. Fill every required section with analysis, source quality notes, and evidence gaps.
 6. Run the heading scan in `references/company-product-output-contract.md` and the section-level depth gate in `references/report-compliance.md`.
@@ -66,6 +66,8 @@ Conditional skeleton:
 - `8. 业务/产品组合分析` is required only for portfolio or multi-business portfolio questions; otherwise it may be removed.
 
 Filling rule: non-priority sections may be concise, but required skeleton sections must not be removed or merged. Seven modules must never be merged into one table or paragraph.
+
+# {公司/产品名称}{研究主题}研究报告
 
 ## 0. 研报前置区
 
@@ -206,7 +208,15 @@ flowchart LR
 
 ### 4.4 生命周期判断
 
-{阶段结论, 证据, 反证, 置信度, 以及该阶段对目标公司/产品的含义.}
+**阶段结论:** {目标所在行业的阶段及判断.}
+
+**证据:** {支持阶段判断的事实, 数据和来源.}
+
+**反证:** {不支持当前阶段判断的事实, 数据或证据缺口.}
+
+**置信度:** {高/中/低及原因.}
+
+**对目标公司/产品的影响:** {该阶段对目标机会, 约束和风险的影响.}
 
 ## 5. 七个核心模块加权分析
 
@@ -428,6 +438,8 @@ flowchart LR
 | 事实/观点/推断已分层且证据层级清楚 | {通过/不适用} | {说明} |
 | 后续验证清单具体 | {通过/不适用} | {说明} |
 | Markdown 标题格式正确 | {通过/不适用} | {说明} |
+
+本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.
 
 
 

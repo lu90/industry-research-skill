@@ -9,7 +9,7 @@ Run at least the six prompts below after material changes to routing, templates,
 For each prompt, check:
 
 1. Route and template.
-2. Opening rule.
+2. Report shell: one H1, correct route opening, and exact final disclaimer.
 3. Required sections.
 4. Evidence discipline.
 5. Depth rubric.
@@ -28,12 +28,13 @@ python scripts/report_contract_check.py path/to/report.md --profile overview
 python scripts/report_contract_check.py path/to/report.md --profile specific
 python scripts/report_contract_check.py path/to/report.md --profile prompt-builder
 python scripts/report_contract_check.py path/to/report.md --profile short
+python scripts/report_contract_check.py path/to/report.md --profile auto --language en --json
 python scripts/report_batch_check.py --self-test
 python scripts/report_batch_check.py --self-test --json
 python scripts/report_batch_check.py path/to/reports-dir --json
 ```
 
-Run `--self-test` after changing either checker. Self-tests include both passing and failing `company-capital`, `overview`, and `specific` fixtures, including total report length, report-front density, macro/meso depth, micro depth, priority depth blocks, section `11` paragraph density, research trace density, compliance checklist content, pressure-test content, risk/opportunity content, and verification-appendix content. Use `--profile auto --json` for a single report when the report type is not already known. Use `report_batch_check.py` for a directory of generated regression reports. The checker catches structural failures only. Passing it does not prove source quality, fact accuracy, or investment reasoning quality.
+Run `--self-test` after changing either checker. Self-tests include canonical Chinese and English fixtures, one-H1 enforcement, route-opening order, exact final disclaimer enforcement, English semantic normalization, mixed-heading rejection, and strict contract-field rejection for dynamic target names, synonym substitution, capitalization changes, hyphen changes, retrieval-round abbreviations, and mixed Chinese/English fields. They also cover total report length, report-front density, macro/meso depth, micro depth, priority depth blocks, section `11` paragraph density, research trace density, compliance checklist content, pressure-test content, risk/opportunity content, and verification-appendix content. Use `--profile auto --json` for a single report when the report type is not already known. Use `--language zh` or `--language en` to enforce a language explicitly. Use `report_batch_check.py` for a directory of generated regression reports. The checker catches structural failures only. Passing it does not prove source quality, fact accuracy, or investment reasoning quality.
 
 Passing one prompt is not enough. A change is stable only if all relevant prompts pass.
 
@@ -61,11 +62,12 @@ The forward test fails if the generated answer:
 
 - is a short brief or market comment;
 - says an existing report file already contains the full draft and then outputs only a condensed judgment, unless the user explicitly asked for a summary;
-- starts with anything other than `## 0. 研报前置区`;
+- does not start with exactly one H1 followed immediately by `## 0. 研报前置区`;
 - omits `2.1-2.3`;
 - omits independent `5.1-5.7`;
 - omits `11.1-11.4`;
 - omits `12` or `17`;
+- omits or paraphrases the fixed Chinese disclaimer as the final nonempty line;
 - fails the deterministic company-capital checker.
 
 Do not claim that a change has stabilized the Xiaomi stock-price prompt unless this forward-agent test has been run and the saved artifact passes the checker. Deterministic self-tests are necessary but not sufficient.

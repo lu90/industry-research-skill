@@ -2,6 +2,8 @@
 
 Use this file before writing a standard or deep industry overview report. This is a lightweight output contract for broad industry research. It must not override the company/product output contract or the specific-question output contract.
 
+Select `output_language` through `references/report-language.md`. The headings and structured fields below are the Chinese contract. For English output, copy the exact industry-overview headings, table headers, row labels, bold labels, and retrieval-round markers from the language contract while preserving the same numbering, order, and obligations. Do not paraphrase contract fields.
+
 ## Contract Trigger
 
 Apply this contract when the user asks for an industry overview, market overview, sector research, track research, opportunity-space research, or a general industry report without targeting a specific company/product and without asking a specific cause/trend question.
@@ -10,13 +12,15 @@ If the user asks a specific industry question, use `references/specific-question
 
 ## Opening Rule
 
-Industry overview reports may start with a report title:
+Industry overview reports must start with exactly one dynamic H1 title:
 
 ```md
 # {行业名称}行业研究报告
 ```
 
-Do not force `## 0. 研报前置区` for pure industry overview reports. That opening belongs to standard or deep company/product reports.
+Translate the title into the selected language. Follow it immediately with the language-matched section `1` opening. Do not force the company front matter heading for pure industry overview reports.
+
+End the report with the exact language-matched disclaimer from `references/report-language.md`.
 
 ## Required Heading Scan
 

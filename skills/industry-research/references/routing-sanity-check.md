@@ -7,14 +7,16 @@ Use this reference during request classification and before choosing a report te
 
 Do not print this internal route check as a standalone section unless the user asks for methodology. Reflect the result through the report boundary, selected layers, and template choice.
 
+Select the output language through `references/report-language.md` before applying the opening rule. Chinese headings below are canonical examples; use their exact English counterparts from the language contract when `output_language: en`.
+
 ## Runtime Route Matrix
 
 | User intent | Template | Required layers | Conditional modules | Opening rule |
 |---|---|---|---|---|
-| Industry overview | `assets/industry-overview-template.md` | Macro + meso | Micro only for representative cases | Use the industry overview template opening |
-| Pure industry-specific question | `assets/specific-question-template.md` | Macro + meso + issue tree | Micro only if a specific company, product, project, or player is central to the question | Start with `## 1. 直接回答` |
-| Company/product analysis | `assets/company-product-template.md` | Macro + meso + micro | Portfolio module only when relevant | Start with `## 0. 研报前置区` for standard/deep reports |
-| Listed-company stock price, valuation, expectation gap, investability, market-cap repair, or rise/fall question | `assets/company-product-template.md` | Macro + meso + micro + capital-market | Must include `11. 资本市场表现与估值预期变化` and `11.1-11.4` | Start with `## 0. 研报前置区` for standard/deep reports |
+| Industry overview | `assets/industry-overview-template.md` | Macro + meso | Micro only for representative cases | Start with one H1, then the language-matched industry overview opening |
+| Pure industry-specific question | `assets/specific-question-template.md` | Macro + meso + issue tree | Micro only if a specific company, product, project, or player is central to the question | Start with one H1, then the language-matched direct-answer heading |
+| Company/product analysis | `assets/company-product-template.md` | Macro + meso + micro | Portfolio module only when relevant | Start with one H1, then the language-matched company front matter heading |
+| Listed-company stock price, valuation, expectation gap, investability, market-cap repair, or rise/fall question | `assets/company-product-template.md` | Macro + meso + micro + capital-market | Must include the language-matched capital-market section and `11.1-11.4` | Start with one H1, then the language-matched company front matter heading |
 
 ## Pre-Draft Check
 
@@ -46,6 +48,8 @@ Use these checks before final output:
 | Normal company/product question | Use company/product output contract and `0. 研报前置区` | Add capital-market section when the user did not ask about stock price, valuation, expectation, investability, or rise/fall |
 | Pure industry-specific question | Answer the question first, then show industry analysis | Force `0. 研报前置区` or micro company analysis when no company/product target exists |
 | Industry overview | Build industry map, lifecycle judgment, and seven modules | Collapse into a short market summary without map and lifecycle |
+
+All four standard/deep routes must end with the exact language-matched disclaimer. Short answers, Prompt Builder outputs, and visible research briefs do not use the formal report shell.
 
 ## Maintenance Regression Prompts
 

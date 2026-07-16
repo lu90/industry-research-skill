@@ -100,6 +100,412 @@ SPECIFIC_HEADINGS = [
 ]
 
 
+ENGLISH_HEADING_ALIASES = {
+    "## 0. Research Front Matter": "## 0. 研报前置区",
+    "### 0.1 Executive Summary": "### 0.1 报告摘要",
+    "### 0.2 Key Conclusions": "### 0.2 关键结论",
+    "### 0.3 Core Metrics Overview": "### 0.3 核心指标总览",
+    "### 0.4 Exhibit List or Placeholders": "### 0.4 图表清单或图表占位",
+    "## 1. Direct Conclusion": "## 1. 直接结论",
+    "## 1. Direct Answer": "## 1. 直接回答",
+    "## 1. One-Sentence Industry Definition": "## 1. 行业一句话定义",
+    "## 2. Conclusion Summary": "## 2. 结论摘要",
+    "## 2. Research Scope": "## 2. 研究边界",
+    "### 2.1 Research Plan Summary": "### 2.1 研究计划摘要",
+    "### 2.2 Source Matrix and Evidence Quality": "### 2.2 来源矩阵和证据质量",
+    "### 2.3 Follow-up Retrieval Gaps": "### 2.3 二次检索缺口",
+    "## 3. Research Scope": "## 3. 研究边界",
+    "### 3.1 Research Plan Summary": "### 3.1 研究计划摘要",
+    "### 3.2 Source Matrix and Evidence Quality": "### 3.2 来源矩阵和证据质量",
+    "### 3.3 Follow-up Retrieval Gaps": "### 3.3 二次检索缺口",
+    "## 3. Macro Environment Analysis": "## 3. 宏观环境分析",
+    "## 3. Industry Map": "## 3. 行业地图",
+    "## 4. Industry Map": "## 4. 行业地图",
+    "## 4. Meso Industry Analysis": "## 4. 中观行业分析",
+    "### 4.0 Multi-Business Meso Breakdown": "### 4.0 多业务线中观拆分",
+    "### 4.1 One-Sentence Industry Definition": "### 4.1 行业一句话定义",
+    "### 4.2 Key Industry Metrics": "### 4.2 行业关键指标",
+    "### 4.3 Industry Map and Target Position": "### 4.3 行业地图和目标位置",
+    "### 4.4 Lifecycle Assessment": "### 4.4 生命周期判断",
+    "## 4. Lifecycle Assessment": "## 4. 生命周期判断",
+    "## 5. Problem Decomposition and Issue Tree": "## 5. 问题拆解和议题树",
+    "## 5. Seven Core Modules": "## 5. 七个核心模块",
+    "## 5. Weighted Analysis of Seven Core Modules": "## 5. 七个核心模块加权分析",
+    "### 5.1 Feasibility": "### 5.1 可行性",
+    "### 5.2 Scalability": "### 5.2 规模性",
+    "### 5.3 Defensibility": "### 5.3 防守性",
+    "### 5.4 Profitability": "### 5.4 盈利性",
+    "### 5.5 Valuation": "### 5.5 估值",
+    "### 5.6 External Factors": "### 5.6 外部因素",
+    "### 5.7 Prosperity": "### 5.7 景气度",
+    "## 6. Evidence Chain Analysis": "## 6. 证据链分析",
+    "## 6. Micro Company/Product Analysis": "## 6. 微观公司/产品分析",
+    "## 6. Trend Outlook": "## 6. 趋势推演",
+    "## 7. Lifecycle Assessment": "## 7. 生命周期判断",
+    "## 7. Risks and Opportunities": "## 7. 风险和机会",
+    "## 7. SWOT": "## 7. SWOT",
+    "## 8. Business/Product Portfolio Analysis": "## 8. 业务/产品组合分析",
+    "## 8. Fact, Opinion, and Inference Layers": "## 8. 事实, 观点和推断分层",
+    "## 8. Seven Core Modules Analysis": "## 8. 七个核心模块分析",
+    "### 8.1 Feasibility": "### 8.1 可行性",
+    "### 8.2 Scalability": "### 8.2 规模性",
+    "### 8.3 Defensibility": "### 8.3 防守性",
+    "### 8.4 Profitability": "### 8.4 盈利性",
+    "### 8.5 Valuation": "### 8.5 估值",
+    "### 8.6 External Factors": "### 8.6 外部因素",
+    "### 8.7 Prosperity": "### 8.7 景气度",
+    "## 9. Multi-Perspective Pressure Test": "## 9. 多视角压力测试",
+    "## 9. Competitor Comparison": "## 9. 竞争对手对比",
+    "## 10. Fact, Opinion, and Inference Layers": "## 10. 事实, 观点和推断分层",
+    "## 10. Follow-up Research Recommendations": "## 10. 后续研究建议",
+    "## 10. Risks and Uncertainties": "## 10. 风险和不确定性",
+    "## 11. Capital-Market Performance and Valuation Expectation Changes": "## 11. 资本市场表现与估值预期变化",
+    "### 11.1 Share-Price Performance Breakdown": "### 11.1 股价表现拆解",
+    "### 11.2 Fundamental Changes": "### 11.2 基本面变化",
+    "### 11.3 Valuation Logic and Market Expectation Gap": "### 11.3 估值逻辑和市场预期差",
+    "### 11.4 Upside Catalysts, Downside Risks, and Scenario Analysis": "### 11.4 上涨触发器, 下跌风险和情景分析",
+    "## 11. Report Compliance Checklist": "## 11. 报告合规自检表",
+    "## 11. Follow-up Verification Checklist": "## 11. 后续验证清单",
+    "## 12. Multi-Perspective Pressure Test": "## 12. 多视角压力测试",
+    "## 12. Report Compliance Checklist": "## 12. 报告合规自检表",
+    "## 13. Risks and Opportunities": "## 13. 风险和机会",
+    "## 14. Recommended Next Actions": "## 14. 后续行动建议",
+    "## 15. Methodology and Data Sources": "## 15. 方法论和数据来源说明",
+    "## 16. Appendix: Follow-up Verification Checklist": "## 16. 附录: 后续验证清单",
+    "## 17. Report Compliance Checklist": "## 17. 报告合规自检表",
+}
+
+
+ENGLISH_TERM_ALIASES = {
+    "This report is for research and informational purposes only. It does not constitute investment advice or any guarantee of returns.": "本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.",
+    "Multi-Perspective Pressure Test": "多视角压力测试",
+    "Fact, Opinion, and Inference": "事实/观点/推断",
+    "Research Front Matter": "研报前置区",
+    "Key Metrics and Follow-up Verification": "关键指标和后续验证",
+    "Follow-up Verification Checklist": "后续验证清单",
+    "Implication for Target Company/Product": "对目标公司/产品的影响",
+    "Implication for the Target Company": "对目标公司的含义",
+    "Implication for the Question": "对该问题的含义",
+    "Industry Implication": "行业含义",
+    "Three-Round Closure Attempts": "三轮闭环已尝试",
+    "Why It Still Matters": "为什么仍重要",
+    "Why It Matters": "为什么重要",
+    "Unresolved Reason": "未补齐原因",
+    "Next Source": "下一步来源",
+    "Current Status": "当前状态",
+    "Research Plan Summary": "研究计划摘要",
+    "Research Brief": "研究简报",
+    "Seven Core Modules": "七个核心模块",
+    "Source Matrix": "来源矩阵",
+    "Follow-up Retrieval Gaps": "二次检索缺口",
+    "Fact/Opinion/Inference": "事实/观点/推断",
+    "Pressure Test": "压力测试",
+    "Report Compliance Checklist": "报告合规自检表",
+    "Report Route": "报告路由",
+    "Must Use": "必须使用",
+    "Structure Requirements": "结构要求",
+    "Required Sections": "必需章节",
+    "Depth Requirements": "深度要求",
+    "Target Length": "目标字数",
+    "Evidence Requirements": "证据要求",
+    "Primary-Source-First": "一手来源优先",
+    "Primary-Source Retrieval Status": "一手来源检索状态",
+    "Compliance Requirements": "合规要求",
+    "Rewrite": "重写",
+    "Company/Product": "公司/产品",
+    "Capital Market": "资本市场",
+    "Capital-Market": "资本市场",
+    "Listed Company": "上市公司",
+    "Share Price": "股价",
+    "Share-Price Performance": "股价",
+    "Price Pattern": "价格表现",
+    "Time Period": "时间区间",
+    "One-Year": "时间区间",
+    "Two-Year": "时间区间",
+    "Fundamental Catalysts": "催化",
+    "Catalysts": "催化",
+    "Data Gap": "证据缺口",
+    "Verification Gap": "待核验",
+    "Market Expectations": "市场预期",
+    "Expectation Gap": "预期差",
+    "Business Mix": "业务组合",
+    "Mix": "业务组合",
+    "Fundamentals": "基本面",
+    "Fundamental Change": "基本面变化",
+    "Re-Rating": "重估",
+    "Proof Required": "需要证明",
+    "Proof": "需要证明",
+    "Upside Catalyst": "上涨触发器",
+    "Downside Risks": "下跌风险",
+    "Metrics to Track": "跟踪指标",
+    "Scenario": "情景",
+    "Not Investment Advice": "不构成投资建议",
+    "Micro Company/Product Analysis": "微观公司/产品分析",
+    "Source Type": "来源类型",
+    "Use in This Report": "本报告用途",
+    "Evidence Tier": "证据等级",
+    "Retrieval Status": "检索状态",
+    "Limitations": "限制",
+    "Primary-Source Status": "一手来源状态",
+    "Source Status": "来源状态",
+    "Gap Handling": "缺口处理",
+    "Source/Basis": "来源/依据",
+    "Evidence/Basis": "证据/依据",
+    "Sub-question": "子问题",
+    "Business Line": "业务线",
+    "Industry Stage": "行业阶段",
+    "Competitive Landscape": "竞争格局",
+    "Core Metrics": "关键指标",
+    "Metric": "指标",
+    "Industry Reading": "行业读数",
+    "Target Company/Product Reading": "目标公司/产品读数",
+    "Judgment": "判断",
+    "Evidence/Source": "证据/来源",
+    "Market Size": "市场规模",
+    "Growth Rate": "增速",
+    "Penetration Rate": "渗透率",
+    "Competitive Intensity": "竞争强度",
+    "Profitability Level": "盈利水平",
+    "Key Risk": "关键风险",
+    "Lifecycle Phase": "阶段结论",
+    "Introduction Phase": "导入期",
+    "Growth Phase": "成长期",
+    "Mature Phase": "成熟期",
+    "Decline Phase": "衰退期",
+    "Counterevidence": "反证",
+    "Confidence": "置信度",
+    "Basis": "依据",
+    "Perspective": "视角",
+    "Challenge": "质疑",
+    "Impact": "影响",
+    "Verification Needed": "需要验证",
+    "Check": "检查项",
+    "Passed": "是否通过",
+    "Explanation": "说明",
+    "Verification Item": "待验证问题",
+    "Recommended Source": "推荐来源",
+    "Business Line/Industry Line": "业务线/行业线",
+    "Key Metrics/Prosperity Signal": "关键指标/景气信号",
+    "Missing Evidence": "证据缺口",
+    "Round 1": "第1轮",
+    "Round 2": "第2轮",
+    "Round 3": "第3轮",
+    "Attempted Sources": "尝试来源",
+    "Partially Closed": "部分补齐",
+    "Still Open": "仍未补齐",
+    "Paid Database": "付费库",
+    "Login Required": "需要登录",
+    "Definition Mismatch": "口径不匹配",
+    "Primary Source": "一手来源",
+    "Near-Primary Source": "近一手来源",
+    "Official Source": "官方来源",
+    "Industry Association": "行业协会",
+    "Credible Database": "可信数据库",
+    "Industry Expert": "行业专家",
+    "Investment Researcher": "投资研究员",
+    "Policy/Regulatory": "政策/监管",
+    "Operator/Entrepreneur": "经营者/创业者",
+    "Policy": "政策",
+    "Regulation": "监管",
+    "Economy": "经济",
+    "Consumption": "消费",
+    "Technology": "技术",
+    "Cost": "成本",
+    "Cycle": "周期",
+    "Industry Definition": "行业定义",
+    "Industry Map": "行业地图",
+    "Lifecycle": "生命周期",
+    "Business Model": "商业模式",
+    "Product": "产品",
+    "Service": "服务",
+    "Customer": "客户",
+    "Channel": "渠道",
+    "Financials": "财务",
+    "Operations": "运营",
+    "Revenue": "收入",
+    "Profit": "利润",
+    "Cash Flow": "现金流",
+    "Deliveries and Orders": "交付和订单",
+    "Deliveries": "交付",
+    "Shipments": "交付",
+    "Orders": "订单",
+    "Volume": "运营指标",
+    "Moat": "护城河",
+    "Competitive Advantage": "竞争优势",
+    "Risk": "风险",
+    "Opportunity": "机会",
+    "Industry Risk": "行业风险",
+    "Industry-Structure": "行业结构",
+    "Industry Opportunity": "行业机会",
+    "Company Risk": "目标公司风险",
+    "Company Opportunity": "目标公司机会",
+    "Target Company": "目标公司",
+    "Company Filings": "公司公告",
+    "Primary Company Disclosure": "一手来源",
+    "Near-Primary": "近一手",
+    "Peer-Reviewed Research": "近一手来源",
+    "Peer-Reviewed": "近一手",
+    "Verification": "验证",
+    "Priority": "优先级",
+    "Conclusion": "结论",
+    "Evidence": "证据",
+    "Mechanism": "机制",
+    "Fact": "事实",
+    "Opinion": "观点",
+    "Inference": "推断",
+    "Content": "内容",
+    "Type": "类型",
+    "Gap": "缺口",
+    "Feasibility": "可行性",
+    "Scalability": "规模性",
+    "Defensibility": "防守性",
+    "Profitability": "盈利性",
+    "Valuation": "估值",
+    "External Factors": "外部因素",
+    "Prosperity": "景气度",
+}
+
+
+CANONICAL_DISCLAIMER = "本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺."
+
+
+OVERVIEW_MODULE_HEADINGS = [
+    "### 5.1 可行性",
+    "### 5.2 规模性",
+    "### 5.3 防守性",
+    "### 5.4 盈利性",
+    "### 5.5 估值",
+    "### 5.6 外部因素",
+    "### 5.7 景气度",
+]
+
+SPECIFIC_MODULE_HEADINGS = [
+    "### 8.1 可行性",
+    "### 8.2 规模性",
+    "### 8.3 防守性",
+    "### 8.4 盈利性",
+    "### 8.5 估值",
+    "### 8.6 外部因素",
+    "### 8.7 景气度",
+]
+
+COMPANY_MODULE_HEADINGS = OVERVIEW_MODULE_HEADINGS
+
+CANONICAL_FIELD_CONTRACTS = {
+    "overview": {
+        "zh": {
+            "tables": [
+                ("### 2.2 来源矩阵和证据质量", ["来源类型", "本报告用途", "证据层级", "检索状态", "限制"]),
+                ("### 2.3 二次检索缺口", ["缺口", "三轮闭环已尝试", "当前状态", "为什么仍重要", "未补齐原因", "下一步来源"]),
+                ("## 8. 事实, 观点和推断分层", ["类型", "内容", "来源/依据", "证据层级", "来源状态", "置信度"]),
+                ("## 9. 多视角压力测试", ["视角", "质疑", "影响", "需要验证"]),
+                ("## 11. 报告合规自检表", ["检查项", "是否通过", "说明"]),
+            ],
+            "labels": [
+                ("## 4. 生命周期判断", ["阶段结论", "证据", "反证", "置信度", "行业含义"]),
+                *[(heading, ["结论", "证据", "机制", "行业含义"]) for heading in OVERVIEW_MODULE_HEADINGS],
+            ],
+            "rounds": [("### 2.3 二次检索缺口", ["第1轮", "第2轮", "第3轮"])],
+            "rows": [],
+        },
+        "en": {
+            "tables": [
+                ("### 2.2 Source Matrix and Evidence Quality", ["Source Type", "Use in This Report", "Evidence Tier", "Retrieval Status", "Limitations"]),
+                ("### 2.3 Follow-up Retrieval Gaps", ["Gap", "Three-Round Closure Attempts", "Current Status", "Why It Still Matters", "Unresolved Reason", "Next Source"]),
+                ("## 8. Fact, Opinion, and Inference Layers", ["Type", "Content", "Source/Basis", "Evidence Tier", "Source Status", "Confidence"]),
+                ("## 9. Multi-Perspective Pressure Test", ["Perspective", "Challenge", "Impact", "Verification Needed"]),
+                ("## 11. Report Compliance Checklist", ["Check", "Passed", "Explanation"]),
+            ],
+            "labels": [
+                ("## 4. Lifecycle Assessment", ["Lifecycle Phase", "Evidence", "Counterevidence", "Confidence", "Industry Implication"]),
+                *[(heading, ["Conclusion", "Evidence", "Mechanism", "Industry Implication"]) for heading in ENGLISH_HEADING_ALIASES if heading.startswith("### 5.")],
+            ],
+            "rounds": [("### 2.3 Follow-up Retrieval Gaps", ["Round 1", "Round 2", "Round 3"])],
+            "rows": [],
+        },
+    },
+    "specific": {
+        "zh": {
+            "tables": [
+                ("### 3.2 来源矩阵和证据质量", ["来源类型", "本报告用途", "证据层级", "检索状态", "限制"]),
+                ("### 3.3 二次检索缺口", ["缺口", "三轮闭环已尝试", "当前状态", "为什么仍重要", "未补齐原因", "下一步来源"]),
+                ("## 6. 证据链分析", ["子问题", "结论", "事实", "观点", "推断", "证据层级", "来源状态", "置信度"]),
+                ("## 9. 多视角压力测试", ["视角", "质疑", "影响", "需要验证"]),
+                ("## 12. 报告合规自检表", ["检查项", "是否通过", "说明"]),
+            ],
+            "labels": [
+                ("## 7. 生命周期判断", ["阶段结论", "证据", "反证", "置信度", "对该问题的含义"]),
+                *[(heading, ["结论", "证据", "机制", "对该问题的含义"]) for heading in SPECIFIC_MODULE_HEADINGS],
+            ],
+            "rounds": [("### 3.3 二次检索缺口", ["第1轮", "第2轮", "第3轮"])],
+            "rows": [],
+        },
+        "en": {
+            "tables": [
+                ("### 3.2 Source Matrix and Evidence Quality", ["Source Type", "Use in This Report", "Evidence Tier", "Retrieval Status", "Limitations"]),
+                ("### 3.3 Follow-up Retrieval Gaps", ["Gap", "Three-Round Closure Attempts", "Current Status", "Why It Still Matters", "Unresolved Reason", "Next Source"]),
+                ("## 6. Evidence Chain Analysis", ["Sub-question", "Conclusion", "Fact", "Opinion", "Inference", "Evidence Tier", "Source Status", "Confidence"]),
+                ("## 9. Multi-Perspective Pressure Test", ["Perspective", "Challenge", "Impact", "Verification Needed"]),
+                ("## 12. Report Compliance Checklist", ["Check", "Passed", "Explanation"]),
+            ],
+            "labels": [
+                ("## 7. Lifecycle Assessment", ["Lifecycle Phase", "Evidence", "Counterevidence", "Confidence", "Implication for the Question"]),
+                *[(heading, ["Conclusion", "Evidence", "Mechanism", "Implication for the Question"]) for heading in ENGLISH_HEADING_ALIASES if heading.startswith("### 8.")],
+            ],
+            "rounds": [("### 3.3 Follow-up Retrieval Gaps", ["Round 1", "Round 2", "Round 3"])],
+            "rows": [],
+        },
+    },
+}
+
+
+COMPANY_FIELD_CONTRACT = {
+    "zh": {
+        "tables": [
+            ("### 0.3 核心指标总览", ["指标", "行业读数", "目标公司/产品读数", "判断", "证据/来源"]),
+            ("### 2.2 来源矩阵和证据质量", ["来源类型", "本报告用途", "证据等级", "一手来源状态", "缺口处理"]),
+            ("### 2.3 二次检索缺口", ["缺口", "三轮闭环已尝试", "当前状态", "为什么仍重要", "未补齐原因", "下一步来源"]),
+            ("### 4.0 多业务线中观拆分", ["业务线/行业线", "行业阶段", "竞争格局", "关键指标/景气信号", "对目标公司的含义"]),
+            ("## 10. 事实, 观点和推断分层", ["类型", "内容", "来源/依据", "证据层级", "一手来源状态", "置信度"]),
+            ("## 12. 多视角压力测试", ["视角", "质疑", "为什么重要", "需要验证"]),
+            ("## 16. 附录: 后续验证清单", ["待验证问题", "为什么重要", "推荐来源", "优先级"]),
+            ("## 17. 报告合规自检表", ["检查项", "是否通过", "说明"]),
+        ],
+        "labels": [
+            ("### 4.4 生命周期判断", ["阶段结论", "证据", "反证", "置信度", "对目标公司/产品的影响"]),
+            *[(heading, ["结论", "依据", "机制", "对目标公司/产品的影响", "关键指标和后续验证"]) for heading in COMPANY_MODULE_HEADINGS],
+        ],
+        "rounds": [("### 2.3 二次检索缺口", ["第1轮", "第2轮", "第3轮"])],
+        "rows": [
+            ("### 0.3 核心指标总览", ["市场规模", "增速/渗透率", "竞争强度", "盈利水平", "景气度", "关键风险"]),
+        ],
+    },
+    "en": {
+        "tables": [
+            ("### 0.3 Core Metrics Overview", ["Metric", "Industry Reading", "Target Company/Product Reading", "Judgment", "Evidence/Source"]),
+            ("### 2.2 Source Matrix and Evidence Quality", ["Source Type", "Use in This Report", "Evidence Tier", "Primary-Source Status", "Gap Handling"]),
+            ("### 2.3 Follow-up Retrieval Gaps", ["Gap", "Three-Round Closure Attempts", "Current Status", "Why It Still Matters", "Unresolved Reason", "Next Source"]),
+            ("### 4.0 Multi-Business Meso Breakdown", ["Business Line/Industry Line", "Industry Stage", "Competitive Landscape", "Key Metrics/Prosperity Signal", "Implication for the Target Company"]),
+            ("## 10. Fact, Opinion, and Inference Layers", ["Type", "Content", "Source/Basis", "Evidence Tier", "Primary-Source Status", "Confidence"]),
+            ("## 12. Multi-Perspective Pressure Test", ["Perspective", "Challenge", "Why It Matters", "Verification Needed"]),
+            ("## 16. Appendix: Follow-up Verification Checklist", ["Verification Item", "Why It Matters", "Recommended Source", "Priority"]),
+            ("## 17. Report Compliance Checklist", ["Check", "Passed", "Explanation"]),
+        ],
+        "labels": [
+            ("### 4.4 Lifecycle Assessment", ["Lifecycle Phase", "Evidence", "Counterevidence", "Confidence", "Implication for Target Company/Product"]),
+            *[(heading, ["Conclusion", "Basis", "Mechanism", "Implication for Target Company/Product", "Key Metrics and Follow-up Verification"]) for heading in ENGLISH_HEADING_ALIASES if heading.startswith("### 5.")],
+        ],
+        "rounds": [("### 2.3 Follow-up Retrieval Gaps", ["Round 1", "Round 2", "Round 3"])],
+        "rows": [
+            ("### 0.3 Core Metrics Overview", ["Market Size", "Growth Rate/Penetration Rate", "Competitive Intensity", "Profitability Level", "Prosperity", "Key Risk"]),
+        ],
+    },
+}
+
+CANONICAL_FIELD_CONTRACTS["company"] = COMPANY_FIELD_CONTRACT
+CANONICAL_FIELD_CONTRACTS["company-capital"] = COMPANY_FIELD_CONTRACT
+
+
 def read_text(path: Path) -> str:
     """
     读取 Markdown 文件内容.
@@ -153,16 +559,196 @@ def section_body(text: str, heading: str) -> str:
     return text[start:end].strip()
 
 
+def parse_markdown_table_cells(line: str) -> list[str]:
+    """
+    解析 Markdown 表格行的单元格.
+
+    :param line: Markdown 表格行.
+    :return: 去除单元格两侧空白后的字段列表.
+    """
+    stripped = line.strip()
+    if not stripped.startswith("|") or not stripped.endswith("|"):
+        return []
+    return [cell.strip() for cell in stripped[1:-1].split("|")]
+
+
+def is_markdown_separator_row(cells: list[str]) -> bool:
+    """
+    判断字段列表是否为 Markdown 表格分隔行.
+
+    :param cells: 已解析的表格字段.
+    :return: 全部字段均为分隔符时返回 True.
+    """
+    return bool(cells) and all(re.fullmatch(r":?-{3,}:?", cell) for cell in cells)
+
+
+def markdown_table_headers(text: str, heading: str) -> list[list[str]]:
+    """
+    提取指定章节内所有 Markdown 表格表头.
+
+    :param text: Markdown 报告文本.
+    :param heading: 目标章节标题.
+    :return: 按出现顺序排列的表头字段列表.
+    """
+    body = section_body(text, heading)
+    lines = body.splitlines()
+    headers: list[list[str]] = []
+    for index in range(len(lines) - 1):
+        current = parse_markdown_table_cells(lines[index])
+        following = parse_markdown_table_cells(lines[index + 1])
+        if current and is_markdown_separator_row(following) and len(current) == len(following):
+            headers.append(current)
+    return headers
+
+
+def markdown_table_first_cells(text: str, heading: str) -> list[str]:
+    """
+    提取指定章节内所有 Markdown 表格数据行的首字段.
+
+    :param text: Markdown 报告文本.
+    :param heading: 目标章节标题.
+    :return: 排除表头和分隔行后的首字段列表.
+    """
+    body = section_body(text, heading)
+    lines = body.splitlines()
+    first_cells: list[str] = []
+    for index, line in enumerate(lines):
+        cells = parse_markdown_table_cells(line)
+        if not cells or is_markdown_separator_row(cells):
+            continue
+        following = parse_markdown_table_cells(lines[index + 1]) if index + 1 < len(lines) else []
+        if is_markdown_separator_row(following):
+            continue
+        first_cells.append(cells[0])
+    return first_cells
+
+
+def validate_canonical_fields(text: str, profile: str, language: str) -> list[str]:
+    """
+    严格检查报告中的双语契约字段.
+
+    本检查仅忽略 Markdown 表格单元格两侧空白. 字段拼写, 大小写,
+    连字符, 顺序和段内标签必须与契约完全一致.
+
+    :param text: 原始 Markdown 报告文本.
+    :param profile: 已确定的正式报告类型.
+    :param language: 已确定的报告语言, 可为 `zh` 或 `en`.
+    :return: 精确字段契约错误列表.
+    """
+    contract = CANONICAL_FIELD_CONTRACTS.get(profile, {}).get(language)
+    if not contract:
+        return []
+    errors: list[str] = []
+    for heading, expected in contract["tables"]:
+        if heading not in text:
+            continue
+        headers = markdown_table_headers(text, heading)
+        if expected not in headers:
+            actual = " | ".join(headers[0]) if headers else "<missing>"
+            required = " | ".join(expected)
+            errors.append(
+                f"noncanonical contract header under {heading}: expected '{required}', got '{actual}'"
+            )
+    for heading, required_labels in contract["labels"]:
+        if heading not in text:
+            continue
+        body = section_body(text, heading)
+        actual_labels = set(re.findall(r"\*\*([^*\r\n]+):\*\*", body))
+        missing = [label for label in required_labels if label not in actual_labels]
+        if missing:
+            errors.append(
+                f"noncanonical contract labels under {heading}: missing {', '.join(missing)}"
+            )
+    for heading, required_rounds in contract["rounds"]:
+        if heading not in text:
+            continue
+        body = section_body(text, heading)
+        missing = [marker for marker in required_rounds if marker not in body]
+        if missing:
+            errors.append(
+                f"noncanonical retrieval markers under {heading}: missing {', '.join(missing)}"
+            )
+    for heading, required_rows in contract["rows"]:
+        if heading not in text:
+            continue
+        actual_rows = markdown_table_first_cells(text, heading)
+        missing = [row for row in required_rows if row not in actual_rows]
+        if missing:
+            errors.append(
+                f"noncanonical contract rows under {heading}: missing {', '.join(missing)}"
+            )
+    return errors
+
+
 def rough_cjk_length(text: str) -> int:
     """
-    估算中文内容长度.
+    估算中英文归一化内容长度.
 
     :param text: 文本.
-    :return: 中文字符和非空白字符的折中长度.
+    :return: CJK 字符和半数非空白字符的折中长度.
     """
     cjk = len(re.findall(r"[\u4e00-\u9fff]", text))
     non_space = len(re.sub(r"\s+", "", text))
     return max(cjk, non_space // 2)
+
+
+def detect_report_language(text: str) -> str:
+    """
+    识别报告主要语言.
+
+    优先使用正式契约标题, 再使用中英文字符占比.
+
+    :param text: Markdown 文本.
+    :return: `zh` 或 `en`.
+    """
+    heading_lines = {line.strip() for line in text.splitlines() if line.lstrip().startswith("#")}
+    english_only = {source for source, target in ENGLISH_HEADING_ALIASES.items() if source != target}
+    chinese_only = {target for source, target in ENGLISH_HEADING_ALIASES.items() if source != target}
+    if heading_lines.intersection(english_only):
+        return "en"
+    if heading_lines.intersection(chinese_only):
+        return "zh"
+    cjk_count = len(re.findall(r"[\u4e00-\u9fff]", text))
+    latin_count = len(re.findall(r"[A-Za-z]", text))
+    return "en" if latin_count > cjk_count * 2 else "zh"
+
+
+def require_language_consistency(text: str, language: str) -> list[str]:
+    """
+    检查正式契约标题是否混用中英文.
+
+    :param text: Markdown 文本.
+    :param language: 预期语言, 必须为 `zh` 或 `en`.
+    :return: 语言一致性错误列表.
+    """
+    heading_lines = {line.strip() for line in text.splitlines() if line.lstrip().startswith("#")}
+    english_only = {source for source, target in ENGLISH_HEADING_ALIASES.items() if source != target}
+    chinese_only = {target for source, target in ENGLISH_HEADING_ALIASES.items() if source != target}
+    if language == "en":
+        mixed = sorted(heading_lines.intersection(chinese_only))
+    else:
+        mixed = sorted(heading_lines.intersection(english_only))
+    return [f"mixed report language heading: {heading}" for heading in mixed]
+
+
+def normalize_report_contract(text: str, language: str) -> str:
+    """
+    将英文报告契约词规范化为内部中文契约词.
+
+    规范化只服务于确定性检查, 不修改原始报告文件.
+
+    :param text: Markdown 文本.
+    :param language: 报告语言, 必须为 `zh` 或 `en`.
+    :return: 供现有检查规则使用的规范化文本.
+    """
+    if language == "zh":
+        return text
+    normalized_lines = [ENGLISH_HEADING_ALIASES.get(line.strip(), line) for line in text.splitlines()]
+    normalized = "\n".join(normalized_lines)
+    for source, target in sorted(ENGLISH_TERM_ALIASES.items(), key=lambda item: len(item[0]), reverse=True):
+        pattern = rf"(?<![A-Za-z]){re.escape(source)}(?![A-Za-z])"
+        normalized = re.sub(pattern, target, normalized, flags=re.IGNORECASE)
+    return normalized
 
 
 def require_headings(text: str, headings: list[str], errors: list[str]) -> None:
@@ -179,18 +765,34 @@ def require_headings(text: str, headings: list[str], errors: list[str]) -> None:
             errors.append(f"missing heading: {heading}")
 
 
-def require_opening(text: str, expected: str, errors: list[str]) -> None:
+def require_report_shell(text: str, expected_opening: str, errors: list[str]) -> None:
     """
-    检查第一行非空文本是否符合预期开头.
+    检查正式报告的 H1, 路由开头和固定免责声明.
 
     :param text: Markdown 文本.
-    :param expected: 预期开头.
+    :param expected_opening: H1 后必须紧接的路由章节.
     :param errors: 错误列表, 会被原地追加.
     :return: None.
     """
-    actual = first_nonempty_line(text)
-    if actual != expected:
-        errors.append(f"wrong opening: expected {expected!r}, got {actual!r}")
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    h1_lines = [line for line in lines if re.match(r"^#(?!#)\s+\S", line)]
+    if not lines or not re.match(r"^#(?!#)\s+\S", lines[0]):
+        actual = lines[0] if lines else ""
+        errors.append(f"wrong report title: expected one H1 as the first nonempty line, got {actual!r}")
+    elif "{" in lines[0] or "}" in lines[0]:
+        errors.append(f"unresolved report title placeholder: {lines[0]!r}")
+    if len(h1_lines) != 1:
+        errors.append(f"wrong H1 count: expected 1, got {len(h1_lines)}")
+    if len(lines) < 2 or lines[1] != expected_opening:
+        actual = lines[1] if len(lines) >= 2 else ""
+        errors.append(f"wrong route opening after H1: expected {expected_opening!r}, got {actual!r}")
+    if not lines or lines[-1] != CANONICAL_DISCLAIMER:
+        actual = lines[-1] if lines else ""
+        errors.append(f"wrong report disclaimer: expected {CANONICAL_DISCLAIMER!r}, got {actual!r}")
+    if text.count(CANONICAL_DISCLAIMER) != 1:
+        errors.append(
+            f"wrong canonical disclaimer count: expected 1, got {text.count(CANONICAL_DISCLAIMER)}"
+        )
 
 
 def require_report_min_length(text: str, minimum: int, errors: list[str]) -> None:
@@ -426,7 +1028,6 @@ def require_capital_section_concepts(text: str, errors: list[str]) -> None:
                 ["下跌风险", "下行风险"],
                 ["情景", "乐观", "中性", "悲观"],
                 ["跟踪指标", "需要跟踪"],
-                ["不是投资建议", "不构成投资建议", "不承诺收益"],
             ],
         ),
     ]
@@ -866,7 +1467,7 @@ def check_company(text: str, capital: bool) -> list[str]:
     :return: 错误列表.
     """
     errors: list[str] = []
-    require_opening(text, "## 0. 研报前置区", errors)
+    require_report_shell(text, "## 0. 研报前置区", errors)
     require_report_min_length(text, 12000 if capital else 10000, errors)
     require_mermaid_block(text, errors)
     require_headings(text, COMPANY_CORE_HEADINGS, errors)
@@ -916,6 +1517,7 @@ def check_overview(text: str) -> list[str]:
     :return: 错误列表.
     """
     errors: list[str] = []
+    require_report_shell(text, "## 1. 行业一句话定义", errors)
     require_report_min_length(text, 8000, errors)
     require_mermaid_block(text, errors)
     require_headings(text, OVERVIEW_HEADINGS, errors)
@@ -947,7 +1549,7 @@ def check_specific(text: str) -> list[str]:
     :return: 错误列表.
     """
     errors: list[str] = []
-    require_opening(text, "## 1. 直接回答", errors)
+    require_report_shell(text, "## 1. 直接回答", errors)
     require_report_min_length(text, 8000, errors)
     require_mermaid_block(text, errors)
     require_headings(text, SPECIFIC_HEADINGS, errors)
@@ -1051,32 +1653,39 @@ def sample_prompt_builder_weak_contract() -> str:
     )
 
 
-def run_profile(text: str, profile: str) -> list[str]:
+def run_profile(text: str, profile: str, language: str = "auto") -> list[str]:
     """
     按指定 profile 运行检查.
 
     :param text: Markdown 文本.
     :param profile: 检查 profile.
+    :param language: 报告语言, 可为 `auto`, `zh` 或 `en`.
     :return: 错误列表.
     """
-    if profile == "company-capital":
-        return check_company(text, capital=True)
-    if profile == "company":
-        return check_company(text, capital=False)
-    if profile == "overview":
-        return check_overview(text)
-    if profile == "specific":
-        return check_specific(text)
-    if profile == "prompt-builder":
-        return check_prompt_builder(text)
-    if profile == "short":
-        return check_short(text)
-    if profile == "auto":
-        detected = detect_profile(text)
-        if detected == "unknown":
-            return ["could not auto-detect report profile"]
-        return run_profile(text, detected)
-    raise ValueError(f"unknown profile: {profile}")
+    resolved_language = detect_report_language(text) if language == "auto" else language
+    language_errors = require_language_consistency(text, resolved_language)
+    normalized_text = normalize_report_contract(text, resolved_language)
+    resolved_profile = detect_profile(normalized_text) if profile == "auto" else profile
+    if resolved_profile == "unknown":
+        return language_errors + ["could not auto-detect report profile"]
+    field_errors = validate_canonical_fields(text, resolved_profile, resolved_language)
+    if field_errors:
+        return language_errors + field_errors
+    if resolved_profile == "company-capital":
+        errors = check_company(normalized_text, capital=True)
+    elif resolved_profile == "company":
+        errors = check_company(normalized_text, capital=False)
+    elif resolved_profile == "overview":
+        errors = check_overview(normalized_text)
+    elif resolved_profile == "specific":
+        errors = check_specific(normalized_text)
+    elif resolved_profile == "prompt-builder":
+        errors = check_prompt_builder(normalized_text)
+    elif resolved_profile == "short":
+        errors = check_short(normalized_text)
+    else:
+        raise ValueError(f"unknown profile: {resolved_profile}")
+    return language_errors + errors
 
 
 def detect_profile(text: str) -> str:
@@ -1086,14 +1695,13 @@ def detect_profile(text: str) -> str:
     :param text: Markdown 文本.
     :return: 识别出的 profile, 无法识别时返回 unknown.
     """
-    first_line = first_nonempty_line(text)
     if all(term in text for term in ["报告路由", "必须使用", "结构要求", "深度要求", "证据要求", "合规要求"]):
         return "prompt-builder"
-    if first_line == "## 0. 研报前置区":
+    if "## 0. 研报前置区" in text:
         if "## 11. 资本市场表现与估值预期变化" in text:
             return "company-capital"
         return "company"
-    if first_line == "## 1. 直接回答":
+    if "## 1. 直接回答" in text:
         return "specific"
     if "## 1. 行业一句话定义" in text and "## 3. 行业地图" in text:
         return "overview"
@@ -1132,10 +1740,11 @@ def sample_overview_report(body_repeat: int) -> str:
     )
     lifecycle_body = "\n\n".join(
         [
-            "阶段结论: 行业处于成长期向成熟期过渡阶段, 需求仍增长但竞争结构开始分化." * 8,
-            "证据: 市场规模, 渗透率, 供需关系和竞争格局仍有增长信号, 但价格和利润率压力已经出现." * 8,
-            "反证: 如果监管口径, 替代品扩张或需求放缓数据持续恶化, 生命周期可能更接近成熟期." * 8,
-            "置信度: 中等, 因为关键行业数据仍需要官方统计, 行业协会和可信数据库继续验证. 行业含义是七模块应更重视盈利性, 防守性和景气度拐点." * 8,
+            "**阶段结论:** " + "行业处于成长期向成熟期过渡阶段, 需求仍增长但竞争结构开始分化." * 8,
+            "**证据:** " + "市场规模, 渗透率, 供需关系和竞争格局仍有增长信号, 但价格和利润率压力已经出现." * 8,
+            "**反证:** " + "如果监管口径, 替代品扩张或需求放缓数据持续恶化, 生命周期可能更接近成熟期." * 8,
+            "**置信度:** " + "中等, 因为关键行业数据仍需要官方统计, 行业协会和可信数据库继续验证." * 8,
+            "**行业含义:** " + "七模块应更重视盈利性, 防守性和景气度拐点." * 8,
         ]
     )
     retrieval_gap_body = "\n".join(
@@ -1165,7 +1774,24 @@ def sample_overview_report(body_repeat: int) -> str:
             "**行业含义:** " + "行业含义" * 25,
         ]
     )
+    pressure_test_body = "\n".join(
+        [
+            "| 视角 | 质疑 | 影响 | 需要验证 |",
+            "|---|---|---|---|",
+            "| 行业专家 | 行业判断可能过于乐观 | 影响行业结论 | 验证行业数据 |",
+            body,
+        ]
+    )
+    compliance_body = "\n".join(
+        [
+            "| 检查项 | 是否通过 | 说明 |",
+            "|---|---|---|",
+            "| 行业全览模板完整 | 通过 | 结构完整 |",
+            body,
+        ]
+    )
     parts: list[str] = [
+        "# 示例行业研究报告",
         "## 1. 行业一句话定义",
         body,
         "## 2. 研究边界",
@@ -1197,9 +1823,10 @@ def sample_overview_report(body_repeat: int) -> str:
         "## 8. 事实, 观点和推断分层",
         fact_inference_body,
             "## 9. 多视角压力测试",
-            body,
+            pressure_test_body,
             "## 11. 报告合规自检表",
-            body,
+            compliance_body,
+            "本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.",
         ]
     )
     return "\n\n".join(parts)
@@ -1234,10 +1861,11 @@ def sample_specific_report(body_repeat: int) -> str:
     )
     lifecycle_body = "\n\n".join(
         [
-            "阶段结论: 与用户问题相关的行业环节处于成长期向成熟期过渡阶段, 增长仍在但竞争和利润压力上升." * 8,
-            "证据: 需求指标, 供给扩张, 价格变化和政策信号共同说明行业仍有增量, 但边际变化正在变复杂." * 8,
-            "反证: 如果后续数据证明需求已经放缓, 库存上升或政策收紧, 当前阶段判断需要下修为成熟期压力." * 8,
-            "置信度: 中等, 因为仍需验证官方统计, 行业协会和企业经营数据. 对该问题的含义是解释原因时不能只看短期事件, 还要看生命周期切换." * 8,
+            "**阶段结论:** " + "与用户问题相关的行业环节处于成长期向成熟期过渡阶段, 增长仍在但竞争和利润压力上升." * 8,
+            "**证据:** " + "需求指标, 供给扩张, 价格变化和政策信号共同说明行业仍有增量, 但边际变化正在变复杂." * 8,
+            "**反证:** " + "如果后续数据证明需求已经放缓, 库存上升或政策收紧, 当前阶段判断需要下修为成熟期压力." * 8,
+            "**置信度:** " + "中等, 因为仍需验证官方统计, 行业协会和企业经营数据." * 8,
+            "**对该问题的含义:** " + "解释原因时不能只看短期事件, 还要看生命周期切换." * 8,
         ]
     )
     retrieval_gap_body = "\n".join(
@@ -1267,7 +1895,24 @@ def sample_specific_report(body_repeat: int) -> str:
             "**对该问题的含义:** " + "问题含义" * 20,
         ]
     )
+    pressure_test_body = "\n".join(
+        [
+            "| 视角 | 质疑 | 影响 | 需要验证 |",
+            "|---|---|---|---|",
+            "| 行业专家 | 问题判断可能过于乐观 | 影响直接回答 | 验证行业数据 |",
+            body,
+        ]
+    )
+    compliance_body = "\n".join(
+        [
+            "| 检查项 | 是否通过 | 说明 |",
+            "|---|---|---|",
+            "| 行业具体问题模板完整 | 通过 | 结构完整 |",
+            body,
+        ]
+    )
     parts: list[str] = [
+        "# 示例行业问题研究报告",
         "## 1. 直接回答",
         direct_answer,
         "## 2. 结论摘要",
@@ -1303,9 +1948,10 @@ def sample_specific_report(body_repeat: int) -> str:
     parts.extend(
         [
             "## 9. 多视角压力测试",
-            body,
+            pressure_test_body,
             "## 12. 报告合规自检表",
-            body,
+            compliance_body,
+            "本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.",
         ]
     )
     return "\n\n".join(parts)
@@ -1405,10 +2051,11 @@ def sample_company_capital_without_priority_block() -> str:
     )
     lifecycle_body = "\n\n".join(
         [
-            "阶段结论: 目标公司所在关键业务线处于成长期向成熟期过渡阶段, 新业务仍有增长弹性, 传统业务更接近成熟竞争." * 8,
-            "证据: 行业规模, 渗透率, 订单或交付, 价格竞争, 毛利率和监管信号共同支持这一阶段判断." * 8,
-            "反证: 如果后续需求转弱, 价格战加剧, 监管约束升级或目标公司交付质量下降, 阶段判断可能更接近成熟期压力." * 8,
-            "置信度: 中等, 因为仍需用公司公告, 官方行业数据和交易所信息验证. 对目标公司的含义是估值和盈利性需要按不同业务线加权, 不能只交易单一成长叙事." * 8,
+            "**阶段结论:** " + "目标公司所在关键业务线处于成长期向成熟期过渡阶段, 新业务仍有增长弹性, 传统业务更接近成熟竞争." * 8,
+            "**证据:** " + "行业规模, 渗透率, 订单或交付, 价格竞争, 毛利率和监管信号共同支持这一阶段判断." * 8,
+            "**反证:** " + "如果后续需求转弱, 价格战加剧, 监管约束升级或目标公司交付质量下降, 阶段判断可能更接近成熟期压力." * 8,
+            "**置信度:** " + "中等, 因为仍需用公司公告, 官方行业数据和交易所信息验证." * 8,
+            "**对目标公司/产品的影响:** " + "估值和盈利性需要按不同业务线加权, 不能只交易单一成长叙事." * 8,
         ]
     )
     mermaid_map_body = "\n".join(
@@ -1425,10 +2072,11 @@ def sample_company_capital_without_priority_block() -> str:
     )
     lifecycle_body = "\n\n".join(
         [
-            "阶段结论: 目标公司所在关键业务线处于成长期向成熟期过渡阶段, 新业务仍有增长弹性, 传统业务更接近成熟竞争." * 8,
-            "证据: 行业规模, 渗透率, 订单或交付, 价格竞争, 毛利率和监管信号共同支持这一阶段判断." * 8,
-            "反证: 如果后续需求转弱, 价格战加剧, 监管约束升级或目标公司交付质量下降, 阶段判断可能更接近成熟期压力." * 8,
-            "置信度: 中等, 因为仍需用公司公告, 官方行业数据和交易所信息验证. 对目标公司的含义是估值和盈利性需要按不同业务线加权, 不能只交易单一成长叙事." * 8,
+            "**阶段结论:** " + "目标公司所在关键业务线处于成长期向成熟期过渡阶段, 新业务仍有增长弹性, 传统业务更接近成熟竞争." * 8,
+            "**证据:** " + "行业规模, 渗透率, 订单或交付, 价格竞争, 毛利率和监管信号共同支持这一阶段判断." * 8,
+            "**反证:** " + "如果后续需求转弱, 价格战加剧, 监管约束升级或目标公司交付质量下降, 阶段判断可能更接近成熟期压力." * 8,
+            "**置信度:** " + "中等, 因为仍需用公司公告, 官方行业数据和交易所信息验证." * 8,
+            "**对目标公司/产品的影响:** " + "估值和盈利性需要按不同业务线加权, 不能只交易单一成长叙事." * 8,
         ]
     )
     multibusiness_body = "\n".join(
@@ -1451,6 +2099,7 @@ def sample_company_capital_without_priority_block() -> str:
         ]
     )
     parts: list[str] = [
+        "# 示例公司基本面和资本市场研究报告",
         "## 0. 研报前置区",
         "### 0.1 报告摘要",
         long_body,
@@ -1590,6 +2239,7 @@ def sample_company_capital_single_paragraph_section_11() -> str:
     )
     single_paragraph = "资本市场分析内容" * 180
     parts: list[str] = [
+        "# 示例公司基本面和资本市场研究报告",
         "## 0. 研报前置区",
         "### 0.1 报告摘要",
         long_body,
@@ -1729,7 +2379,7 @@ def sample_company_capital_pass() -> str:
     )
     section_11_1_body = "\n\n".join(
         [
-            "股价价格表现需要先界定时间窗口和时间区间, 对比指数, 板块和基准收益, 再拆分已知催化事件." * 25,
+            "股价和价格表现需要先界定时间窗口和时间区间, 对比指数, 板块和基准收益, 再拆分已知催化事件." * 25,
             "证据缺口和待核验事项包括交易所行情, 可信市场数据库, 板块指数口径和事件日期, 需要区分事实和推断." * 25,
         ]
     )
@@ -1781,10 +2431,11 @@ def sample_company_capital_pass() -> str:
     )
     lifecycle_body = "\n\n".join(
         [
-            "阶段结论: 目标公司所在关键业务线处于成长期向成熟期过渡阶段, 新业务仍有增长弹性, 传统业务更接近成熟竞争." * 8,
-            "证据: 行业规模, 渗透率, 订单或交付, 价格竞争, 毛利率和监管信号共同支持这一阶段判断." * 8,
-            "反证: 如果后续需求转弱, 价格战加剧, 监管约束升级或目标公司交付质量下降, 阶段判断可能更接近成熟期压力." * 8,
-            "置信度: 中等, 因为仍需用公司公告, 官方行业数据和交易所信息验证. 对目标公司的含义是估值和盈利性需要按不同业务线加权, 不能只交易单一成长叙事." * 8,
+            "**阶段结论:** " + "目标公司所在关键业务线处于成长期向成熟期过渡阶段, 新业务仍有增长弹性, 传统业务更接近成熟竞争." * 8,
+            "**证据:** " + "行业规模, 渗透率, 订单或交付, 价格竞争, 毛利率和监管信号共同支持这一阶段判断." * 8,
+            "**反证:** " + "如果后续需求转弱, 价格战加剧, 监管约束升级或目标公司交付质量下降, 阶段判断可能更接近成熟期压力." * 8,
+            "**置信度:** " + "中等, 因为仍需用公司公告, 官方行业数据和交易所信息验证." * 8,
+            "**对目标公司/产品的影响:** " + "估值和盈利性需要按不同业务线加权, 不能只交易单一成长叙事." * 8,
         ]
     )
     multibusiness_body = "\n".join(
@@ -1842,6 +2493,7 @@ def sample_company_capital_pass() -> str:
         ]
     )
     parts: list[str] = [
+        "# 示例公司基本面和资本市场研究报告",
         "## 0. 研报前置区",
         "### 0.1 报告摘要",
         long_body,
@@ -1931,6 +2583,7 @@ def sample_company_capital_pass() -> str:
                     "| 后续验证清单具体 | 通过 | 已列出后续验证问题, 推荐来源和优先级 |",
                 ]
             ),
+            "本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.",
         ]
     )
     return "\n\n".join(parts)
@@ -2503,6 +3156,126 @@ def sample_specific_thin_lifecycle() -> str:
     )
 
 
+def sample_english_specific_report() -> str:
+    """
+    构造完整英文行业具体问题报告样例.
+
+    :return: 英文 Markdown 样例文本.
+    """
+    analysis = (
+        "Conclusion: the available Evidence supports a conditional industry judgment. "
+        "The Mechanism connects demand, supply, competition, cost, and policy to measurable outcomes. "
+        "Implication for the Question: decision makers should track the stated indicators and verify gaps "
+        "against a Primary Source before changing the conclusion."
+    )
+    module_body = "\n\n".join(
+        [
+            "**Conclusion:** " + analysis,
+            "**Evidence:** " + analysis,
+            "**Mechanism:** " + analysis,
+            "**Implication for the Question:** " + " ".join([analysis] * 13),
+        ]
+    )
+    direct_answer = "\n\n".join([analysis] * 4)
+    return "\n\n".join(
+        [
+            "# Example Industry Question Research Report",
+            "## 1. Direct Answer\n\n" + direct_answer,
+            "## 2. Conclusion Summary\n\n" + analysis,
+            "## 3. Research Scope\n\nGlobal market, 2024-2026, with explicit inclusions, exclusions, and assumptions.",
+            "### 3.1 Research Plan Summary\n\n" + analysis,
+            "### 3.2 Source Matrix and Evidence Quality\n\n"
+            "| Source Type | Use in This Report | Evidence Tier | Retrieval Status | Limitations |\n"
+            "|---|---|---|---|---|\n"
+            "| Official Source | Market Size and Policy | primary | obtained | Verification |",
+            "### 3.3 Follow-up Retrieval Gaps\n\n"
+            "Missing Evidence remains important because it may change the conclusion. Three-Round Closure Attempts "
+            "included Round 1 with a Primary Source, Round 2 with a Near-Primary Source, and Round 3 with an "
+            "Industry Association and Credible Database. Attempted Sources are recorded. Current Status is "
+            "Partially Closed. Unresolved Reason is Paid Database and Definition Mismatch. Next Source is an "
+            "Official Source for Verification.\n\n"
+            "| Gap | Three-Round Closure Attempts | Current Status | Why It Still Matters | Unresolved Reason | Next Source |\n"
+            "|---|---|---|---|---|---|\n"
+            "| Missing Evidence | Round 1, Round 2, Round 3 | Partially Closed | Evidence may change the result | Paid Database | Primary Source |",
+            "## 4. Industry Map\n\n```mermaid\nflowchart LR\nA[Supply] --> B[Market]\nB --> C[Demand]\n```",
+            "## 5. Problem Decomposition and Issue Tree\n\n" + analysis,
+            "## 6. Evidence Chain Analysis\n\n"
+            "| Sub-question | Conclusion | Fact | Opinion | Inference | Evidence Tier | Source Status | Confidence |\n"
+            "|---|---|---|---|---|---|---|---|\n"
+            "| Demand | Conditional growth | Fact | Opinion | Inference | primary | obtained | high |",
+            "## 7. Lifecycle Assessment\n\n"
+            "**Lifecycle Phase:** Growth Phase. " + analysis + "\n\n"
+            "**Evidence:** Evidence supports expansion. " + analysis + "\n\n"
+            "**Counterevidence:** Uneven adoption challenges the base case. " + analysis + "\n\n"
+            "**Confidence:** Medium. " + analysis + "\n\n"
+            "**Implication for the Question:** Timing, segment selection, and verification matter. " + analysis,
+            "## 8. Seven Core Modules Analysis",
+            "### 8.1 Feasibility\n\n" + module_body,
+            "### 8.2 Scalability\n\n" + module_body,
+            "### 8.3 Defensibility\n\n" + module_body,
+            "### 8.4 Profitability\n\n" + module_body,
+            "### 8.5 Valuation\n\n" + module_body,
+            "### 8.6 External Factors\n\n" + module_body,
+            "### 8.7 Prosperity\n\n" + module_body,
+            "## 9. Multi-Perspective Pressure Test\n\n"
+            "| Perspective | Challenge | Impact | Verification Needed |\n"
+            "|---|---|---|---|\n"
+            "| Industry Expert | Industry structure may differ | Changes the conclusion | Verify industry data |\n"
+            "| Investment Researcher | Profitability may be weaker | Changes valuation logic | Verify financial data |\n"
+            "| Policy/Regulatory | Policy may tighten | Changes the risk boundary | Verify official policy |\n"
+            "| Operator/Entrepreneur | Execution may be harder | Changes feasibility | Verify operating data |",
+            "## 12. Report Compliance Checklist\n\n"
+            "| Check | Passed | Explanation |\n"
+            "|---|---|---|\n"
+            "| Report structure | Yes | The report preserves the required structure, Evidence rules, and Verification gaps. |",
+            "This report is for research and informational purposes only. It does not constitute investment advice or any guarantee of returns.",
+        ]
+    )
+
+
+def englishize_contract_fixture(text: str) -> str:
+    """
+    将中文自测样例的契约标题和关键词转换为英文.
+
+    本函数只用于复用既有深度样例验证英文适配层.
+
+    :param text: 中文 Markdown 自测样例.
+    :return: 使用英文契约标题和关键词的样例.
+    """
+    reverse_headings = {target: source for source, target in ENGLISH_HEADING_ALIASES.items()}
+    translated_lines = [reverse_headings.get(line.strip(), line) for line in text.splitlines()]
+    translated = "\n".join(translated_lines)
+    reverse_terms: dict[str, str] = {}
+    for source, target in ENGLISH_TERM_ALIASES.items():
+        reverse_terms.setdefault(target, source)
+    reverse_terms.update(
+        {
+            "证据层级": "Evidence Tier",
+            "为什么重要": "Why It Matters",
+            "阶段结论": "Lifecycle Phase",
+            "依据": "Basis",
+            "检索状态": "Retrieval Status",
+            "限制": "Limitations",
+            "一手来源检索状态": "Primary-Source Status",
+        }
+    )
+    for source, target in sorted(reverse_terms.items(), key=lambda item: len(item[0]), reverse=True):
+        translated = translated.replace(source, target)
+    translated = translated.replace(
+        "# 示例行业研究报告",
+        "# Example Industry Research Report",
+    )
+    translated = translated.replace(
+        "# 示例公司基本面和资本市场研究报告",
+        "# Example Company Fundamentals and Capital-Market Research Report",
+    )
+    translated = translated.replace(
+        "本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.",
+        "This report is for research and informational purposes only. It does not constitute investment advice or any guarantee of returns.",
+    )
+    return translated
+
+
 def run_self_test(json_output: bool = False) -> int:
     """
     运行脚本内置自检.
@@ -2554,6 +3327,24 @@ def run_self_test(json_output: bool = False) -> int:
             False,
         ),
         (
+            "english_prompt_builder_pass",
+            "prompt-builder",
+            "\n".join(
+                [
+                    "Please use the industry-research skill to generate a standard report.",
+                    "Report Route: Company/Product plus Capital Market module.",
+                    "Must Use: assets/company-product-template.md.",
+                    "Structure Requirements: include 0. Research Front Matter, 2.1 Research Plan Summary, 2.2 Source Matrix, 2.3 Follow-up Retrieval Gaps, 5.1-5.7, 6. Micro Company/Product Analysis, 11.1, 11.2, 11.3, 11.4, 12. Multi-Perspective Pressure Test, and 17. Report Compliance Checklist.",
+                    "Required Sections: Research Plan Summary, Source Matrix, Follow-up Retrieval Gaps, Fact/Opinion/Inference, Pressure Test, and Report Compliance Checklist.",
+                    "Depth Requirements: Target Length is the standard range and seven modules remain independent.",
+                    "Evidence Requirements: Primary-Source-First and place unsupported figures in Follow-up Retrieval Gaps.",
+                    "Compliance Requirements: Not Investment Advice.",
+                    "Rewrite before output when the template, 11.1-11.4, Source Matrix, Follow-up Retrieval Gaps, or Report Compliance Checklist is missing.",
+                ]
+            ),
+            False,
+        ),
+        (
             "prompt_builder_weak_contract_fail",
             "prompt-builder",
             sample_prompt_builder_weak_contract(),
@@ -2576,6 +3367,134 @@ def run_self_test(json_output: bool = False) -> int:
             "specific",
             sample_specific_report(20),
             False,
+        ),
+        (
+            "english_specific_pass",
+            "specific",
+            sample_english_specific_report(),
+            False,
+        ),
+        (
+            "english_overview_contract_pass",
+            "overview",
+            englishize_contract_fixture(sample_overview_report(20)),
+            False,
+        ),
+        (
+            "english_company_capital_contract_pass",
+            "company-capital",
+            englishize_contract_fixture(sample_company_capital_pass()),
+            False,
+        ),
+        (
+            "overview_missing_h1_fail",
+            "overview",
+            sample_overview_report(20).replace("# 示例行业研究报告\n\n", "", 1),
+            True,
+        ),
+        (
+            "specific_duplicate_h1_fail",
+            "specific",
+            sample_specific_report(20).replace(
+                "# 示例行业问题研究报告",
+                "# 示例行业问题研究报告\n\n# 重复标题",
+                1,
+            ),
+            True,
+        ),
+        (
+            "overview_noncanonical_disclaimer_fail",
+            "overview",
+            sample_overview_report(20).replace(
+                "本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.",
+                "本报告不构成投资建议.",
+                1,
+            ),
+            True,
+        ),
+        (
+            "auto_english_specific_pass",
+            "auto",
+            sample_english_specific_report(),
+            False,
+        ),
+        (
+            "english_mixed_heading_fail",
+            "specific",
+            sample_english_specific_report().replace(
+                "### 8.7 Prosperity",
+                "### 8.7 景气度",
+            ),
+            True,
+        ),
+        (
+            "english_lowercase_contract_field_fail",
+            "specific",
+            sample_english_specific_report().replace(
+                "| Source Type |",
+                "| source type |",
+            ),
+            True,
+        ),
+        (
+            "english_mixed_contract_field_fail",
+            "specific",
+            sample_english_specific_report().replace(
+                "| Source Type |",
+                "| 来源类型 |",
+            ),
+            True,
+        ),
+        (
+            "chinese_legacy_contract_field_fail",
+            "company-capital",
+            sample_company_capital_pass().replace(
+                "| 指标 | 行业读数 | 目标公司/产品读数 | 判断 | 证据/来源 |",
+                "| 指标 | 行业读数 | 目标公司读数 | 判断 | 证据/来源 |",
+            ),
+            True,
+        ),
+        (
+            "english_dynamic_target_field_fail",
+            "company-capital",
+            englishize_contract_fixture(sample_company_capital_pass()).replace(
+                "Target Company/Product Reading",
+                "BYD Reading",
+            ),
+            True,
+        ),
+        (
+            "english_assessment_field_fail",
+            "company-capital",
+            englishize_contract_fixture(sample_company_capital_pass()).replace(
+                "Judgment",
+                "Assessment",
+            ),
+            True,
+        ),
+        (
+            "english_subquestion_field_fail",
+            "specific",
+            sample_english_specific_report().replace(
+                "Sub-question",
+                "Subquestion",
+            ),
+            True,
+        ),
+        (
+            "english_counterevidence_label_fail",
+            "specific",
+            sample_english_specific_report().replace(
+                "**Counterevidence:**",
+                "**Counter-evidence:**",
+            ),
+            True,
+        ),
+        (
+            "english_round_abbreviation_fail",
+            "specific",
+            sample_english_specific_report().replace("Round 1", "R1"),
+            True,
         ),
         (
             "company_capital_fail",
@@ -2780,6 +3699,57 @@ def run_self_test(json_output: bool = False) -> int:
             expected = "fail" if should_fail else "pass"
             failures.append(f"{name}: expected {expected}, got {state}")
 
+    english_report = sample_english_specific_report()
+    if detect_report_language(english_report) != "en":
+        failures.append("english_language_detection: expected en")
+    if run_profile(english_report, "specific", language="en"):
+        failures.append("explicit_english_language: expected pass")
+    if not run_profile(english_report, "specific", language="zh"):
+        failures.append("explicit_chinese_language_mismatch: expected fail")
+
+    semantic_alias_cases = {
+        "Research brief": "研究简报",
+        "Seven core modules": "七个核心模块",
+        "market expectations": "市场预期",
+        "moat": "护城河",
+        "share-price performance": "股价",
+        "time period": "时间区间",
+        "two-year": "时间区间",
+        "fundamental catalysts": "催化",
+        "catalysts": "催化",
+        "data gap": "证据缺口",
+        "verification gap": "待核验",
+        "deliveries and orders": "交付和订单",
+        "business mix": "业务组合",
+        "mix": "业务组合",
+        "fundamentals": "基本面",
+        "re-rating": "重估",
+        "proof required": "需要证明",
+        "proof": "需要证明",
+        "upside catalyst": "上涨触发器",
+        "downside risks": "下跌风险",
+        "scenario": "情景",
+        "metrics to track": "跟踪指标",
+        "follow-up verification checklist": "后续验证清单",
+        "consumption": "消费",
+        "volume": "运营指标",
+        "industry-structure": "行业结构",
+        "company filings": "公司公告",
+        "peer-reviewed research": "近一手来源",
+        "Capital-Market": "资本市场",
+        "Industry Risk and Company Opportunity": "行业风险 and 目标公司机会",
+        "price pattern over one-year": "价格表现 over 时间区间",
+        "shipments show a fundamental change": "交付 show a 基本面变化",
+        "expectation gap": "预期差",
+        "Primary company disclosure and near-primary evidence": "一手来源 and 近一手 证据",
+        "Primary-source retrieval status": "一手来源检索状态",
+        "peer-reviewed evidence": "近一手 证据",
+    }
+    for source, expected in semantic_alias_cases.items():
+        normalized = normalize_report_contract(source, "en")
+        if expected not in normalized:
+            failures.append(f"english_semantic_alias: {source!r} did not normalize to {expected!r}")
+
     if failures:
         if json_output:
             print(json.dumps({"status": "fail", "failures": failures}, ensure_ascii=False, indent=2))
@@ -2810,6 +3780,12 @@ def build_parser() -> argparse.ArgumentParser:
         choices=["company-capital", "company", "overview", "specific", "prompt-builder", "short", "auto"],
         help="Expected report profile.",
     )
+    parser.add_argument(
+        "--language",
+        choices=["auto", "zh", "en"],
+        default="auto",
+        help="Expected report language. Default: auto.",
+    )
     return parser
 
 
@@ -2826,12 +3802,18 @@ def main() -> int:
     if not args.report or not args.profile:
         parser.error("report and --profile are required unless --self-test is used")
     text = read_text(args.report)
-    errors = run_profile(text, args.profile)
+    errors = run_profile(text, args.profile, language=args.language)
     if args.json:
         status = "fail" if errors else "pass"
         print(
             json.dumps(
-                {"status": status, "profile": args.profile, "report": str(args.report), "errors": errors},
+                {
+                    "status": status,
+                    "profile": args.profile,
+                    "language": args.language,
+                    "report": str(args.report),
+                    "errors": errors,
+                },
                 ensure_ascii=False,
                 indent=2,
             )

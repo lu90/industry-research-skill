@@ -1,6 +1,6 @@
 # Output Format
 
-Use this file to control report structure, length, and detail. For paragraph-level expansion rules, use it with `references/section-depth-playbook.md`.
+Use this file to control report structure, length, and detail. Select and apply `output_language` through `references/report-language.md`. For paragraph-level expansion rules, use it with `references/section-depth-playbook.md`.
 
 ## Reference Report Patterns
 
@@ -32,7 +32,8 @@ At the end, include:
 2. Evidence quality summary.
 3. Key assumptions.
 4. Follow-up verification appendix.
-5. Visible `报告合规自检表`.
+5. Visible language-matched report compliance checklist.
+6. The exact language-matched disclaimer from `references/report-language.md` as the final nonempty line.
 ## Explicit Short Answer Mode
 
 Use short output only when the user explicitly asks for a short, simple, quick, brief, one-paragraph, one-sentence, no-detail, or no-expansion answer. Do not infer this mode from a narrow question.
@@ -50,6 +51,8 @@ Use `references/report-output-modes.md` to choose delivery mode.
 - If file writing or PDF export is not available, state the limitation and fall back to Chat Report.
 
 ## Default Length
+
+The ranges below are Chinese-character baselines. For English and other alphabetic languages, preserve equivalent analytical coverage and section depth instead of treating them as literal word counts. The maintenance checker uses normalized content units defined in `references/report-language.md`.
 
 - Explicit short answer: 800-1500 Chinese characters, only when the user explicitly asks for a short, simple, quick, brief, one-paragraph, one-sentence, no-detail, or no-expansion answer.
 - Standard industry overview report: 8000-12000 Chinese characters, 1 Mermaid industry map, 6-10 tables or exhibit placeholders.

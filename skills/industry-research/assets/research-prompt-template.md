@@ -13,6 +13,9 @@ Use this asset only when the user asks to generate a reusable prompt, research b
 研究对象:
 {行业/公司/产品/ticker/业务线}
 
+输出语言:
+{中文或 English, 按 references/report-language.md 选择}
+
 研究边界:
 - 地区: {地区或假设}
 - 时间范围: {当前/历史区间/未来 1-3 年/未来 3-5 年}
@@ -31,16 +34,20 @@ Use this asset only when the user asks to generate a reusable prompt, research b
 - 报告深度: {标准报告/深度报告}
 - 交付模式: {Workspace Report File/Chat Report/File Report}
 - 必需层级: {宏观 + 中观 + 微观 + 资本市场层, 按适用情况填写}
+- 输出语言: {中文/English}
 
 必须使用:
 - 模板: {assets/...template.md}
+- 语言契约: references/report-language.md
 - 输出契约: {references/...output-contract.md}
 - 来源规则: references/primary-source-first.md
 - 输出深度: references/output-format.md
 - 合规门禁: references/report-compliance.md
 
 结构要求:
-- 必须先按 research brief 锁定报告路由, 模板, 来源计划和深度契约, 再开始写正文.
+- 必须先按 research brief 锁定报告路由, 模板, 输出语言, 来源计划和深度契约, 再开始写正文.
+- 标题, 正文, 表头, 标签和合规自检表必须使用选定语言, 不得混用中英文契约标题.
+- 标准或深度报告必须以一个动态 H1 开头, 紧接语言对应的路由章节, 并以固定免责声明结尾.
 - 不要简版, 不要快评, 不要自创结构.
 - 缺少必需章节时, 先重写再输出.
 - 七个核心模块必须以 5.1-5.7 独立小节展开, 表格只能作为摘要, 不能替代主体.
@@ -49,7 +56,7 @@ Use this asset only when the user asks to generate a reusable prompt, research b
 {资本市场章节要求}
 
 必需章节清单:
-- 开头章节: {例如公司/产品报告必须从 `0. 研报前置区` 开始; 行业具体问题必须从 `1. 直接回答` 开始}
+- 报告外壳: {一个动态 H1; 例如公司/产品报告紧接 `0. 研报前置区`; 行业具体问题紧接 `1. 直接回答`; 最后一行使用固定免责声明}
 - 研究追踪: {例如 `2.1 研究计划摘要`, `2.2 来源矩阵和证据质量`, `2.3 二次检索缺口`}
 - 行业层级: {宏观环境, 中观行业, 行业地图, 生命周期判断}
 - 七模块: {必须逐项写出 `5.1 可行性` 到 `5.7 景气度`, 不得合并为一个表格}
@@ -57,7 +64,7 @@ Use this asset only when the user asks to generate a reusable prompt, research b
 - 证据和合规: {事实/观点/推断分层, 多视角压力测试, 风险和机会, 方法论, 附录, 报告合规自检表}
 
 深度要求:
-- 目标字数: {目标中文字符范围}.
+- 目标深度: {中文字符基线或英文的等效分析深度}.
 - 七模块普通小节: {普通小节深度}.
 - 七模块重点小节: {重点小节深度}.
 - 资本市场章节: {适用时填写 11 章深度}.
@@ -70,8 +77,8 @@ Use this asset only when the user asks to generate a reusable prompt, research b
 - 重要数字必须给出来源或明确列入二次检索缺口.
 
 合规要求:
-- 不构成投资建议.
-- 不给确定收益承诺或具体买卖点.
+- 最后一行必须逐字复制语言契约中的固定免责声明, 不得改写.
+- 不给具体买卖点.
 - 最终必须输出可见的报告合规自检表.
 - 合规自检表必须真实反映是否达标. 如果有任一核心项不达标, 不要标记通过, 先补写或重写.
 
