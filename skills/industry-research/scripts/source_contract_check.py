@@ -510,7 +510,13 @@ def build_parser() -> argparse.ArgumentParser:
     :return: argparse 解析器.
     """
     parser = argparse.ArgumentParser(description="Check v61 source registry and evidence contracts.")
-    parser.add_argument("skill_root", type=Path, nargs="?", help="Industry research skill root.")
+    parser.add_argument(
+        "skill_root",
+        type=Path,
+        nargs="?",
+        default=Path(__file__).resolve().parent.parent,
+        help="Industry research skill root. Defaults to the installed script parent.",
+    )
     parser.add_argument("--evidence", type=Path, help="Optional Evidence Ledger JSONL path.")
     parser.add_argument("--self-test", action="store_true", help="Run built-in contract tests.")
     parser.add_argument("--json", action="store_true", help="Print machine-readable JSON.")
@@ -527,8 +533,6 @@ def main() -> int:
     args = parser.parse_args()
     if args.self_test:
         return run_self_test(args.json)
-    if not args.skill_root:
-        parser.error("skill_root is required unless --self-test is used")
     errors = validate_repository(args.skill_root, args.evidence)
     status = "fail" if errors else "pass"
     if args.json:

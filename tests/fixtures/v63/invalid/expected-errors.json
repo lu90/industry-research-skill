@@ -1,0 +1,86 @@
+{
+  "overview-missing-lifecycle.md": {
+    "profile": "overview",
+    "error_contains": "missing heading: ## 4. 生命周期判断"
+  },
+  "specific-missing-evidence-chain.md": {
+    "profile": "specific",
+    "error_contains": "missing heading: ## 7. 证据链分析"
+  },
+  "company-missing-industry-map.md": {
+    "profile": "company",
+    "error_contains": "missing heading: ### 4.3 行业地图"
+  },
+  "company-capital-missing-capital-section.md": {
+    "profile": "company-capital",
+    "error_contains": "missing heading: ## 11. 资本市场表现与估值预期变化"
+  },
+  "overview-legacy-heading.md": {
+    "profile": "overview",
+    "error_contains": "legacy report structure is not accepted"
+  },
+  "overview-missing-module-verification.md": {
+    "profile": "overview",
+    "error_contains": "noncanonical contract labels"
+  },
+  "overview-conflated-source-fields.md": {
+    "profile": "overview",
+    "error_contains": "noncanonical contract header"
+  },
+  "overview-noncanonical-evidence-tier.md": {
+    "profile": "overview",
+    "error_contains": "noncanonical evidence tier"
+  },
+  "overview-invalid-source-row-width.md": {
+    "profile": "overview",
+    "error_contains": "noncanonical table row width"
+  },
+  "overview-missing-claim-id.md": {
+    "profile": "overview",
+    "error_contains": "source matrix row 1: missing unique claim_id"
+  },
+  "overview-missing-gap-id.md": {
+    "profile": "overview",
+    "error_contains": "retrieval gap row 1: missing unique gap_id"
+  },
+  "overview-risk-missing-opportunity.md": {
+    "profile": "overview",
+    "error_contains": "missing checklist concept under ## 9. 风险, 机会和不确定性: 事实风险"
+  },
+  "overview-verification-missing-status.md": {
+    "profile": "overview",
+    "error_contains": "noncanonical contract header"
+  },
+  "company-unexpected-capital-module.md": {
+    "profile": "company",
+    "error_contains": "unexpected conditional module"
+  },
+  "company-empty-portfolio-module.md": {
+    "profile": "company",
+    "error_contains": "thin section: ## 8. 业务/产品组合分析"
+  },
+  "company-missing-conditional-declaration.md": {
+    "profile": "company",
+    "error_contains": "missing or invalid conditional module declaration"
+  },
+  "company-multibusiness-declaration-conflict.md": {
+    "profile": "company",
+    "error_contains": "conditional module declaration conflicts with rendered section: multi_business_split"
+  },
+  "overview-company-opening.md": {
+    "profile": "overview",
+    "error_contains": "wrong route opening after H1"
+  },
+  "specific-overview-opening.md": {
+    "profile": "specific",
+    "error_contains": "wrong route opening after H1"
+  },
+  "company-capital-missing-multibusiness.md": {
+    "profile": "company-capital",
+    "error_contains": "missing heading: ### 4.0 多业务线中观拆分"
+  },
+  "company-map-missing-target-position.md": {
+    "profile": "company",
+    "error_contains": "missing checklist concept under ### 4.3 行业地图"
+  }
+}

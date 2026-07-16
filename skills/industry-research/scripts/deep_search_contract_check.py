@@ -562,22 +562,30 @@ def validate_authority_boundary(engine_text: str, protocol_text: str) -> list[st
     """
     errors: list[str] = []
     engine_required = [
-        "owns evidence admission",
-        "three-round gap-closure decision",
-        "minimum evidence threshold and formal-report permission",
+        ("owns evidence admission", "负责证据准入"),
+        ("three-round gap-closure decision", "三轮缺口闭环决策"),
+        ("minimum evidence threshold and formal-report permission", "最低证据门槛和正式报告许可"),
     ]
     protocol_required = [
-        "Engine remains the authority for research policy",
-        "must not redefine the Engine's evidence threshold",
-        "Only the Engine decides whether the minimum evidence threshold is satisfied",
+        ("Engine remains the authority for research policy", "Engine 始终负责研究政策"),
+        ("must not redefine the Engine's evidence threshold", "不得重新定义 Engine 的证据门槛"),
+        (
+            "Only the Engine decides whether the minimum evidence threshold is satisfied",
+            "只有 Engine 可以判断最低证据门槛是否满足",
+        ),
     ]
-    for phrase in engine_required:
-        if phrase not in engine_text:
-            errors.append(f"engine boundary missing: {phrase}")
-    for phrase in protocol_required:
-        if phrase not in protocol_text:
-            errors.append(f"protocol boundary missing: {phrase}")
-    forbidden = ["Protocol decides minimum evidence", "Protocol authorizes closure round"]
+    for english_phrase, chinese_phrase in engine_required:
+        if english_phrase not in engine_text and chinese_phrase not in engine_text:
+            errors.append(f"engine boundary missing: {english_phrase}")
+    for english_phrase, chinese_phrase in protocol_required:
+        if english_phrase not in protocol_text and chinese_phrase not in protocol_text:
+            errors.append(f"protocol boundary missing: {english_phrase}")
+    forbidden = [
+        "Protocol decides minimum evidence",
+        "Protocol authorizes closure round",
+        "Protocol 决定最低证据",
+        "Protocol 授权闭环轮次",
+    ]
     for phrase in forbidden:
         if phrase in protocol_text:
             errors.append(f"protocol duplicates Engine policy: {phrase}")
@@ -885,6 +893,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Check v62 Deep Search Protocol and Research Run contracts.")
     parser.add_argument("run_dir", type=Path, nargs="?", help="Research Run directory.")
     parser.add_argument("--repo-root", type=Path, default=Path.cwd(), help="Repository root.")
+    parser.add_argument(
+        "--skill-root",
+        type=Path,
+        default=Path(__file__).resolve().parent.parent,
+        help="Industry research skill root. Defaults to the installed script parent.",
+    )
     parser.add_argument("--research-root", type=Path, help="Optional Research Run root for cross-Run checks.")
     parser.add_argument("--self-test", action="store_true", help="Run deterministic contract tests.")
     parser.add_argument("--check-boundary", action="store_true", help="Check Engine and Protocol authority boundary.")
@@ -903,10 +917,13 @@ def main() -> int:
     if args.self_test:
         return run_self_test(args.json)
     errors: list[str] = []
-    skill_root = args.repo_root / "skills" / "industry-research"
     if args.check_boundary:
-        engine_text = (skill_root / "references" / "deep-research-engine.md").read_text(encoding="utf-8")
-        protocol_text = (skill_root / "references" / "deep-search-protocol.md").read_text(encoding="utf-8")
+        engine_text = (args.skill_root / "references" / "deep-research-engine.md").read_text(
+            encoding="utf-8"
+        )
+        protocol_text = (args.skill_root / "references" / "deep-search-protocol.md").read_text(
+            encoding="utf-8"
+        )
         errors.extend(validate_authority_boundary(engine_text, protocol_text))
     if args.run_dir:
         if args.merge:

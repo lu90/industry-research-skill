@@ -6,7 +6,7 @@ Template metadata starts here. Do not output this metadata section to the user. 
 
 This template is the required output contract for standard or deep company/product reports. Start by copying the Markdown heading skeleton from the dynamic H1 title onward, then fill the sections. Do not use this file only as a reference.
 
-The final report's first nonempty line must be exactly one dynamic H1 title. The next nonempty line must be `## 0. 研报前置区`. Do not output template metadata, template instructions, or internal contract text between them. A standard or deep company/product report must not start with `## 1. 直接结论`. If a draft starts with section 1, rewrite it from this template before final output.
+The final report's first nonempty line must be exactly one dynamic H1 title. The next nonempty line must be `## 0. 研报前置区`. Do not output template metadata, template instructions, or internal contract text between them. A standard or deep company/product report must not start with `## 1. 目标公司/产品综合判断`. If a draft starts with section 1, rewrite it from this template before final output.
 
 ## Build Order
 
@@ -20,11 +20,11 @@ The final report's first nonempty line must be exactly one dynamic H1 title. The
 
 ## Seven Modules Body Rule
 
-The seven-module section may include a summary table, but the table is only an exhibit. The body must keep `5.1-5.7` as independent analytical subsections. Each subsection must contain `结论`, `依据`, `机制`, `对目标公司/产品的影响`, and `关键指标和后续验证`. For listed-company capital-market reports, `5.4-5.7` must be visibly deeper than `5.1-5.3`.
+The seven-module section may include a summary table, but the table is only an exhibit. The body must keep `5.1-5.7` as independent analytical subsections. Each subsection must contain `结论`, `证据`, `机制`, `研究含义`, and `关键指标和后续验证`. For listed-company capital-market reports, `5.4-5.7` must be visibly deeper than `5.1-5.3`.
 
 ## Mandatory Use
 
-Use this template as the required section structure for standard or deep company/product reports. Keep the main sections unless the user explicitly asks for a short answer. Keep the five labels in every seven-module subsection: `结论`, `依据`, `机制`, `对目标公司/产品的影响`, `关键指标和后续验证`. For capital-market reports, make `5.4-5.7` deeper than `5.1-5.3`. Do not merge a seven-module subsection into one sentence or a single summary table. If evidence is insufficient, write the evidence gap and next verification step. For standard and deep reports, include the formal report front and back sections in this template.
+Use this template as the required section structure for standard or deep company/product reports. Keep the main sections unless the user explicitly asks for a short answer. Keep the five labels in every seven-module subsection: `结论`, `证据`, `机制`, `研究含义`, `关键指标和后续验证`. For capital-market reports, make `5.4-5.7` deeper than `5.1-5.3`. Do not merge a seven-module subsection into one sentence or a single summary table. If evidence is insufficient, write the evidence gap and next verification step. For standard and deep reports, include the formal report front and back sections in this template.
 
 ## Skeleton Lock
 
@@ -33,16 +33,18 @@ For standard or deep company/product reports, preserve this template's main skel
 Required core skeleton for standard company/product reports:
 
 - `0. 研报前置区`
-- `1. 直接结论`
+- `1. 目标公司/产品综合判断`
 - `2. 研究边界`
 - `2.1 研究计划摘要`
 - `2.2 来源矩阵和证据质量`
-- `2.3 二次检索缺口`
+- `2.3 检索缺口闭环结果`
 - `3. 宏观环境分析`
 - `4. 中观行业分析`
-- `4.3 行业地图和目标位置`
+- `4.1 行业一句话定义`
+- `4.2 行业关键指标`
+- `4.3 行业地图`, with target position in the section body
 - `4.4 生命周期判断`
-- `5. 七个核心模块加权分析`
+- `5. 七个核心模块分析`
 - `5.1 可行性`
 - `5.2 规模性`
 - `5.3 防守性`
@@ -51,11 +53,14 @@ Required core skeleton for standard company/product reports:
 - `5.6 外部因素`
 - `5.7 景气度`
 - `6. 微观公司/产品分析`
+- `7. SWOT`
+- `9. 竞争对手对比`
 - `10. 事实, 观点和推断分层`
 - `12. 多视角压力测试`
-- `13. 风险和机会`
+- `13. 风险, 机会和不确定性`
+- `14. 后续行动建议`
 - `15. 方法论和数据来源说明`
-- `16. 附录: 后续验证清单`
+- `16. 后续验证清单`
 - `17. 报告合规自检表`
 
 Conditional skeleton:
@@ -99,12 +104,12 @@ Filling rule: non-priority sections may be concise, but required skeleton sectio
 
 | 图表 | 类型 | 用途 |
 |---|---|---|
-| 图表 1: 行业地图和目标位置 | Mermaid | 展示产业链, 横向竞争和目标位置 |
+| 图表 1: 行业地图与目标位置 | Mermaid | 展示产业链, 横向竞争和目标位置 |
 | 图表 2: 核心指标总览 | 表格 | 展示行业和目标的关键读数 |
-| 图表 3: 七模块判断矩阵 | 表格 | 展示七模块结论和证据等级 |
+| 图表 3: 七模块判断矩阵 | 表格 | 展示七模块结论, 证据层级和证据质量 |
 | 图表 4: 竞争对手对比 | 表格 | 展示目标与主要玩家的差异 |
 
-## 1. 直接结论
+## 1. 目标公司/产品综合判断
 
 {目标公司/产品的行业位置, 核心优势, 核心风险, 初步判断. 先给结论, 不把判断埋在后文.}
 
@@ -128,24 +133,25 @@ Filling rule: non-priority sections may be concise, but required skeleton sectio
 | 子问题 | {宏观/中观/微观/资本市场的关键子问题} |
 | 选择的分析层级 | {宏观/中观/微观/资本市场, 并说明为何选择或排除} |
 | 必须验证的事项 | {最影响结论的 3-5 个事实或指标} |
+| 条件模块 | multi_business_split={enabled/disabled}; portfolio_analysis={enabled/disabled}; capital_market={enabled/disabled} |
 
 ### 2.2 来源矩阵和证据质量
 
-| 来源类型 | 本报告用途 | 证据等级 | 一手来源状态 | 缺口处理 |
-|---|---|---|---|---|
-| 官方统计/监管/行业协会 | {宏观和中观事实} | {高/中/低} | {已取得/已尝试未取得/待检索} | {口径或时效限制, 下一步来源} |
-| 公司公告/财报/IR/交易所文件 | {公司和财务事实} | {高/中/低} | {已取得/已尝试未取得/待检索} | {披露频率或分部口径限制, 下一步来源} |
-| 交易所/可信市场数据库 | {股价, 估值, 市值, 交易表现} | {高/中/低} | {已取得/已尝试未取得/待检索} | {行情口径限制, 下一步来源} |
-| 可信数据库/国际组织/行业报告 | {趋势, 预测, 对比指标} | {高/中/低} | {已取得/已尝试未取得/待检索} | {预测假设或商业立场, 下一步来源} |
-| 媒体/财经网站/访谈 | {补充信号和观点, 不替代一手核心事实} | {中/低} | {二手来源} | {必须交叉验证, 标记为补充信号} |
+| 关键 Claim | 来源类型 | 本报告用途 | 证据层级 | 证据质量 | 来源状态 | 独立验证状态 | 限制和缺口处理 |
+|---|---|---|---|---|---|---|---|
+| `{claim_id}`: {读者可理解的 Claim} | 官方统计/监管/行业协会 | {宏观和中观事实} | {primary/near-primary/secondary/weak} | {high/medium/low} | {access_status} | {independence_status} | {口径或时效限制, 下一步来源} |
+| `{claim_id}`: {读者可理解的 Claim} | 公司公告/财报/IR/交易所文件 | {公司和财务事实} | {primary/near-primary/secondary/weak} | {high/medium/low} | {access_status} | {independence_status} | {披露频率或分部口径限制, 下一步来源} |
+| `{claim_id}`: {读者可理解的 Claim} | 交易所/可信市场数据库 | {股价, 估值, 市值, 交易表现} | {primary/near-primary/secondary/weak} | {high/medium/low} | {access_status} | {independence_status} | {行情口径限制, 下一步来源} |
+| `{claim_id}`: {读者可理解的 Claim} | 可信数据库/国际组织/行业报告 | {趋势, 预测, 对比指标} | {primary/near-primary/secondary/weak} | {high/medium/low} | {access_status} | {independence_status} | {预测假设或商业立场, 下一步来源} |
+| `{claim_id}`: {读者可理解的 Claim} | 媒体/财经网站/访谈 | {补充信号和观点, 不替代一手核心事实} | {secondary/weak} | {high/medium/low} | {access_status} | {independence_status} | {必须交叉验证, 标记为补充信号} |
 
-### 2.3 二次检索缺口
+### 2.3 检索缺口闭环结果
 
 {本节只保留三轮闭环检索后仍未闭环的高影响缺口. 对每个高影响缺口, 必须先围绕一手或近一手来源最多执行三轮定向检索. 只有当来源不可访问, 需要付费库, 需要登录, 或公开环境没有可靠结果时, 才能保留为 `仍未补齐`, 并展示原因. 已补齐的缺口应移入正文证据, 不继续留在本节.}
 
-| 缺口 | 三轮闭环已尝试 | 当前状态 | 为什么仍重要 | 未补齐原因 | 下一步来源 |
+| 缺口 | 已尝试轮次和来源 | 当前状态 | 为什么仍重要 | 未补齐原因 | 下一步来源 |
 |---|---|---|---|---|---|
-| {缺少的指标/文件/数据集/监管原文} | {第1轮: 公司 IR/交易所/官方统计. 第2轮: 行业协会/监管/可信数据库. 第3轮: 替代关键词/本地语言/可信二手交叉验证} | {部分补齐/仍未补齐} | {对结论, 置信度或情景判断的影响} | {不可访问/付费库/需要登录/公开检索无可靠结果/口径不匹配} | {下一步应核验的精确一手或近一手来源} |
+| `{gap_id}`: {缺少的指标/文件/数据集/监管原文} | {第1轮: 公司 IR/交易所/官方统计. 第2轮: 行业协会/监管/可信数据库. 第3轮: 替代关键词/本地语言/可信二手交叉验证} | {从 gaps.json 复制状态} | {对结论, 置信度或情景判断的影响} | {从对应 gap 复制 unresolved_reason} | {从对应 gap 复制 next_source_route} |
 
 {对公司/产品和资本市场问题, 必须说明公司公告/IR/交易所/行情数据库/官方行业数据中哪些已按三轮尝试但未取得. 不允许只写“后续关注”或只列下一步来源而不展示三轮闭环尝试.}
 
@@ -164,7 +170,7 @@ Filling rule: non-priority sections may be concise, but required skeleton sectio
 
 ### 4.0 多业务线中观拆分
 
-{如果目标是多业务公司, 不要只写一个泛泛行业. 按与问题相关的业务线拆分. 如果某业务线不相关, 在研究边界中说明排除原因.}
+{条件模块. 多业务目标或 company-capital 路线必须保留. 普通单业务公司删除本节. Company-capital 的单业务目标保留本节并说明不存在实质拆分.}
 
 | 业务线/行业线 | 行业阶段 | 竞争格局 | 关键指标/景气信号 | 对目标公司的含义 |
 |---|---|---|---|---|
@@ -187,7 +193,7 @@ Filling rule: non-priority sections may be concise, but required skeleton sectio
 | 政策/监管 | {政策变量} | {来源} | {影响} |
 | 区域/出口 | {区域或出口变量} | {来源} | {影响} |
 
-### 4.3 行业地图和目标位置
+### 4.3 行业地图
 
 ```mermaid
 flowchart LR
@@ -216,21 +222,21 @@ flowchart LR
 
 **置信度:** {高/中/低及原因.}
 
-**对目标公司/产品的影响:** {该阶段对目标机会, 约束和风险的影响.}
+**研究含义:** {该阶段对目标机会, 约束和风险的影响.}
 
-## 5. 七个核心模块加权分析
+## 5. 七个核心模块分析
 
-七个模块必须全部以独立小节出现. 不要只选择其中几个, 也不要用一个汇总表替代本章节. 根据生命周期, 用户问题和目标位置调整篇幅和重点. 标准报告中每个模块应达到约 300-500 个中文字符; 深度报告中每个模块应达到约 600-1000 个中文字符. 每个模块的 `依据` 至少包含 2 个证据点, 数据点, 来源指向或明确证据缺口. 每个模块都必须包含 `关键指标和后续验证`, 用来说明该判断需要跟踪哪些指标, 以及下一步查证的一手或近一手来源. 如果证据不足, 写“证据缺口 + 下一步验证”, 不要用泛泛判断填充. 资本市场问题中, 盈利性, 估值, 外部因素和景气度必须比其它模块展开更深, 标准报告中这些重点模块应达到约 500-800 个中文字符.
+七个模块必须全部以独立小节出现. 不要只选择其中几个, 也不要用一个汇总表替代本章节. 根据生命周期, 用户问题和目标位置调整篇幅和重点. 标准报告中每个模块应达到约 300-500 个中文字符; 深度报告中每个模块应达到约 600-1000 个中文字符. 每个模块的 `证据` 至少包含 2 个证据点, 数据点, 来源指向或明确证据缺口. 每个模块都必须包含 `关键指标和后续验证`, 用来说明该判断需要跟踪哪些指标, 以及下一步查证的一手或近一手来源. 如果证据不足, 写“证据缺口 + 下一步验证”, 不要用泛泛判断填充. 资本市场问题中, 盈利性, 估值, 外部因素和景气度必须比其它模块展开更深, 标准报告中这些重点模块应达到约 500-800 个中文字符.
 
 ### 5.1 可行性
 
 **结论:** {需求真实性, 商业模式, 使用频率, UE 或关键前提的判断.}
 
-**依据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
+**证据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
 
 **机制:** {解释为什么这些依据能支持该可行性判断.}
 
-**对目标公司/产品的影响:** {说明行业可行性对目标的机会, 约束或风险.}
+**研究含义:** {说明行业可行性对目标的机会, 约束或风险.}
 
 **关键指标和后续验证:** {列出需求真实性, 转化率, 留存, 使用频次, 单位经济模型, 产品质量或其它可行性指标, 并说明下一步查证来源.}
 
@@ -238,11 +244,11 @@ flowchart LR
 
 **结论:** {市场空间, 增速, 渗透率, TAM/SAM/SOM 或代理指标的判断.}
 
-**依据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
+**证据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
 
 **机制:** {解释需求驱动, 供给驱动或供需匹配如何影响规模.}
 
-**对目标公司/产品的影响:** {说明规模性对目标增长, 份额和资源投入的影响.}
+**研究含义:** {说明规模性对目标增长, 份额和资源投入的影响.}
 
 **关键指标和后续验证:** {列出 TAM/SAM/SOM, 市场规模, 增速, 渗透率, 订单/销量或其它规模指标, 并说明下一步查证来源.}
 
@@ -250,11 +256,11 @@ flowchart LR
 
 **结论:** {护城河, 替代风险, 生产要素, 生产关系和竞争壁垒的判断.}
 
-**依据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
+**证据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
 
 **机制:** {解释哪些要素形成防守性, 哪些因素会削弱防守性.}
 
-**对目标公司/产品的影响:** {说明目标的相对壁垒, 可被替代风险和防守重点.}
+**研究含义:** {说明目标的相对壁垒, 可被替代风险和防守重点.}
 
 **关键指标和后续验证:** {列出份额稳定性, 客户粘性, 转换成本, 供应链控制力, 渠道效率, 品牌或替代风险指标, 并说明下一步查证来源.}
 
@@ -262,11 +268,11 @@ flowchart LR
 
 **结论:** {利润池, 议价能力, 毛利率, 成本结构, 资金占用和现金流的判断.}
 
-**依据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
+**证据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
 
 **机制:** {解释价值链利润如何分配, 供需和议价能力如何影响盈利.}
 
-**对目标公司/产品的影响:** {说明目标的利润改善空间, 利润压力和需要跟踪的会计/经营指标.}
+**研究含义:** {说明目标的利润改善空间, 利润压力和需要跟踪的会计/经营指标.}
 
 **关键指标和后续验证:** {列出毛利率, 费用率, 现金流, 分部利润, 价格/成本变量或其它最关键指标, 并说明下一步查证来源.}
 
@@ -274,11 +280,11 @@ flowchart LR
 
 **结论:** {生命周期对应估值逻辑, 基本面, 资金面和估值陷阱的判断.}
 
-**依据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
+**证据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
 
 **机制:** {解释为什么该阶段适用该估值逻辑, 哪些变量会改变估值锚.}
 
-**对目标公司/产品的影响:** {说明目标更适合用哪些估值或判断框架, 以及哪些指标会重估或杀估值.}
+**研究含义:** {说明目标更适合用哪些估值或判断框架, 以及哪些指标会重估或杀估值.}
 
 **关键指标和后续验证:** {列出估值倍数, 增长预期, 利润预期, 风险溢价, 同业对比或其它估值锚, 并说明下一步查证来源.}
 
@@ -286,11 +292,11 @@ flowchart LR
 
 **结论:** {PEST: 政策, 经济, 社会文化, 技术因素的综合判断.}
 
-**依据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
+**证据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
 
 **机制:** {解释外部因素是驱动, 瓶颈, 触发器还是估值冲击.}
 
-**对目标公司/产品的影响:** {说明外部因素对目标增长, 成本, 合规, 海外化或技术路线的影响.}
+**研究含义:** {说明外部因素对目标增长, 成本, 合规, 海外化或技术路线的影响.}
 
 **关键指标和后续验证:** {列出监管政策, 利率/汇率, 原材料, 消费信心, 技术路线或舆情风险等跟踪项, 并说明下一步查证来源.}
 
@@ -298,11 +304,11 @@ flowchart LR
 
 **结论:** {量, 价, 库存, 成本, 利润, 现金流和前瞻指标的判断.}
 
-**依据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
+**证据:** {事实, 数据, 来源支持的观点, 或明确的证据缺口.}
 
 **机制:** {解释哪些指标代表短期景气, 哪些指标代表结构趋势.}
 
-**对目标公司/产品的影响:** {说明目标应该重点跟踪哪些指标, 以及这些指标如何影响经营表现.}
+**研究含义:** {说明目标应该重点跟踪哪些指标, 以及这些指标如何影响经营表现.}
 
 **关键指标和后续验证:** {列出订单, 交付, ASP, 库存, 渠道动销, 利润率, 现金流或其它前瞻指标, 并说明下一步查证来源.}
 
@@ -337,14 +343,14 @@ flowchart LR
 
 ## 10. 事实, 观点和推断分层
 
-{本节必须展示证据层级和一手来源状态. 二手行情源或媒体转述支持的量化内容应标为 `待核验事实` 或在证据层级中标为 `二手/近一手`, 不要与公司公告, 交易所文件或官方统计同级.}
+{本节必须展示证据层级, 证据质量和来源状态. 二手行情源或媒体转述支持的量化内容应标为 `待核验事实` 或在证据层级中标为 `secondary/weak`, 不要与公司公告, 交易所文件或官方统计同级.}
 
-| 类型 | 内容 | 来源/依据 | 证据层级 | 一手来源状态 | 置信度 |
-|---|---|---|---|---|---|
-| 事实 | {来自公司公告/交易所/官方统计的事实} | {来源} | {一手/近一手/二手/弱证据} | {已取得/已尝试未取得/待检索} | {高/中/低} |
-| 待核验事实 | {来自二手行情源或媒体转述的量化内容} | {来源} | {近一手/二手/弱证据} | {已尝试未取得/待检索} | {高/中/低} |
-| 观点 | {观点} | {来源和立场} | {二手/弱证据} | {不适用/待交叉验证} | {高/中/低} |
-| 推断 | {推断} | {推理依据} | {基于哪些事实和证据层级} | {受哪些一手缺口影响} | {高/中/低} |
+| 类型 | 内容 | 来源/依据 | 证据层级 | 证据质量 | 来源状态 | 置信度 |
+|---|---|---|---|---|---|---|
+| 事实 | {来自公司公告/交易所/官方统计的事实} | {来源} | {primary/near-primary/secondary/weak} | {high/medium/low} | {access_status} | {高/中/低} |
+| 待核验事实 | {来自二手行情源或媒体转述的量化内容} | {来源} | {secondary/weak} | {high/medium/low} | {access_status} | {高/中/低} |
+| 观点 | {观点} | {来源和立场} | {secondary/weak} | {high/medium/low} | {access_status} | {高/中/低} |
+| 推断 | {推断} | {推理依据} | {基于哪些事实和证据层级} | {high/medium/low} | {受哪些一手缺口影响} | {高/中/低} |
 
 ## 11. 资本市场表现与估值预期变化
 
@@ -384,9 +390,9 @@ flowchart LR
 | 经营者/创业者 | {商业模式或执行路径是否现实} | {影响落地性} | {需要验证的渠道, 成本, 组织或供应链信息} |
 | 反方审稿人 | {核心结论最可能错在哪里} | {暴露最大不确定性} | {能证伪或证实结论的关键证据} |
 
-## 13. 风险和机会
+## 13. 风险, 机会和不确定性
 
-{公司/产品层面的风险和机会, 并说明哪些来自行业结构, 哪些来自目标自身. 必须至少覆盖: 行业结构风险, 目标公司/产品自身风险, 行业机会, 目标公司/产品自身机会. 不要只写泛泛而谈的风险提示.}
+{分别写事实风险, 假设风险, 数据缺口, 上行机会和触发条件. 同时区分行业结构驱动与目标公司/产品自身驱动. 不要只写泛泛风险提示.}
 
 ## 14. 后续行动建议
 
@@ -398,22 +404,22 @@ flowchart LR
 
 {说明本报告采用的研究口径, 主要来源类型, 信息交叉验证方式, 以及哪些数据来自官方/公司文件/行业协会/媒体补充.}
 
-| 来源类型 | 用途 | 证据等级 | 备注 |
-|---|---|---|---|
-| 官方统计/监管/行业协会 | {行业事实和政策} | {高} | {说明} |
-| 公司公告/财报/IR/交易所文件 | {公司和财务事实} | {高} | {说明} |
-| 可信数据库/国际组织 | {行业趋势和预测} | {中高} | {说明} |
-| 媒体/财经网站/访谈 | {补充信号和观点} | {中/低} | {必须标记限制} |
+| 来源类型 | 用途 | 证据层级 | 证据质量 | 备注 |
+|---|---|---|---|---|
+| 官方统计/监管/行业协会 | {行业事实和政策} | {primary/near-primary} | {high/medium/low} | {说明} |
+| 公司公告/财报/IR/交易所文件 | {公司和财务事实} | {primary/near-primary} | {high/medium/low} | {说明} |
+| 可信数据库/国际组织 | {行业趋势和预测} | {near-primary/secondary} | {high/medium/low} | {说明} |
+| 媒体/财经网站/访谈 | {补充信号和观点} | {secondary/weak} | {high/medium/low} | {必须标记限制} |
 
-## 16. 附录: 后续验证清单
+## 16. 后续验证清单
 
 {本章节必须是可执行验证清单. 每个待验证问题都要说明为什么重要, 推荐来源和优先级. 推荐来源应优先写公司公告/财报/IR/交易所文件/监管公告/行业协会/官方统计/可信数据库, 媒体只能作为补充.}
 
-| 待验证问题 | 为什么重要 | 推荐来源 | 优先级 |
-|---|---|---|---|
-| {问题 1} | {原因} | {来源} | {高/中/低} |
-| {问题 2} | {原因} | {来源} | {高/中/低} |
-| {问题 3} | {原因} | {来源} | {高/中/低} |
+| 待验证问题 | 当前证据状态 | 为什么重要 | 推荐来源 | 优先级 |
+|---|---|---|---|---|
+| {问题 1} | {Evidence Ledger 或 Gap 状态} | {原因} | {来源} | {高/中/低} |
+| {问题 2} | {Evidence Ledger 或 Gap 状态} | {原因} | {来源} | {高/中/低} |
+| {问题 3} | {Evidence Ledger 或 Gap 状态} | {原因} | {来源} | {高/中/低} |
 
 ## 17. 报告合规自检表
 
@@ -433,14 +439,10 @@ flowchart LR
 | 宏观/中观/微观/资本市场章节深度足够 | {通过/不适用} | {说明} |
 | 报告深度 rubric 达标 | {通过/不适用} | {说明} |
 | 资本市场章节适用时已出现 | {通过/不适用} | {说明} |
-| 来源质量和证据等级清楚 | {通过/不适用} | {说明} |
-| 一手来源检索状态和缺口清楚 | {通过/不适用} | {说明} |
+| 来源层级, 证据质量和来源状态清楚 | {通过/不适用} | {说明} |
+| 独立验证状态和缺口清楚 | {通过/不适用} | {说明} |
 | 事实/观点/推断已分层且证据层级清楚 | {通过/不适用} | {说明} |
 | 后续验证清单具体 | {通过/不适用} | {说明} |
 | Markdown 标题格式正确 | {通过/不适用} | {说明} |
 
 本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.
-
-
-
-

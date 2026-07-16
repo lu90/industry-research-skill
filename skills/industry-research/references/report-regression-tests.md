@@ -18,21 +18,34 @@ For each prompt, check:
 For generated Markdown reports, also run the deterministic checker when a profile applies:
 
 ```bash
-python scripts/report_contract_check.py --self-test
-python scripts/report_contract_check.py --self-test --json
-python scripts/report_contract_check.py path/to/report.md --profile auto --json
-python scripts/report_contract_check.py path/to/report.md --profile company-capital
-python scripts/report_contract_check.py path/to/report.md --profile company-capital --json
-python scripts/report_contract_check.py path/to/report.md --profile company
-python scripts/report_contract_check.py path/to/report.md --profile overview
-python scripts/report_contract_check.py path/to/report.md --profile specific
-python scripts/report_contract_check.py path/to/report.md --profile prompt-builder
-python scripts/report_contract_check.py path/to/report.md --profile short
-python scripts/report_contract_check.py path/to/report.md --profile auto --language en --json
-python scripts/report_batch_check.py --self-test
-python scripts/report_batch_check.py --self-test --json
-python scripts/report_batch_check.py path/to/reports-dir --json
+python -B skills/industry-research/scripts/report_contract_check.py --self-test
+python -B skills/industry-research/scripts/report_contract_check.py --self-test --json
+python -B skills/industry-research/scripts/report_contract_check.py path/to/report.md --profile auto --json
+python -B skills/industry-research/scripts/report_contract_check.py path/to/report.md --profile company-capital
+python -B skills/industry-research/scripts/report_contract_check.py path/to/report.md --profile company-capital --json
+python -B skills/industry-research/scripts/report_contract_check.py path/to/report.md --profile company
+python -B skills/industry-research/scripts/report_contract_check.py path/to/report.md --profile overview
+python -B skills/industry-research/scripts/report_contract_check.py path/to/report.md --profile specific
+python -B skills/industry-research/scripts/report_contract_check.py path/to/report.md --profile prompt-builder
+python -B skills/industry-research/scripts/report_contract_check.py path/to/report.md --profile short
+python -B skills/industry-research/scripts/report_contract_check.py path/to/report.md --profile auto --language en --json
+python -B skills/industry-research/scripts/report_batch_check.py --self-test
+python -B skills/industry-research/scripts/report_batch_check.py --self-test --json
+python -B skills/industry-research/scripts/report_batch_check.py path/to/reports-dir --json
 ```
+
+Run the v63 fixture gate from the repository root:
+
+```text
+python -B skills/industry-research/scripts/report_contract_check.py --self-test
+python -B skills/industry-research/scripts/report_batch_check.py tests/fixtures/v63/valid --json
+```
+
+Every file in `tests/fixtures/v63/valid/` must pass both its explicit profile and `auto`. Every file in `tests/fixtures/v63/invalid/` must fail with the directed fragment recorded in `expected-errors.json`. Old headings and fields must fail; they are not compatibility fixtures.
+
+The fixture set must also prove that every source-matrix row carries one `claim_id`, every retrieval-gap row carries one `gap_id`, cross-Claim aggregate evidence cannot satisfy a row, Gap status/reason/next route match the same `gaps.json` item, and company conditional-module declarations cannot disagree with the selected profile or rendered sections.
+
+For each of prompts 1-4, create a new `run_id`, completed Research Run, and full report under `reports/<run_id>.md`. Run both the report checker and Deep Search checker. Confirm that the report filename stem, Manifest `run_id`, `report_path`, and `report_status` form one unique association. Confirm each source row against Evidence Ledger records for that exact `claim_id`, and each Gap row against the exact `gap_id` in `gaps.json`, then manually review the narrative use of those artifacts.
 
 Run `--self-test` after changing either checker. Self-tests include canonical Chinese and English fixtures, one-H1 enforcement, route-opening order, exact final disclaimer enforcement, English semantic normalization, mixed-heading rejection, and strict contract-field rejection for dynamic target names, synonym substitution, capitalization changes, hyphen changes, retrieval-round abbreviations, and mixed Chinese/English fields. They also cover total report length, report-front density, macro/meso depth, micro depth, priority depth blocks, section `11` paragraph density, research trace density, compliance checklist content, pressure-test content, risk/opportunity content, and verification-appendix content. Use `--profile auto --json` for a single report when the report type is not already known. Use `--language zh` or `--language en` to enforce a language explicitly. Use `report_batch_check.py` for a directory of generated regression reports. The checker catches structural failures only. Passing it does not prove source quality, fact accuracy, or investment reasoning quality.
 
@@ -55,7 +68,8 @@ Minimum required forward test:
 4. Run:
 
 ```bash
-python -B skills/industry-research/scripts/report_contract_check.py reports/<generated-report>.md --profile company-capital
+python -B skills/industry-research/scripts/report_contract_check.py reports/<generated-report>.md --profile company-capital --run-dir research_runs/<run_id> --repo-root .
+python -B skills/industry-research/scripts/deep_search_contract_check.py research_runs/<run_id> --repo-root .
 ```
 
 The forward test fails if the generated answer:
@@ -140,7 +154,7 @@ Evidence checks:
 
 Forbidden failures:
 
-- Starts with `## 1. 直接结论`.
+- Starts with `## 1. 目标公司/产品综合判断`.
 - Uses "why it fell / can it rise / what to watch" as the main structure.
 - Collapses seven modules into one table.
 - Gives investment advice, target price, or guaranteed return.
@@ -163,6 +177,7 @@ Expected route:
 Must include:
 
 - Industry overview base before target-specific analysis.
+- Canonical shared sections and fields from `references/common-report-section-contract.md`.
 - Industry map and target position.
 - Lifecycle judgment.
 - `5.1-5.7` independent subsections.
@@ -198,6 +213,7 @@ Expected route:
 Must include:
 
 - Substantive direct answer.
+- Independent one-sentence industry definition before the industry map.
 - Research plan, source matrix, and three-round retrieval closure results.
 - Issue tree.
 - Evidence chain with fact, opinion, inference, evidence tier, source status, and confidence.
@@ -208,12 +224,12 @@ Depth checks:
 - The full standard industry-specific question report reaches the standard-report target range rather than only passing local section minimums.
 - Direct answer includes evidence and mechanism.
 - A Mermaid industry map appears in the report.
-- `7` includes lifecycle stage, evidence, counter-evidence, confidence, and question implication.
-- `3.2` includes source type, report use, evidence tier, retrieval status, and limitation columns.
+- `8` includes lifecycle stage, evidence, counter-evidence, confidence, and research implication.
+- `3.2` uses the canonical eight-column source matrix.
 - `3.3` states what is missing, which three-round closure sources were attempted, current status, why it matters, unresolved reason, next verification step, and the primary or near-primary source to check.
 - `3.3` does not keep a high-impact gap as `仍未补齐` unless it states that the source is inaccessible, requires a paid database, requires login, public search produced no reliable result, or the available evidence has a period/geography/definition mismatch.
-- `6` includes subquestion, conclusion, fact, opinion, inference, evidence tier, source status, and confidence columns.
-- `8.1-8.7` are independent blocks with conclusion, evidence, mechanism, and question implication.
+- `7` includes subquestion, conclusion, fact, opinion, inference, source or basis, evidence tier, evidence quality, source status, and confidence columns.
+- `9.1-9.7` are independent blocks with all five canonical module labels.
 - Evidence chain covers the main subquestions.
 
 Forbidden failures:
@@ -256,7 +272,7 @@ Depth checks:
 - `2.2` includes source type, report use, evidence tier, retrieval status, and limitation columns.
 - `2.3` states what is missing, which three-round closure sources were attempted, current status, why it matters, unresolved reason, next verification step, and the primary or near-primary source to check.
 - `2.3` does not keep a high-impact gap as `仍未补齐` unless it states that the source is inaccessible, requires a paid database, requires login, public search produced no reliable result, or the available evidence has a period/geography/definition mismatch.
-- `8` includes fact/opinion/inference type, content, source/evidence, evidence tier, source status, and confidence columns.
+- `7` includes fact/opinion/inference type, content, source/evidence, evidence tier, evidence quality, source status, and confidence columns.
 - Seven modules include conclusion, evidence, mechanism, and industry implication.
 - Trend projection has enough reasoning and triggers.
 - Source matrix identifies primary and secondary evidence.

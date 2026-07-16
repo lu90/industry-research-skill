@@ -43,6 +43,7 @@ Read only the needed reference files:
 - Problem decomposition and issue trees: `references/problem-decomposition.md`.
 - Routing sanity check and maintenance regression prompts: `references/routing-sanity-check.md`.
 - Report quality regression tests, maintenance only: `references/report-regression-tests.md`.
+- Shared formal-report section names, fields, equivalent fulfillment, ordering, and conditional-module matrix: `references/common-report-section-contract.md`.
 - Industry overview output contract: `references/industry-overview-output-contract.md`.
 - Specific-question output contract: `references/specific-question-output-contract.md`.
 - WBS research planning: `references/research-plan.md`.
@@ -81,18 +82,18 @@ Use templates from `assets/`:
 - Company/product analysis: `assets/company-product-template.md`.
 - Reusable research prompt, only when the user asks for a prompt or research brief: `assets/research-prompt-template.md`.
 
-Maintenance scripts:
+Validation and maintenance scripts:
 
-- Deterministic Markdown report checker, maintenance only: `scripts/report_contract_check.py`.
+- Deterministic Markdown report checker, used after formal report generation and during maintenance: `scripts/report_contract_check.py`.
 - Batch Markdown report checker, maintenance only: `scripts/report_batch_check.py`.
 - Source Registry and Evidence Ledger contract checker, maintenance only: `scripts/source_contract_check.py`.
-- Deep Search Protocol and Research Run contract checker, maintenance only: `scripts/deep_search_contract_check.py`.
+- Deep Search Protocol and Research Run contract checker, used after formal report generation and during maintenance: `scripts/deep_search_contract_check.py`.
 
-For industry overview reports, read `references/research-brief-builder.md`, `assets/industry-overview-template.md`, `references/industry-overview-output-contract.md`, `references/output-format.md`, `references/section-depth-playbook.md`, `references/report-depth-rubric.md`, `references/report-compliance.md`, and `references/layered-analysis.md` before writing the report.
+For industry overview reports, read `references/research-brief-builder.md`, `references/common-report-section-contract.md`, `assets/industry-overview-template.md`, `references/industry-overview-output-contract.md`, `references/output-format.md`, `references/section-depth-playbook.md`, `references/report-depth-rubric.md`, `references/report-compliance.md`, and `references/layered-analysis.md` before writing the report.
 
-For company/product analysis, read `references/research-brief-builder.md`, `assets/company-product-template.md`, `references/company-product-output-contract.md`, `references/primary-source-first.md`, `references/output-format.md`, `references/section-depth-playbook.md`, `references/report-depth-rubric.md`, `references/report-compliance.md`, and `references/layered-analysis.md` before writing the report. For standard or deep company/product reports, also read `references/company-product-few-shot.md` and `references/institutional-report-benchmarks.md`.
+For company/product analysis, read `references/research-brief-builder.md`, `references/common-report-section-contract.md`, `assets/company-product-template.md`, `references/company-product-output-contract.md`, `references/primary-source-first.md`, `references/output-format.md`, `references/section-depth-playbook.md`, `references/report-depth-rubric.md`, `references/report-compliance.md`, and `references/layered-analysis.md` before writing the report. For standard or deep company/product reports, also read `references/company-product-few-shot.md` and `references/institutional-report-benchmarks.md`.
 
-For industry-specific questions, read `references/research-brief-builder.md`, `assets/specific-question-template.md`, `references/specific-question-output-contract.md`, `references/output-format.md`, `references/section-depth-playbook.md`, `references/report-depth-rubric.md`, `references/report-compliance.md`, and `references/layered-analysis.md` before writing the report.
+For industry-specific questions, read `references/research-brief-builder.md`, `references/common-report-section-contract.md`, `assets/specific-question-template.md`, `references/specific-question-output-contract.md`, `references/output-format.md`, `references/section-depth-playbook.md`, `references/report-depth-rubric.md`, `references/report-compliance.md`, and `references/layered-analysis.md` before writing the report.
 
 When the user asks to generate a prompt, summarize requirements, set the research target, clarify the research scope, or create a reusable instruction for another agent, read `references/research-brief-builder.md` and `assets/research-prompt-template.md`, then output the filled prompt instead of the report.
 
@@ -108,6 +109,8 @@ For every standard or deep report, read `references/information-sources.md` and 
 - Before drafting any standard or deep report, build an internal research brief using `references/research-brief-builder.md`. Do not output the brief unless the user asks for a prompt, requirement summary, or reusable instruction.
 - For complex standard or deep reports with materially missing boundaries, apply the visible brief gate in `references/research-brief-builder.md` before drafting; visible brief mode is a pre-report contract, not a short answer.
 - Before choosing a template, apply `references/routing-sanity-check.md` to confirm the request type, selected layers, conditional modules, and opening rule.
+- For every standard or deep formal report, apply `references/common-report-section-contract.md`. Use only v63 canonical shared titles and fields; do not use old-title aliases, legacy profiles, or warning-only fallback.
+- In every source-matrix row, expose the matching stable `claim_id`; in every unresolved Gap row, expose the matching `gap_id`. When Run artifacts are available, validate each row against that same Claim or Gap rather than against aggregate statuses from the whole Run.
 - For industry overview reports, apply `references/industry-overview-output-contract.md`: preserve the industry overview template, include research plan, source matrix, fact/opinion/inference separation, pressure test, and final compliance checklist.
 - For pure industry-specific questions, apply `references/specific-question-output-contract.md`: start with one H1 and then the language-matched `1. 直接回答` or `1. Direct Answer`, preserve the specific-question template, and keep facts, opinions, and inferences separated in the evidence chain.
 - Always state research boundary: geography, time horizon, industry scope, included items, excluded items, and assumptions.
@@ -121,7 +124,8 @@ For every standard or deep report, read `references/information-sources.md` and 
 - Standard and deep reports must apply `references/section-depth-playbook.md`; major analytical sections need conclusion, evidence, mechanism, implication, and verification blocks.
 - Standard and deep reports must apply `references/report-depth-rubric.md`; sections below the rubric threshold must be rewritten before final output.
 - Use Workspace Report File by default for all standard or deep reports when file writing is available: create a Markdown report under `reports/` using `YYYYMMDD_HHMMSS_主题.md`, then answer in chat with the path, short summary, and compliance/checker status. Use Chat Report as the fallback when file writing is unavailable, the user explicitly asks not to create files, the user explicitly triggers short-answer mode, or the user asks for Prompt Builder Mode without asking to save the prompt.
-- Use File Report/PDF export only when the user explicitly asks for export/PDF or a specific file path. File Report must create Markdown first using `YYYYMMDD_HHMMSS_主题.md`.
+- For installed-skill runtime validation, resolve the active Skill root from the loaded `industry-research/SKILL.md` and execute scripts below that root. Do not assume the user's project contains the repository-relative `skills/industry-research/` path.
+- Use File Report only when the user explicitly asks for PDF or another export format, or provides a specific path outside the default `reports/` location. A generic request to generate or save Markdown remains Workspace Report File. File Report must create Markdown first using `YYYYMMDD_HHMMSS_主题.md` when the user has not supplied a basename.
 - Existing report files, active editor tabs, prior generated reports, or forward-test artifacts must not downgrade a standard or deep report request into a summary. Use them only as context unless the user explicitly asks to summarize, condense, review, compare, or continue that file.
 - Standard and deep reports must include the language-matched visible `报告合规自检表` or `Report Compliance Checklist` immediately before the fixed final disclaimer.
 - For standard or deep company/product reports, do not replace the seven core modules with a single summary table; write each module as its own analytical subsection.
@@ -137,6 +141,7 @@ For every standard or deep report, read `references/information-sources.md` and 
 - Stock price, valuation, expectation gap, and rise/fall questions about a listed company must follow the company/product output contract and the standard listed-company capital-market report shape unless Explicit Short Answer Mode is triggered.
 - For capital-market questions, keep the company/product template skeleton and the capital-market section. Do not replace it with a three-part structure such as "why it fell", "what to watch", and "my judgment".
 - Listed-company capital-market reports must include `4.0 多业务线中观拆分`; for genuinely single-business targets, use `4.0` to explain why no material split is needed.
+- Company and company-capital research-plan summaries must declare `multi_business_split`, `portfolio_analysis`, and `capital_market` as `enabled` or `disabled`; rendered conditional sections must match those declarations.
 - Distinguish facts, opinions, and inferences. Never present opinions as facts.
 - Cite sources or clearly mark missing evidence. Do not invent data.
 - For company/product and listed-company capital-market reports, apply `references/primary-source-first.md`: try primary or near-primary sources first, use media summaries only as supplementary signals or opinions, and disclose primary-source retrieval gaps in `2.2` and `2.3`.

@@ -1,88 +1,56 @@
 # Industry Overview Output Contract
 
-Use this file before writing a standard or deep industry overview report. This is a lightweight output contract for broad industry research. It must not override the company/product output contract or the specific-question output contract.
+Use this route when the user wants a broad understanding of an industry, market, sector, track, business category, or opportunity space rather than one narrow causal question or one target company or product.
 
-Select `output_language` through `references/report-language.md`. The headings and structured fields below are the Chinese contract. For English output, copy the exact industry-overview headings, table headers, row labels, bold labels, and retrieval-round markers from the language contract while preserving the same numbering, order, and obligations. Do not paraphrase contract fields.
+This file owns only the overview route trigger, opening, orchestration, and overview-specific delta. Load `references/common-report-section-contract.md` for all shared section titles, fields, equivalent fulfillment, and closeout ordering. Load `assets/industry-overview-template.md` for the copyable Markdown skeleton.
 
-## Contract Trigger
+## Opening
 
-Apply this contract when the user asks for an industry overview, market overview, sector research, track research, opportunity-space research, or a general industry report without targeting a specific company/product and without asking a specific cause/trend question.
+Start with exactly one dynamic H1. The next nonempty line must be the language-matched overview discriminator:
 
-If the user asks a specific industry question, use `references/specific-question-output-contract.md`. If the user targets a company/product or listed-company capital-market issue, use `references/company-product-output-contract.md`.
+- Chinese: `## 1. 行业一句话定义`.
+- English: `## 1. One-Sentence Industry Definition`.
 
-## Opening Rule
+Do not use company front matter or the specific-route direct-answer opening.
 
-Industry overview reports must start with exactly one dynamic H1 title:
+## Route Orchestration
 
-```md
-# {行业名称}行业研究报告
+Use this order:
+
+```text
+dynamic H1
+industry definition opening
+research scope and research trace
+industry map
+lifecycle assessment
+seven core modules analysis
+trend outlook
+fact, opinion, and inference layers
+multi-perspective pressure test
+risks, opportunities, and uncertainties
+follow-up verification checklist
+report compliance checklist
+fixed disclaimer
 ```
 
-Translate the title into the selected language. Follow it immediately with the language-matched section `1` opening. Do not force the company front matter heading for pure industry overview reports.
+The exact v63 numbered skeleton is in `assets/industry-overview-template.md`. Section numbers are route rendering, not shared semantic identities.
 
-End the report with the exact language-matched disclaimer from `references/report-language.md`.
+## Overview-Specific Delta
 
-## Required Heading Scan
+- `趋势推演` or `Trend Outlook` is required after seven-module analysis.
+- Trend outlook must connect future direction to evidence, mechanisms, leading indicators, and explicit trigger conditions.
+- Fact, opinion, and inference classification is an independent visible section on this route.
+- Macro and meso layers are required. Micro analysis is optional and only supports representative cases.
 
-Before final output, scan for these applicable headings:
+## Route Failure Conditions
 
-```md
-## 1. 行业一句话定义
-## 2. 研究边界
-### 2.1 研究计划摘要
-### 2.2 来源矩阵和证据质量
-### 2.3 二次检索缺口
-## 3. 行业地图
-## 4. 生命周期判断
-## 5. 七个核心模块
-## 6. 趋势推演
-## 7. 风险和机会
-## 8. 事实, 观点和推断分层
-## 9. 多视角压力测试
-## 10. 后续研究建议
-## 11. 报告合规自检表
-```
+Rewrite before output when the draft:
 
-If any required heading is missing, restore it before final output.
+- does not open with the overview discriminator;
+- lacks the industry map, lifecycle assessment, or seven independent modules;
+- omits trend outlook;
+- substitutes an old v62-or-earlier shared heading or field;
+- puts risk before pressure testing or omits the executable verification checklist;
+- compresses a standard or deep report into a market summary.
 
-## Evidence Discipline
-
-Industry overview reports must not present a market narrative as if it were verified fact. Include:
-
-- A source matrix with evidence tier and retrieval status.
-- A three-round retrieval closure table that shows attempted sources by round, current status, unresolved reason, and next source.
-- A fact/opinion/inference table with source type, evidence tier, source status, and confidence.
-
-Use `待核验事实` when market size, growth, penetration, export, price, or profitability claims rely on media summaries, broker reports, consulting reports, or republished data.
-
-Section `2.3 二次检索缺口` must contain residual high-impact gaps after up to three targeted closure rounds, not merely first-pass missing items. Keep a gap as unresolved only when the active environment cannot access the source, the source requires a paid database or login, public search returns no reliable result, or the available evidence has a mismatched period, geography, or definition.
-
-## Seven-Module Rule
-
-All seven modules must appear as independent subsections or clearly separated blocks. Tables may summarize the seven modules, but they cannot replace the module analysis.
-
-For standard industry overview reports:
-
-- Each seven-module subsection should reach roughly 250-450 Chinese characters.
-- Each subsection must include a clear conclusion, evidence or evidence gap, mechanism, and industry implication.
-- If evidence is insufficient, name the missing source and next verification step.
-
-For deep industry overview reports:
-
-- Each seven-module subsection should reach roughly 500-800 Chinese characters.
-- Trend projection should include base, upside, and downside paths.
-- Lifecycle judgment should include evidence, counter-evidence, and confidence.
-
-Do not treat a single seven-module summary table as the body. If the module only contains a label or one sentence, rewrite it before final output.
-
-## Rewrite Triggers
-
-Rewrite before final output if the draft:
-
-- Uses company/product `## 0. 研报前置区` for a pure industry overview.
-- Omits research plan, source matrix, or three-round retrieval closure results.
-- Omits industry map or lifecycle judgment.
-- Collapses the seven modules into one paragraph.
-- Writes seven modules as thin labels without conclusion, evidence, mechanism, and industry implication.
-- Claims fact/opinion/inference separation in the checklist without an actual fact/opinion/inference section.
-- Omits pressure test or final compliance checklist.
+Resolve the active Skill root from the loaded `industry-research/SKILL.md`, then run `python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile overview` from the report workspace and rerun it with `--profile auto` before delivery. Both profiles must return the same result.

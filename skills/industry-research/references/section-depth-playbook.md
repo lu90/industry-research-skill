@@ -19,8 +19,7 @@ Do not merge all five blocks into one generic paragraph. Tables may summarize th
 For standard reports:
 
 - Major chapters such as `3`, `4`, `6`, `10`, `12`, and `13` should contain at least 3 substantive paragraphs plus any useful table or exhibit.
-- Seven-module subsections should contain at least 4 short paragraphs or clearly separated labeled blocks: `结论`, `依据`, `机制`, and `对目标公司/产品的影响`.
-- Priority seven-module subsections should add a fifth block for `关键指标和后续验证`.
+- Seven-module subsections must contain all five canonical blocks from `references/common-report-section-contract.md`: `结论`, `证据`, `机制`, `研究含义`, and `关键指标和后续验证`.
 - Capital-market subsections `11.1-11.4` should each contain at least 3 substantive paragraphs or 2 paragraphs plus one evidence/scenario table.
 
 For deep reports:
@@ -46,10 +45,10 @@ A paragraph does not count when it only repeats the heading, restates the same c
 Each seven-module subsection must follow this writing order:
 
 1. `结论`: one specific judgment tied to the user question.
-2. `依据`: at least two evidence points, source pointers, metrics, events, or named evidence gaps.
+2. `证据`: at least two evidence points, source pointers, metrics, events, or named evidence gaps.
 3. `机制`: one causal chain from evidence to conclusion.
-4. `对目标公司/产品的影响`: one concrete effect on business line, growth, margin, valuation, competitive position, risk, or verification priority.
-5. `关键指标和后续验证`: required for priority modules and recommended for all modules in deep reports.
+4. `研究含义`: name the affected industry, question, company, product, metric, risk, or decision.
+5. `关键指标和后续验证`: name the indicators and primary or near-primary evidence needed next.
 
 For listed-company capital-market reports, priority modules are `5.4 盈利性`, `5.5 估值`, `5.6 外部因素`, and `5.7 景气度`. These modules must be visibly thicker than non-priority modules.
 
@@ -70,8 +69,7 @@ Rewrite a section before final output if any of these are true:
 
 - The section has the correct heading but only one short paragraph.
 - The section is mostly a table and has little causal explanation.
-- The `依据` block has fewer than two evidence points or named evidence gaps.
+- The `证据` block has fewer than two evidence points or named evidence gaps.
 - The `机制` block uses generic cause words but does not explain a concrete causal chain.
 - The implication does not name the target, industry, metric, risk, or decision.
 - The verification block says only "continue tracking" without naming what to track.
-

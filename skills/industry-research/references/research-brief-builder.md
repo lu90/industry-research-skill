@@ -61,6 +61,8 @@ Use the brief to calibrate depth before writing the report:
 
 Thin sections must be rewritten before the final compliance checklist is marked as passed.
 
+For company and company-capital reports, copy the three executable conditional decisions into the visible research-plan summary using `multi_business_split`, `portfolio_analysis`, and `capital_market`, each set to `enabled` or `disabled`. This exposes the decision to the report checker without changing the Research Run schema.
+
 ## Visible Brief Gate
 
 Use visible brief mode before drafting when either condition is true:

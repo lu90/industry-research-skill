@@ -1,6 +1,6 @@
 # Output Format
 
-Use this file to control report structure, length, and detail. Select and apply `output_language` through `references/report-language.md`. For paragraph-level expansion rules, use it with `references/section-depth-playbook.md`.
+Use this file to control report length, analytical depth, and writing form. Shared titles and fields come only from `references/common-report-section-contract.md`; route order comes from the selected output contract and template. Select `output_language` through `references/report-language.md`. For paragraph-level expansion, use `references/section-depth-playbook.md`.
 
 ## Reference Report Patterns
 
@@ -31,7 +31,7 @@ At the end, include:
 1. Methodology and data source note.
 2. Evidence quality summary.
 3. Key assumptions.
-4. Follow-up verification appendix.
+4. Follow-up verification checklist.
 5. Visible language-matched report compliance checklist.
 6. The exact language-matched disclaimer from `references/report-language.md` as the final nonempty line.
 ## Explicit Short Answer Mode
@@ -46,7 +46,7 @@ Use `references/report-output-modes.md` to choose delivery mode.
 
 - Workspace Report File is the default mode for all standard or deep reports when file writing is available. It must create the full Markdown report under `reports/` and return only the path, short summary, and compliance/checker status in chat.
 - Chat Report is the fallback when file writing is unavailable, the user explicitly asks not to create files, or the user triggers Explicit Short Answer Mode or unsaved Prompt Builder Mode. It must still output a complete Markdown report when used for a standard or deep report.
-- File Report/PDF export is triggered when the user explicitly asks to generate, save, export, write to a specific file, create a PDF, or create a complete research report file.
+- File Report is triggered only when the user asks for PDF or another export format, or specifies an output path outside the default `reports/` location. Generic requests to generate or save Markdown use Workspace Report File.
 - File Report must create Markdown first with filename format `YYYYMMDD_HHMMSS_主题.md`.
 - If file writing or PDF export is not available, state the limitation and fall back to Chat Report.
 
@@ -54,7 +54,7 @@ Use `references/report-output-modes.md` to choose delivery mode.
 
 The ranges below are Chinese-character baselines. For English and other alphabetic languages, preserve equivalent analytical coverage and section depth instead of treating them as literal word counts. The maintenance checker uses normalized content units defined in `references/report-language.md`.
 
-- Explicit short answer: 800-1500 Chinese characters, only when the user explicitly asks for a short, simple, quick, brief, one-paragraph, one-sentence, no-detail, or no-expansion answer.
+- Explicit short answer: follow the user's requested brevity with no minimum length and a maximum of 1500 normalized content units, only when the user explicitly asks for a short, simple, quick, brief, one-paragraph, one-sentence, no-detail, or no-expansion answer.
 - Standard industry overview report: 8000-12000 Chinese characters, 1 Mermaid industry map, 6-10 tables or exhibit placeholders.
 - Standard industry-specific question report: 8000-12000 Chinese characters, with direct answer, issue tree, evidence chain, industry base, pressure test, and verification list.
 - Standard company/product report: 10000-15000 Chinese characters, 1 Mermaid industry map, 8-14 tables or exhibit placeholders, and prose-first seven-module analysis.
@@ -95,7 +95,7 @@ Evidence gaps count toward depth only when they name the missing source, explain
 
 ## Universal Requirements
 
-Every report must include research boundary, industry map, lifecycle judgment, all seven core modules weighted by lifecycle and question, source/evidence notes for important claims, risks/uncertainty, and follow-up verification list.
+Every formal report must fulfill the shared analytical obligations in `references/common-report-section-contract.md`. Weight seven-module depth by lifecycle, question, and target position without changing canonical titles or fields.
 
 ## Prose-First Analysis
 
@@ -118,27 +118,13 @@ Important industry judgments should prefer high-priority sources such as officia
 
 ## Seven-Module Section Granularity
 
-Each seven-module subsection must contain:
-
-1. Conclusion: the module-specific judgment.
-2. Evidence: facts, data, source-backed opinions, or clearly marked evidence gaps.
-3. Mechanism: why the evidence leads to the conclusion.
-4. Target implication: what this means for the target company/product when applicable.
-
-Priority modules must also include key indicators and follow-up verification points. If evidence is insufficient, write the evidence gap and next verification step instead of filling the section with generic claims.
-
-Use the seven-module expansion pattern in `references/section-depth-playbook.md`. The four labels are not enough by themselves; each label must contain substantive reasoning.
+Use all five canonical blocks from `references/common-report-section-contract.md` in every module. `references/section-depth-playbook.md` defines how to expand them. If evidence is insufficient, write the evidence gap and next verification step instead of filling the section with generic claims.
 
 ## Seven-Module Depth
 
 For standard company/product reports, each seven-module subsection should reach roughly 300-500 Chinese characters. The goal is analysis density, not padding.
 
-Each subsection must include at least:
-
-1. Conclusion: a specific judgment, not a generic label.
-2. Evidence: at least 2 evidence points, data points, source pointers, or clearly marked evidence gaps.
-3. Mechanism: a causal explanation of why the evidence supports the conclusion.
-4. Target implication: a concrete effect on the target company/product, business line, metric, risk, or verification item.
+Each subsection must include at least two evidence points, data points, source pointers, or clearly marked evidence gaps, plus a causal mechanism and a concrete research implication for the applicable object.
 
 For capital-market questions, profitability, valuation, external factors, and prosperity must be treated as priority modules and expanded more deeply than non-priority modules.
 
@@ -149,7 +135,7 @@ Standard and deep reports must show concise traces of the Deep Research Engine:
 1. Research plan summary.
 2. Source matrix or evidence matrix.
 3. Key evidence quality note.
-4. Second-pass retrieval gaps or follow-up verification checklist.
+4. Retrieval gap closure results and follow-up verification checklist.
 
 Do not dump internal scratch work. Make the trace useful to the reader.
 
@@ -165,8 +151,8 @@ Before producing a standard or deep company/product report, read `references/rep
 5. Macro/meso analysis, and micro analysis only if useful.
 6. Seven core modules.
 7. Trend projection.
-8. Risks and opportunities.
-9. Follow-up research suggestions.
+8. Risks, opportunities, and uncertainties.
+9. Follow-up verification checklist.
 
 For standard or deep industry overview reports, apply `references/industry-overview-output-contract.md`. Include research plan summary, source matrix, three-round retrieval closure results, fact/opinion/inference separation, multi-perspective pressure test, and final compliance checklist.
 
@@ -178,7 +164,7 @@ For standard or deep industry-specific question reports, apply `references/speci
 
 ## Company/Product Additions
 
-Use the minimum industry overview base first, then add target position in the industry map, micro analysis, SWOT when useful, BCG matrix only for portfolio questions, competitor comparison, and action suggestions. The company/product analysis must explain what the industry conclusions mean for the target, not just describe the target in isolation.
+Use the minimum industry overview base first, then add target position in the industry-map body, micro analysis, required SWOT, BCG matrix only for portfolio questions, required competitor comparison, and action suggestions. The company/product analysis must explain what the industry conclusions mean for the target, not just describe the target in isolation.
 
 ## Formatting Rules
 

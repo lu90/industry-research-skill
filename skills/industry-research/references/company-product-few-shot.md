@@ -139,7 +139,7 @@ Why it fails: it treats a capital-market question as a quick comment. It skips m
 Do not write this as the final report:
 
 ```md
-## 1. 直接结论
+## 1. 目标公司/产品综合判断
 
 The stock fell because valuation expectations weakened and business fundamentals need more proof.
 
@@ -147,14 +147,14 @@ The stock fell because valuation expectations weakened and business fundamentals
 ...
 ```
 
-Why it fails: a standard or deep company/product report must start with `## 0. 研报前置区`. Starting from `## 1. 直接结论` usually means the report skipped report summary, key conclusions, core metrics overview, exhibit list, research plan, source matrix, and evidence gaps.
+Why it fails: a standard or deep company/product report must start with `## 0. 研报前置区`. Starting from `## 1. 目标公司/产品综合判断` usually means the report skipped report summary, key conclusions, core metrics overview, exhibit list, research plan, source matrix, and evidence gaps.
 
 ## Bad: Seven Modules As One Table
 
 Do not use one table as the body of the seven-module analysis:
 
 ```md
-## 5. 七个核心模块加权分析
+## 5. 七个核心模块分析
 
 | 模块 | 判断 |
 |---|---|
@@ -201,7 +201,7 @@ Use this skeleton shape before filling content:
 
 ### 0.4 图表清单或图表占位
 
-## 1. 直接结论
+## 1. 目标公司/产品综合判断
 
 ## 2. 研究边界
 
@@ -209,9 +209,9 @@ Use this skeleton shape before filling content:
 
 ### 2.2 来源矩阵和证据质量
 
-### 2.3 二次检索缺口
+### 2.3 检索缺口闭环结果
 
-## 5. 七个核心模块加权分析
+## 5. 七个核心模块分析
 
 ### 5.1 可行性
 ### 5.2 规模性
@@ -240,9 +240,9 @@ Why it works: it preserves the mandatory report skeleton and prevents the model 
 Use a summary matrix only before the independent subsections:
 
 ```md
-## 5. 七个核心模块加权分析
+## 5. 七个核心模块分析
 
-| 模块 | 初步判断 | 证据等级 |
+| 模块 | 初步判断 | 证据质量 |
 |---|---|---|
 | 可行性 | {摘要} | {高/中/低} |
 | 规模性 | {摘要} | {高/中/低} |
@@ -255,7 +255,7 @@ Use a summary matrix only before the independent subsections:
 
 **机制:** {因果链}
 
-**对目标公司/产品的影响:** {落到目标指标, 业务线, 风险或验证项}
+**研究含义:** {落到目标指标, 业务线, 风险或验证项}
 
 ### 5.2 规模性
 
@@ -265,7 +265,7 @@ Use a summary matrix only before the independent subsections:
 
 **机制:** {因果链}
 
-**对目标公司/产品的影响:** {落到目标指标, 业务线, 风险或验证项}
+**研究含义:** {落到目标指标, 业务线, 风险或验证项}
 ```
 
 Why it works: the table helps the reader scan, while the independent subsections carry the actual research reasoning.

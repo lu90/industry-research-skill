@@ -33,7 +33,7 @@ Use this hierarchy when writing the source matrix and evidence notes:
 - If only media or secondary sources are available in the active environment, mark the claim as `secondary evidence` or `evidence gap`.
 - Record each attempted or obtained document using the internal Evidence Ledger contract in `source-registry-schema.md`.
 - In `2.2 来源矩阵和证据质量`, state whether primary-source retrieval was attempted.
-- In `2.3 二次检索缺口`, list only the high-impact gaps that remain after up to three targeted closure rounds, including round-by-round attempted sources, status, unresolved reason, and exact primary sources that should be checked next.
+- In `2.3 检索缺口闭环结果`, list only the high-impact gaps that remain after up to three targeted closure rounds, including attempted rounds and sources, status, unresolved reason, and exact primary sources that should be checked next.
 
 ## Required Disclosure Pattern
 
@@ -48,7 +48,7 @@ Use the precise Evidence-record `access_status` from `source-registry-schema.md`
 For three-round retrieval gaps, use this residual-gap pattern:
 
 ```md
-缺口闭环状态: {部分补齐/仍未补齐}. 三轮闭环已尝试 {第1轮: direct primary sources; 第2轮: near-primary or official-adjacent sources; 第3轮: cross-check, alternate terms, local-language queries, or credible secondary sources}. 未补齐原因: {不可访问/付费库/需要登录/公开检索无可靠结果/口径不匹配}. 为什么重要: {impact}. 下一步应核验 {specific primary or near-primary source}.
+缺口闭环状态: {部分补齐/仍未补齐}. 已尝试轮次和来源: {实际执行的 Engine 授权轮次及来源; 最多三轮, 可提前停止}. 未补齐原因: {不可访问/付费库/需要登录/公开检索无可靠结果/口径不匹配}. 为什么重要: {impact}. 下一步应核验 {specific primary or near-primary source}.
 ```
 
 Do not keep a gap as `仍未补齐` unless the report explains why it could not be closed in the active environment.

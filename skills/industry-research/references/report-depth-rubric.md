@@ -34,7 +34,7 @@ For industry overview reports, score:
 - Lifecycle judgment.
 - Seven modules.
 - Trend projection.
-- Risk and opportunity.
+- Risks, opportunities, and uncertainties.
 - Fact/opinion/inference section.
 
 For industry-specific question reports, score:
@@ -43,7 +43,7 @@ For industry-specific question reports, score:
 - Issue tree.
 - Evidence chain.
 - Seven modules.
-- Risk and uncertainty.
+- Risks, opportunities, and uncertainties.
 
 For company/product reports, score:
 

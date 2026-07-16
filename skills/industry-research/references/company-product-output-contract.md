@@ -1,157 +1,98 @@
-# Company/Product Output Contract
+# Company And Product Output Contract
 
-Use this file before writing any standard or deep company/product report. This is an output contract, not a style suggestion.
+Use this route when the user asks about a company, product, project, brand, business line, startup idea, competitive position, growth outlook, risk, or value in industry context. Listed-company share-price, valuation, expectation-gap, market-cap-repair, investability, or rise/fall questions use this route plus the capital-market conditional module.
 
-Select `output_language` through `references/report-language.md`. The headings and structured fields below are the Chinese contract. For English output, copy the exact company and product headings, table headers, row labels, bold labels, and retrieval-round markers from the language contract while preserving the same numbering, order, conditional sections, and obligations. Do not paraphrase contract fields.
+This file owns the company trigger, opening, route orchestration, company depth delta, and conditional modules. Load `references/common-report-section-contract.md` for shared titles and fields. Load `assets/company-product-template.md` for the copyable skeleton. Load `references/capital-market-question.md` only when the capital-market trigger is active.
 
-## Contract Trigger
+## Opening And Front Matter
 
-Apply this contract when the request is a standard or deep company/product report, including listed-company stock price, valuation, expectation gap, market-cap repair, investability, or rise/fall potential questions.
+Start with exactly one dynamic H1. The next nonempty line must be:
 
-When a request is both a specific question and a company/product or listed-company capital-market question, this contract overrides the generic specific-question direct-answer rule. Keep the report front matter and use the language-matched opening.
+- Chinese: `## 0. 研报前置区`.
+- English: `## 0. Research Front Matter`.
 
-If the user explicitly asks for a short, brief, quick, simple, one-paragraph, one-sentence, or no-detail answer, use Explicit Short Answer Mode instead.
+The front matter contains four substantive subsections: report summary, key conclusions, core metrics overview, and exhibit list or placeholders. It is followed by `目标公司/产品综合判断` or `Target Company/Product Overall Assessment`, which gives the full judgment on competitive position, capability, value, and constraints. These are distinct responsibilities and must not be empty duplicates.
 
-## Build Order
+## Route Orchestration
 
-Before drafting the report:
+Use this order:
 
-1. Classify the request and selected layers.
-2. Build the internal research brief from `references/research-brief-builder.md`, including report type, output language, source plan, conditional modules, and depth contract.
-3. Read `assets/company-product-template.md`.
-4. Copy only the required language-matched Markdown heading skeleton from the dynamic H1 title onward.
-5. Add conditional headings for multi-business or capital-market questions.
-6. Fill the skeleton with evidence, analysis, source quality notes, and retrieval-gap closure results.
-7. Run the heading scan, section-level depth gate, and compliance gate.
-8. If any required heading is missing or any required section is thin, stop using the current draft and rewrite from the template skeleton.
-
-Do not begin from a self-created outline.
-
-## Opening Heading Rule
-
-The first nonempty line must be exactly one dynamic H1 title, followed immediately by the company front matter:
-
-```md
-# {公司/产品名称}{研究主题}研究报告
-
-## 0. 研报前置区
+```text
+dynamic H1
+front matter
+target company or product overall assessment
+research scope and research trace
+macro analysis
+meso analysis
+  conditional multi-business split
+  one-sentence industry definition
+  key industry metrics
+  industry map with target position in the body
+  lifecycle assessment
+seven core modules analysis
+micro analysis
+SWOT
+conditional portfolio analysis
+competitor comparison
+fact, opinion, and inference layers
+conditional capital-market module
+multi-perspective pressure test
+risks, opportunities, and uncertainties
+recommended next actions
+methodology and data sources
+follow-up verification checklist
+report compliance checklist
+fixed disclaimer
 ```
 
-For English output, use a natural English H1 title followed immediately by `## 0. Research Front Matter`.
+## Required Company Delta
 
-Do not start a standard or deep company/product report with:
+- Macro, meso, and micro layers are required.
+- `行业一句话定义`, `行业关键指标`, canonical `行业地图`, and lifecycle assessment are required inside meso analysis.
+- The industry-map body must locate the target in the value chain and competitive structure. Do not put target position into a noncanonical heading.
+- Seven modules remain independent subsections. Each uses the shared five-label contract.
+- SWOT and competitor comparison are required. When reliable comparables do not exist, explain why, define an alternative benchmark, and disclose verification limits.
+- Recommended next actions are target actions. They do not replace the shared evidence-verification checklist.
+- Company reports keep the independent fact-opinion-inference chapter.
 
-```md
-## 1. 直接结论
-```
+## Company Depth Gate
 
-If the draft starts with `## 1. 直接结论`, it is a compressed report failure. Rewrite it before final output.
+For standard reports, each seven-module subsection should contain about 300-500 Chinese characters or equivalent English depth. Deep reports should contain about 600-1000. Evidence blocks need at least two concrete evidence points, source directions, or explicit gaps.
 
-The final report body must begin with one dynamic H1 title and then the language-matched company front matter heading. Do not output template metadata, output-contract notes, internal compliance notes, or prose between them.
+The front matter, macro, meso, micro, risk, pressure-test, methodology, and verification chapters must be substantive. A correct heading with token body text is a compressed-report failure.
 
-End the report with the exact language-matched disclaimer from `references/report-language.md`. Do not paraphrase it or repeat it elsewhere as a substitute for the fixed final line.
+## Conditional Modules
 
-## Required Heading Scan
+### Multi-Business Split
 
-Before final output, scan the draft for the exact heading strings in the selected language. The Chinese strings are below; the English strings are defined in `references/report-language.md`:
+Enable `4.0 多业务线中观拆分` or `4.0 Multi-Business Meso Breakdown` when the target has multiple material businesses. It is mandatory for company-capital reports; a genuinely single-business listed company keeps the section and explains why no material split is needed. A normal single-business company report omits it.
 
-```md
-## 0. 研报前置区
-### 0.1 报告摘要
-### 0.2 关键结论
-### 0.3 核心指标总览
-### 0.4 图表清单或图表占位
-## 1. 直接结论
-## 2. 研究边界
-### 2.1 研究计划摘要
-### 2.2 来源矩阵和证据质量
-### 2.3 二次检索缺口
-## 3. 宏观环境分析
-## 4. 中观行业分析
-### 4.3 行业地图和目标位置
-### 4.4 生命周期判断
-## 5. 七个核心模块加权分析
-### 5.1 可行性
-### 5.2 规模性
-### 5.3 防守性
-### 5.4 盈利性
-### 5.5 估值
-### 5.6 外部因素
-### 5.7 景气度
-## 6. 微观公司/产品分析
-## 10. 事实, 观点和推断分层
-## 12. 多视角压力测试
-## 13. 风险和机会
-## 15. 方法论和数据来源说明
-## 16. 附录: 后续验证清单
-## 17. 报告合规自检表
-```
+### Portfolio Analysis
 
-For multi-business companies, also include:
+Enable portfolio analysis only when at least two material businesses, products, or resource-allocation objects exist. Otherwise omit the chapter. Never emit an empty BCG or portfolio matrix.
 
-```md
-### 4.0 多业务线中观拆分
-```
+### Capital Market
 
-For listed-company capital-market questions, include `### 4.0 多业务线中观拆分` by default. If the target is genuinely single-business, keep `4.0` and state why no material business-line split is needed.
+Enable the complete capital-market chapter only for share-price, valuation, expectation-gap, market-cap-repair, investability, or rise/fall questions. A non-capital company report omits the entire chapter.
 
-For capital-market questions, also include:
+Company-capital reports must preserve `11.1-11.4` and the existing depth gate:
 
-```md
-## 11. 资本市场表现与估值预期变化
-### 11.1 股价表现拆解
-### 11.2 基本面变化
-### 11.3 估值逻辑和市场预期差
-### 11.4 上涨触发器, 下跌风险和情景分析
-```
+- `11.1` covers the price window, benchmark or sector comparison, catalysts, and evidence gaps.
+- `11.2` covers revenue, margin or profitability, cash flow, orders or delivery, guidance, business mix, and fundamental-versus-expectation change.
+- `11.3` covers valuation anchor, prior priced-in assumptions, expectation gap, rerating or derating mechanism, and indicators that must be proven again.
+- `11.4` covers upside triggers, downside risks, scenarios, tracking indicators, and no-investment-advice framing.
+- `5.4-5.7` remain visibly deeper than `5.1-5.3`.
 
-If any applicable heading is absent, do not output the draft. Restore the missing heading and its body, then rerun the scan.
+## Route Failure Conditions
 
-Sections `13` and `16` are not optional end matter. `13. 风险和机会` must contain both risks and opportunities, and must distinguish industry-structure drivers from target-company/product drivers. `16. 附录: 后续验证清单` must include concrete validation questions, why each matters, recommended sources, and priority.
+Rewrite before output when the draft:
 
-Section `2.3 二次检索缺口` is a residual gap closure section, not a first-pass missing-data list. Before final output, high-impact gaps must have up to three targeted closure rounds. The section must show the gap, round-by-round attempted sources, current status, why it matters, unresolved reason, and next source. Do not keep a gap as `仍未补齐` unless the active environment cannot access the source, the source requires a paid database or login, public search has no reliable result, or the available evidence has a mismatched period, geography, or definition.
+- starts from section 1 instead of company front matter;
+- omits macro, meso, micro, SWOT, competitor comparison, or the industry base;
+- uses an empty or wrongly activated conditional module;
+- omits `4.0` or any `11.1-11.4` subsection on a company-capital route;
+- uses old shared titles or fields;
+- collapses seven modules into a table;
+- gives a target price, guaranteed return, or buy/sell instruction.
 
-## Seven-Module Body Rule
-
-The seven-module section may include a summary matrix, but the matrix is never the body.
-
-Each module must be an independent subsection:
-
-- `### 5.1 可行性`
-- `### 5.2 规模性`
-- `### 5.3 防守性`
-- `### 5.4 盈利性`
-- `### 5.5 估值`
-- `### 5.6 外部因素`
-- `### 5.7 景气度`
-
-Each subsection must keep these four labels:
-
-- `结论`
-- `依据`
-- `机制`
-- `对目标公司/产品的影响`
-
-For capital-market questions, `5.4 盈利性`, `5.5 估值`, `5.6 外部因素`, and `5.7 景气度` are priority modules and must be more detailed than the non-priority modules.
-
-## Rewrite Triggers
-
-Rewrite before final output if the draft:
-
-- Starts at `## 1. 直接结论`.
-- Uses "why it fell / can it rise / what to watch" as the main structure.
-- Omits `0. 研报前置区`.
-- Omits `2.1`, `2.2`, or `2.3`.
-- Collapses `5.1-5.7` into one table or paragraph.
-- Omits `11.1-11.4` for a capital-market question.
-- Omits `12. 多视角压力测试`.
-- Omits `17. 报告合规自检表`.
-- Uses media summaries as core evidence when primary company filings, official data, or industry association data are available.
-
-## Workspace File Discipline
-
-For standard or deep company/product reports, use Workspace Report File by default when file writing is available. Create the full Markdown report under `reports/`, then answer in chat with the file path, short summary, and compliance/checker status.
-
-If file writing is unavailable or the user explicitly asks not to create files, Chat Report is still a full report. Do not shorten or reorder the contract because the output is in chat.
-
-Correct headings are not enough. Apply the section-level depth contract in `references/output-format.md` and rewrite thin sections before final output.
+Resolve the active Skill root from the loaded `industry-research/SKILL.md`, then run `python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile company` or `--profile company-capital` from the report workspace. Rerun with `--profile auto`; explicit and auto results must match.
