@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run contract self-tests
+        run: |
+          python -B skills/industry-research/scripts/report_contract_check.py --self-test
+          python -B skills/industry-research/scripts/report_batch_check.py --self-test
+          python -B skills/industry-research/scripts/source_contract_check.py --self-test
+          python -B skills/industry-research/scripts/deep_search_contract_check.py --self-test
+
+      - name: Validate v63 fixtures
+        run: python -B skills/industry-research/scripts/report_batch_check.py tests/fixtures/v63/valid --json
