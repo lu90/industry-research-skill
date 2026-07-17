@@ -1,0 +1,43 @@
+name: Feature request
+description: Suggest a focused improvement to the Skill or repository workflow.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the user problem before proposing a solution. English or Chinese is welcome.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: Who has this problem, and what cannot be done reliably today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Describe the smallest change that would solve the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: List workarounds or alternative designs you considered.
+  - type: textarea
+    id: validation
+    attributes:
+      label: Suggested validation
+      description: Explain how maintainers could verify that the improvement works.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: This request is focused and is not a request for personal investment advice or guaranteed outcomes.
+          required: true
+        - label: I searched existing Issues and Pull Requests for similar proposals.
+          required: true

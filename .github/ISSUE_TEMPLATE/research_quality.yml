@@ -1,0 +1,45 @@
+name: Research quality or source correction
+description: Report a factual, sourcing, evidence, or report-contract concern.
+title: "[Research quality]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for evidence and research-quality concerns, not security vulnerabilities or personal investment advice.
+  - type: input
+    id: location
+    attributes:
+      label: Affected file, report, or section
+      description: Provide a repository path, section heading, or stable link.
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Claim or rule being challenged
+      description: Quote only the minimum text needed to identify the concern.
+    validations:
+      required: true
+  - type: textarea
+    id: concern
+    attributes:
+      label: Why it may be incorrect or insufficient
+      description: Explain the factual, methodological, sourcing, or contract problem.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Better evidence or correction
+      description: Link primary or near-primary sources and note relevant dates, definitions, and limitations.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I inspected the sources I linked and described their relevant limitations.
+          required: true
+        - label: This report contains no secrets, personal data, or confidential material.
+          required: true

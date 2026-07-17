@@ -1,0 +1,61 @@
+name: Bug report
+description: Report a reproducible problem with the Skill, checkers, or templates.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. English or Chinese is welcome. Remove secrets and private data before submitting.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Skill instructions or routing
+        - Report templates or references
+        - Validation scripts or fixtures
+        - Installation or runtime compatibility
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem description
+      description: Explain what went wrong and why it appears to be a bug.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest prompt, command, input, or file that reproduces the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Agent runtime and version
+      description: For example, Codex, Claude Code, or another compatible runtime and its version.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs or supporting material
+      description: Add redacted logs, checker output, screenshots, or links when useful.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I searched existing Issues and removed secrets, personal data, and confidential material.
+          required: true
