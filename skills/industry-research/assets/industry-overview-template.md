@@ -213,5 +213,8 @@ flowchart LR
 | 证据层级和来源状态清楚 | {通过/不适用} | {说明} |
 | 多视角压力测试完成 | {通过/不适用} | {说明} |
 | 后续验证清单具体 | {通过/不适用} | {说明} |
+| 逐 Claim 证据准入通过 | {通过/不适用} | {supported/refuted, 无 conflicted/gapped/orphaned} |
+| 正文 Claim 和 Evidence 精确绑定通过 | {通过/不适用} | {report-claims.json 已通过最终忠实度审计} |
+| 关键数字核对和抽样审计完成 | {通过/不适用} | {truthfulness-audit.md 的复核者类型和抽样 Claim} |
 
 本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.

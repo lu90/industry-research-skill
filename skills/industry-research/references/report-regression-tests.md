@@ -32,6 +32,8 @@ python -B skills/industry-research/scripts/report_contract_check.py path/to/repo
 python -B skills/industry-research/scripts/report_batch_check.py --self-test
 python -B skills/industry-research/scripts/report_batch_check.py --self-test --json
 python -B skills/industry-research/scripts/report_batch_check.py path/to/reports-dir --json
+python -B skills/industry-research/scripts/truthfulness_contract_check.py --self-test
+python -B tests/run_v64_fixtures.py
 ```
 
 Run the v63 fixture gate from the repository root:
@@ -42,6 +44,15 @@ python -B skills/industry-research/scripts/report_batch_check.py tests/fixtures/
 ```
 
 Every file in `tests/fixtures/v63/valid/` must pass both its explicit profile and `auto`. Every file in `tests/fixtures/v63/invalid/` must fail with the directed fragment recorded in `expected-errors.json`. Old headings and fields must fail; they are not compatibility fixtures.
+
+Run the v64 fixture gate separately. It must not rewrite v63 fixtures:
+
+```text
+python -B skills/industry-research/scripts/truthfulness_contract_check.py --self-test
+python -B tests/run_v64_fixtures.py
+```
+
+The v64 suite covers Claim tier admission, support, refute, conflict, Gap and orphan states, canonical body binding, unique Evidence references, direct and safe derived numbers, decimal scaling, manual review, audit sampling, and report-path consistency.
 
 The fixture set must also prove that every source-matrix row carries one `claim_id`, every retrieval-gap row carries one `gap_id`, cross-Claim aggregate evidence cannot satisfy a row, Gap status/reason/next route match the same `gaps.json` item, and company conditional-module declarations cannot disagree with the selected profile or rendered sections.
 
@@ -70,6 +81,7 @@ Minimum required forward test:
 ```bash
 python -B skills/industry-research/scripts/report_contract_check.py reports/<generated-report>.md --profile company-capital --run-dir research_runs/<run_id> --repo-root .
 python -B skills/industry-research/scripts/deep_search_contract_check.py research_runs/<run_id> --repo-root .
+python -B skills/industry-research/scripts/truthfulness_contract_check.py --stage final --run-dir research_runs/<run_id> --report reports/<generated-report>.md --repo-root .
 ```
 
 The forward test fails if the generated answer:
@@ -83,12 +95,15 @@ The forward test fails if the generated answer:
 - omits `12` or `17`;
 - omits or paraphrases the fixed Chinese disclaimer as the final nonempty line;
 - fails the deterministic company-capital checker.
+- omits `report-claims.json` or `truthfulness-audit.md`, fails v64 Claim admission, or fails the final fidelity checker.
 
 Do not claim that a change has stabilized the Xiaomi stock-price prompt unless this forward-agent test has been run and the saved artifact passes the checker. Deterministic self-tests are necessary but not sufficient.
 
 Also run the same Xiaomi prompt once with an existing report artifact available in context, such as `planning/forward-test-v54-xiaomi-stock-drop.md`. The presence of the existing file must not change the answer into a short summary. Existing files may be used as context, but the output still must satisfy the company-capital checker unless the user explicitly asks to summarize or review the file.
 
 For all standard or deep prompts, the expected runtime behavior is Workspace Report File when file writing is available: the full report is written under `reports/`, and the chat reply contains only the path, short summary, and compliance/checker status. A chat-only brief fails unless the user explicitly asked for short-answer mode or unsaved Prompt Builder Mode.
+
+For v64 forward tests, review the report and its Run artifacts together. Every Plan Claim must be supported or refuted, every canonical body span must be uniquely bound to same-Claim Evidence, every number must be checked or excluded, and the audit must sample at least three Claims without describing Agent self-check as human review.
 
 ## Prompt 1: Listed-Company Capital-Market Report
 

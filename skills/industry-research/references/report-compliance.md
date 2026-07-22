@@ -30,6 +30,18 @@ Run this gate before delivering any standard or deep formal report. This file ag
 - A formal report is generated only for a `completed` Run with `engine_report_permission: true`.
 - Report filename stem, `run_id`, Manifest `report_path`, and `report_status: generated` form one unique association.
 
+### Claim Admission And Fidelity
+
+- Every Plan Claim has one deterministic pre-report status. Only `supported` and `refuted` Claims enter a formal report.
+- `conflicted`, `gapped`, or `orphaned` Claims deny formal-report permission. The Run returns a Summary, conflicts, and Gaps instead of a formal report.
+- `report-claims.json` contains exactly one canonical binding for every Plan Claim and no unknown Claim IDs.
+- Every Evidence reference uniquely locates obtained Evidence for the same Claim and meets that Claim's required evidence tier.
+- Every `report_span` appears exactly once in its named analytical section and does not bind to source matrices, methodology, compliance, or disclaimer boilerplate.
+- Refuted Claims are visibly denied, narrowed, or described as unsupported.
+- Every numeric token is checked or explicitly excluded. Unsupported calculations use `manual` and set `manual_review_required: true`.
+- `truthfulness-audit.md` reviews at least three Claims, or all Claims when fewer than three exist, includes every manual Claim, and truthfully declares `human` or `agent-self-check`.
+- Manifest report registration happens only after report structure and final fidelity checks pass.
+
 ### Shared Analytical Quality
 
 - Lifecycle assessment includes phase, evidence, counterevidence, confidence, and research implication.
@@ -95,6 +107,8 @@ python -B "<skill-root>/scripts/report_contract_check.py" --self-test
 python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile <profile> --language auto
 python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile <profile> --run-dir <research-run-directory> --repo-root .
 python -B "<skill-root>/scripts/deep_search_contract_check.py" <research-run-directory> --repo-root .
+python -B "<skill-root>/scripts/truthfulness_contract_check.py" --stage pre-report --run-dir <research-run-directory> --repo-root .
+python -B "<skill-root>/scripts/truthfulness_contract_check.py" --stage final --run-dir <research-run-directory> --report reports/<run_id>.md --repo-root .
 ```
 
-Passing the report checker proves reader-visible structure, not fact accuracy. Passing the Deep Search checker proves Run and report association, not narrative quality. Formal reports require both plus manual review.
+Passing the report checker proves reader-visible structure, not fact accuracy. Passing the Deep Search checker proves Run and report association, not narrative quality. Passing the truthfulness checker proves Evidence-to-Claim-to-text contract fidelity, not external truth. Formal reports require all applicable checkers plus the declared sampling review.

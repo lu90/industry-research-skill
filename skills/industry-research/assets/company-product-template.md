@@ -16,7 +16,8 @@ The final report's first nonempty line must be exactly one dynamic H1 title. The
 4. Add conditional sections for multi-business or capital-market questions.
 5. Fill every required section with analysis, source quality notes, and evidence gaps.
 6. Run the heading scan in `references/company-product-output-contract.md` and the section-level depth gate in `references/report-compliance.md`.
-7. If any required heading is missing or any required section is thin, restore the missing section and rewrite before final output.
+7. Run v64 pre-report Claim admission before drafting. Build `report-claims.json`, audit every bound number, and save `truthfulness-audit.md` before formal registration.
+8. If any required heading is missing, any required section is thin, or any Claim fidelity check fails, restore or rewrite the affected content before final output.
 
 ## Seven Modules Body Rule
 
@@ -444,5 +445,8 @@ flowchart LR
 | 事实/观点/推断已分层且证据层级清楚 | {通过/不适用} | {说明} |
 | 后续验证清单具体 | {通过/不适用} | {说明} |
 | Markdown 标题格式正确 | {通过/不适用} | {说明} |
+| 逐 Claim 证据准入通过 | {通过/不适用} | {supported/refuted, 无 conflicted/gapped/orphaned} |
+| 正文 Claim 和 Evidence 精确绑定通过 | {通过/不适用} | {report-claims.json 已通过最终忠实度审计} |
+| 关键数字核对和抽样审计完成 | {通过/不适用} | {truthfulness-audit.md 的复核者类型和抽样 Claim} |
 
 本报告仅供研究和信息参考, 不构成投资建议, 也不构成任何收益承诺.

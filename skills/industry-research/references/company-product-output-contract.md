@@ -54,6 +54,7 @@ fixed disclaimer
 - SWOT and competitor comparison are required. When reliable comparables do not exist, explain why, define an alternative benchmark, and disclose verification limits.
 - Recommended next actions are target actions. They do not replace the shared evidence-verification checklist.
 - Company reports keep the independent fact-opinion-inference chapter.
+- Before drafting, every Plan Claim must pass v64 admission. Before registration, every Claim must bind to one exact analytical body span and same-Claim Evidence, with complete numeric coverage and a saved sampling audit.
 
 ## Company Depth Gate
 
@@ -95,4 +96,4 @@ Rewrite before output when the draft:
 - collapses seven modules into a table;
 - gives a target price, guaranteed return, or buy/sell instruction.
 
-Resolve the active Skill root from the loaded `industry-research/SKILL.md`, then run `python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile company` or `--profile company-capital` from the report workspace. Rerun with `--profile auto`; explicit and auto results must match.
+Resolve the active Skill root from the loaded `industry-research/SKILL.md`, then run `python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile company` or `--profile company-capital` from the report workspace. Rerun with `--profile auto`, then run the v64 final fidelity checker against the matching Research Run before Manifest registration. All results must pass.

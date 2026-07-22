@@ -131,6 +131,85 @@ Verification Item | Current Evidence Status | Why It Matters | Recommended Sourc
 
 Company `后续行动建议` or `Recommended Next Actions` is a route-specific action chapter and does not fulfill this evidence-verification obligation.
 
+## v64 Claim Fidelity Contract
+
+The reader-facing section registry remains unchanged. v64 adds internal audit artifacts rather than new report chapters.
+
+Every final Plan Claim must have exactly one record in `research_runs/<run_id>/report-claims.json` with `claim_id`, `claim_status`, `assertion_kind`, `report_section`, `report_span`, `evidence_refs`, `numeric_checks`, `numeric_exclusions`, `verification_notes`, and `manual_review_required`. Only `supported` and `refuted` are allowed in this file.
+
+Use this top-level shape:
+
+```json
+{
+  "schema_version": "v64",
+  "run_id": "<run_id>",
+  "report_path": "reports/<run_id>.md",
+  "claims": []
+}
+```
+
+Each Claim binding uses this complete interface:
+
+| Field | Rule |
+|---|---|
+| `claim_id` | One ID from final `plan.json`; every Plan Claim appears exactly once |
+| `claim_status` | `supported` or `refuted`, matching pre-report calculation |
+| `assertion_kind` | `fact`, `external-opinion`, `inference`, `causal`, or `forecast` |
+| `report_section` | Exact canonical heading text without Markdown hashes |
+| `report_span` | Shortest complete body statement, appearing exactly once |
+| `evidence_refs` | One or more uniquely locating Evidence references |
+| `numeric_checks` | One record for every Claim-number token that is checked |
+| `numeric_exclusions` | One record for every date, identifier, section number, or non-Claim number |
+| `verification_notes` | Nonempty scope, definition, inference, or review note |
+| `manual_review_required` | Boolean; true whenever any numeric mode is `manual` |
+
+Each Evidence reference contains exactly the locating values `source_id`, `document_url`, `page_or_section`, `relation`, and `evidence_span_sha256`. Calculate the hash from Unicode-NFKC normalized `evidence_span` with whitespace collapsed to single spaces.
+
+Each numeric check contains `reported_value`, `mode`, `evidence_values`, `unit`, `currency`, `reporting_period`, and a nonempty `review_note`. Add `operation` for `derived` or `converted`, and add `tolerance` for floating-point or rounded results. Allowed operations are `identity`, `sum`, `difference`, `ratio`, `share`, `percentage-change`, and `decimal-scale`. Operand order is first-minus-second for `difference`, numerator then denominator for `ratio` and `share`, and old value then new value for `percentage-change`. `share` and `percentage-change` return percentage points. `converted` permits only `decimal-scale`; exchange rates, adjusted prices, reconstructed tables, and complex statistics use `manual`.
+
+Each numeric exclusion contains `value`, one reason from `date`, `identifier`, `section-number`, or `non-claim-context`, and a nonempty `review_note`. Repeated number tokens require repeated check or exclusion records so coverage remains exact.
+
+Assertion kinds have different review duties:
+
+| `assertion_kind` | Minimum duty |
+|---|---|
+| `fact` | Match period, geography, unit, currency, definition, and support or refute relation |
+| `external-opinion` | Name the opinion holder and source; do not rewrite the opinion as objective fact; disclose incentives and limits |
+| `inference` | Cite at least one admitted factual basis and record the reasoning bridge, confidence, and disconfirmation condition |
+| `causal` | Use multiple factual bases or explicitly lower confidence; distinguish correlation, sequence, and alternative explanations |
+| `forecast` | State assumptions and observation horizon; keep future statements distinct from occurred facts and name verification indicators |
+
+The deterministic checker treats machine-verifiable shape, identity, exact binding, and numeric conflicts as errors. Complex semantic duties remain warning and sampling-review obligations rather than automated proof.
+
+- `report_span` is the shortest complete reader-visible statement that represents the Claim. It appears exactly once inside the named canonical analytical section.
+- A source matrix, Gap table, compliance checklist, methodology note, or disclaimer cannot be the canonical `report_span` location.
+- Each Evidence reference uses `source_id`, `document_url`, `page_or_section`, `relation`, and the SHA-256 of normalized `evidence_span`; the combination must uniquely locate one obtained Evidence record for the same Claim.
+- A refuted Claim must be written as denied, narrowed, or unsupported. It cannot preserve the original support wording.
+- Every numeric token in `report_span` is covered exactly once by `numeric_checks` or `numeric_exclusions`. Allowed automatic modes are direct values, fixed safe derived operations, and explicit decimal scaling. All other calculations use manual review.
+- Save `truthfulness-audit.md` inside the Run and sample at least three Claims, or all Claims when fewer than three exist. The audit must include every `manual_review_required` Claim and state whether the reviewer is human or `agent-self-check`.
+
+Start the audit with these machine-readable lines, then add the per-Claim review notes:
+
+```text
+# Truthfulness Audit
+
+- reviewer_type: human|agent-self-check
+- reviewed_claim_ids: claim-a, claim-b, claim-c
+
+## claim-a
+
+- atomicity: <nonempty review>
+- evidence_relation: <nonempty review>
+- report_fidelity: <nonempty review>
+- numeric_scope: <nonempty review>
+- inference_limits: <nonempty review>
+- counterevidence: <nonempty review>
+```
+
+Repeat the H2 review block for every ID in `reviewed_claim_ids`. For every sampled Claim, review atomicity, Evidence support or refutation, body paraphrase fidelity, numbers and units, inference limits, and visible counterevidence. An Agent may complete this review only as `agent-self-check`.
+
+These internal artifacts do not alter v61 Evidence fields, v62 Run schemas, or the v63 reader-facing heading contract.
+
 ## Route Rendering And Equivalent Fulfillment
 
 | Route | Industry definition | Industry map | Lifecycle | Evidence classification |
