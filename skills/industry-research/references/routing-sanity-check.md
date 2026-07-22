@@ -61,6 +61,8 @@ Use these checks before final output:
 
 All four standard/deep routes must end with the exact language-matched disclaimer. Short answers, Prompt Builder outputs, and visible research briefs do not use the formal report shell.
 
+All four standard/deep routes must run the v65 Pressure Test closure on a working draft. Route selection does not change the Challenge schema or nine-column reader summary. Only retrieval Challenges re-enter Gap closure; any pending Challenge or open/disputed high Challenge keeps formal `report_path` null.
+
 For company routes, also fail the review when the conditional-module declaration is missing, has any value other than `enabled` or `disabled`, conflicts with the profile, or conflicts with the presence of `4.0`, `8`, or `11`.
 
 ## Maintenance Regression Prompts

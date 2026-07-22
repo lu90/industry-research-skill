@@ -34,16 +34,17 @@ python -B skills/industry-research/scripts/report_batch_check.py --self-test --j
 python -B skills/industry-research/scripts/report_batch_check.py path/to/reports-dir --json
 python -B skills/industry-research/scripts/truthfulness_contract_check.py --self-test
 python -B tests/run_v64_fixtures.py
+python -B tests/run_v65_fixtures.py
 ```
 
-Run the v63 fixture gate from the repository root:
+Run the v63 fixture gate from the repository root only for the Phase 0 pre-v65 baseline:
 
 ```text
 python -B skills/industry-research/scripts/report_contract_check.py --self-test
 python -B skills/industry-research/scripts/report_batch_check.py tests/fixtures/v63/valid --json
 ```
 
-Every file in `tests/fixtures/v63/valid/` must pass both its explicit profile and `auto`. Every file in `tests/fixtures/v63/invalid/` must fail with the directed fragment recorded in `expected-errors.json`. Old headings and fields must fail; they are not compatibility fixtures.
+Before the v65 switch, every file in `tests/fixtures/v63/valid/` must pass both its explicit profile and `auto`, and every file in `tests/fixtures/v63/invalid/` must fail with the directed fragment recorded in `expected-errors.json`. After the v65 switch, preserve those files as historical fixtures but do not treat their four-column Pressure Test as a current valid input. A representative historical v63 valid report must fail with the directed `noncanonical contract header` error. Do not rewrite the historical fixtures to manufacture compatibility.
 
 Run the v64 fixture gate separately. It must not rewrite v63 fixtures:
 
@@ -52,7 +53,17 @@ python -B skills/industry-research/scripts/truthfulness_contract_check.py --self
 python -B tests/run_v64_fixtures.py
 ```
 
-The v64 suite covers Claim tier admission, support, refute, conflict, Gap and orphan states, canonical body binding, unique Evidence references, direct and safe derived numbers, decimal scaling, manual review, audit sampling, and report-path consistency.
+The v64 suite covers Claim tier admission, support, refute, conflict, Gap and orphan states, canonical body binding, unique Evidence references, direct and safe derived numbers including CJK-adjacent numeric tokens, decimal scaling, manual review, audit sampling, and report-path consistency.
+
+Run the v65 fixture gate separately. Historical v63 fixtures remain unchanged and are not valid v65 inputs:
+
+```text
+python -B skills/industry-research/scripts/deep_search_contract_check.py --self-test
+python -B skills/industry-research/scripts/report_contract_check.py --self-test
+python -B tests/run_v65_fixtures.py
+```
+
+The v65 suite covers Challenge schema, retrieval-only Gap routing, same-Claim Evidence locators, resolution duties, original-reviewer high closure, pending/open/disputed report denial, all four bilingual formal routes, and reader-view binding.
 
 The fixture set must also prove that every source-matrix row carries one `claim_id`, every retrieval-gap row carries one `gap_id`, cross-Claim aggregate evidence cannot satisfy a row, Gap status/reason/next route match the same `gaps.json` item, and company conditional-module declarations cannot disagree with the selected profile or rendered sections.
 
@@ -165,6 +176,8 @@ Evidence checks:
 - `10` includes fact/opinion/inference type, content, source/evidence, evidence tier, source status, and confidence.
 - `17` includes checklist rows for skeleton, research brief, depth, layers, evidence, source status, fact/opinion/inference separation, and follow-up verification.
 - `12` includes at least industry expert, investment researcher, policy/regulatory, and operator/entrepreneur pressure-test perspectives.
+- `12` uses the canonical v65 nine-column summary, discloses review mode, and matches `challenges.json`.
+- Pressure Test changes are reflected in the analytical body and the affected v64 binding is rerun before final fidelity audit.
 - `16` prioritizes primary or near-primary verification sources rather than only generic media follow-up.
 
 Forbidden failures:

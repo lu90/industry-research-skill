@@ -22,7 +22,7 @@ This contract applies only to standard or deep formal reports. Prompt Builder Mo
 | `verification_checklist` | `后续验证清单` | `Follow-up Verification Checklist` | visible section | all formal routes | required |
 | `compliance_checklist` | `报告合规自检表` | `Report Compliance Checklist` | visible section | all formal routes | required |
 
-The checker accepts only these v63 canonical titles and fields. Do not add old-title aliases, legacy profiles, dual-read logic, or warning-only fallback.
+The checker accepts these canonical titles and the current v65 field contracts. Do not add old-title aliases, legacy profiles, dual-read logic, or warning-only fallback.
 
 ## Shared Field Contracts
 
@@ -107,14 +107,14 @@ Do not add a duplicate fact-opinion-inference section to the specific route.
 
 ### Multi-Perspective Pressure Test
 
-Use:
+Disclose `review_mode` as `multi-agent` or `single-agent-simulated`, then use the exact v65 field order:
 
 ```text
-视角 | 质疑 | 为什么重要 | 需要验证
-Perspective | Challenge | Why It Matters | Verification Needed
+质疑 ID | 视角 | 目标 Claim/章节 | 重要性 | 核心质疑 | 裁决 | 证据/Gap | 报告改动 | 复核状态
+Challenge ID | Perspective | Target Claim/Section | Materiality | Core Challenge | Resolution | Evidence/Gap | Report Change | Reviewer Status
 ```
 
-Minimum perspective count and depth are controlled by the compliance gate and checker.
+Every route includes the industry expert, investment researcher, policy or regulatory, and operator or entrepreneur perspectives. Show every high Challenge, every `confirmed`, `partially_valid`, or `unresolved` Challenge, and every lower-materiality Challenge that changed the report. The row values must match `challenges.json`; a fabricated ID, pending resolution, or open/disputed status fails the formal report contract.
 
 ### Risks, Opportunities, And Uncertainties
 
@@ -209,6 +209,8 @@ Start the audit with these machine-readable lines, then add the per-Claim review
 Repeat the H2 review block for every ID in `reviewed_claim_ids`. For every sampled Claim, review atomicity, Evidence support or refutation, body paraphrase fidelity, numbers and units, inference limits, and visible counterevidence. An Agent may complete this review only as `agent-self-check`.
 
 These internal artifacts do not alter v61 Evidence fields, v62 Run schemas, or the v63 reader-facing heading contract.
+
+Pressure Test runs after the initial working draft and binding. If v65 verification or resolution changes Claim content, Claim status, Evidence selection, numbers, or body text, rerun affected v64 Claim admission and binding. The old binding and fidelity result are stale until the revised report passes the v64 final audit.
 
 ## Route Rendering And Equivalent Fulfillment
 

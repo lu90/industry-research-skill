@@ -19,8 +19,9 @@ Use this skill to produce structured industry research like a business analyst. 
 8. Collect, clean, classify, compress, and synthesize information.
 9. Judge industry lifecycle stage.
 10. Analyze the seven core modules.
-11. Run multi-agent pressure testing by default.
-12. Output the report using the matching template and selected language.
+11. Create a working draft and initial v64 Claim bindings, then run the v65 Pressure Test closure by default.
+12. Rewrite the draft from resolved Challenges, rerun affected v64 admission and binding, and pass the v64 final fidelity audit.
+13. Output and register the report using the matching template and selected language only after every formal gate passes.
 
 ## Request Types
 
@@ -140,7 +141,10 @@ For every standard or deep report, read `references/information-sources.md` and 
 - For every v64 formal report, create internal `report-claims.json` with exactly one canonical binding for every Plan Claim. Bind each Claim to one exact reader-visible `report_span` in its real analytical section and to uniquely located Evidence from the same Claim.
 - Audit every numeric token in each canonical `report_span` as `direct`, safely `derived`, decimal-scale `converted`, `manual`, or an explicit non-Claim exclusion. Complex calculations must use `manual`, set `manual_review_required: true`, and remain visible in the sampling audit.
 - Before registering or returning a formal report, run the v64 final fidelity gate and save `truthfulness-audit.md`. Review at least three Claims, or every Claim when fewer than three exist, and label Agent-only review as `agent-self-check` rather than human review.
-- Do not set Manifest `report_path` or `report_status: generated` until the v63 report checker and v64 final fidelity checker pass. A failed draft remains an internal Run artifact and must not be returned as the formal report.
+- After the initial working draft and `report-claims.json`, run `references/pressure-test.md`, create `challenges.json`, and complete verification, resolution, report rewrite, and reviewer closure. Only retrieval Challenges may create or reuse a Gap and return to the Deep Research Engine and Deep Search Protocol.
+- Do not set Manifest `report_path` or `report_status: generated` while any Challenge is pending or any high Challenge is open or disputed. Every high Challenge must be closed by the original reviewer, and the report must expose the required nine-column Challenge summary consistent with `challenges.json`.
+- If Pressure Test changes Claim content, Claim status, Evidence selection, numbers, or report body, rerun affected v64 Claim admission and binding, then rerun the v64 final fidelity gate against the revised report.
+- Do not set Manifest `report_path` or `report_status: generated` until the v63 report checker, v64 final fidelity checker, v65 Challenge Ledger and reader-view checks, and sampling audit pass. A failed draft remains an internal Run artifact and must not be returned as the formal report.
 - For standard or deep reports, apply the Retrieval Gap Closure Loop in `references/deep-research-engine.md`: high-impact gaps require up to three targeted closure rounds before final drafting, and unresolved gaps must show round-by-round attempted sources, status, unresolved reason, impact, and next primary or near-primary source.
 - Use the layer selector: include macro and meso layers for industry research, include micro only when the request involves a company/product/project/player, and include capital-market layer only for stock price, valuation, expectation, investability, market-cap repair, or rise/fall questions.
 - Stock price, valuation, expectation gap, and rise/fall questions about a listed company must be treated as company/product analysis with a conditional capital-market module, not as a quick market comment.

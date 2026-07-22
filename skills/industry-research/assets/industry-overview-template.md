@@ -174,13 +174,11 @@ flowchart LR
 
 ## 8. 多视角压力测试
 
-| 视角 | 质疑 | 为什么重要 | 需要验证 |
-|---|---|---|---|
-| 行业专家 | {行业结构或生命周期判断是否成立} | {影响行业判断可靠性} | {需要补充的数据或访谈} |
-| 投资研究员 | {利润池或估值逻辑是否过于乐观} | {影响行业吸引力判断} | {需要验证的财务或经营指标} |
-| 政策/监管研究者 | {政策, 监管或合规假设是否有遗漏} | {影响增长空间和风险边界} | {需要查证的政策文件或监管口径} |
-| 经营者/创业者 | {商业模式或进入路径是否现实} | {影响落地性} | {需要验证的渠道, 成本或供应链信息} |
-| 反方审稿人 | {核心结论最可能错在哪里} | {暴露最大不确定性} | {能证伪或证实结论的关键证据} |
+{review_mode: multi-agent 或 single-agent-simulated. 后者必须说明不是独立 Agent 审查. 本表从 challenges.json 压缩生成, 只展示所有 high, 所有 confirmed/partially_valid/unresolved, 以及实际改写报告的 medium/low Challenge.}
+
+| 质疑 ID | 视角 | 目标 Claim/章节 | 重要性 | 核心质疑 | 裁决 | 证据/Gap | 报告改动 | 复核状态 |
+|---|---|---|---|---|---|---|---|---|
+| `{challenge_id}` | {行业专家/投资研究员/政策或监管研究者/经营者或创业者} | `{claim_id}` / {canonical 章节} | {high/medium/low} | {具体且可验证或可复核的质疑} | {confirmed/partially_valid/refuted/unresolved/out_of_scope} | {source_id 或 gap_id} | {最终报告中的具体改动} | {closed} |
 
 ## 9. 风险, 机会和不确定性
 
@@ -212,6 +210,8 @@ flowchart LR
 | 事实/观点/推断已分层 | {通过/不适用} | {说明} |
 | 证据层级和来源状态清楚 | {通过/不适用} | {说明} |
 | 多视角压力测试完成 | {通过/不适用} | {说明} |
+| Challenge Ledger 闭环和九列摘要一致 | {通过/不适用} | {无 pending, 无 open/disputed high, 与 challenges.json 一致} |
+| Pressure Test 改写后重跑 v64 | {通过/不适用} | {受影响 Claim admission/binding 和 final fidelity 已重跑} |
 | 后续验证清单具体 | {通过/不适用} | {说明} |
 | 逐 Claim 证据准入通过 | {通过/不适用} | {supported/refuted, 无 conflicted/gapped/orphaned} |
 | 正文 Claim 和 Evidence 精确绑定通过 | {通过/不适用} | {report-claims.json 已通过最终忠实度审计} |

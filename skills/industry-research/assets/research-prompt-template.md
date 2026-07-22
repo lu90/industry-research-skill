@@ -53,6 +53,9 @@ Use this asset only when the user asks to generate a reusable prompt, research b
 - 七个核心模块必须以 5.1-5.7 独立小节展开, 表格只能作为摘要, 不能替代主体.
 - 每个七模块小节必须包含: 结论, 证据, 机制, 研究含义, 关键指标和后续验证.
 - 标准或深度报告必须包含研究计划摘要, 来源矩阵, 检索缺口闭环结果, 事实/观点/推断义务, 压力测试, 风险/机会/不确定性, 后续验证清单和报告合规自检表.
+- Pressure Test 必须生成 challenges.json, 只有 retrieval Challenge 回流 Gap 闭环, 并在报告中输出与 Ledger 一致的九列闭环摘要.
+- pending Challenge 或 open/disputed high Challenge 阻止正式 report_path; high Challenge 必须由 original reviewer 复核关闭.
+- Pressure Test 改写后必须重跑受影响 Claim 的 v64 admission 和 binding, 再运行 v64 final fidelity audit.
 {资本市场章节要求}
 
 必需章节清单:
@@ -87,12 +90,14 @@ Use this asset only when the user asks to generate a reusable prompt, research b
 - 从报告工作区根目录运行 `python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile <profile> --language auto --run-dir <research-run-directory> --repo-root .`.
 - `<profile>` 必须与路由一致: 行业全览使用 `overview`, 行业具体问题使用 `specific`, 非资本市场公司/产品使用 `company`, 上市公司资本市场问题使用 `company-capital`.
 - 从报告工作区根目录运行 `python -B "<skill-root>/scripts/deep_search_contract_check.py" <research-run-directory> --repo-root .`.
-- 两个检查器都通过后才可交付正式报告. `<skill-root>` 是占位符, 执行前必须替换为实际安装路径.
+- 再运行 `python -B "<skill-root>/scripts/truthfulness_contract_check.py" --stage final --run-dir <research-run-directory> --report <report.md> --repo-root .`.
+- 三个检查器都通过后才可交付正式报告. `<skill-root>` 是占位符, 执行前必须替换为实际安装路径.
 
 输出前重写触发器:
 - 如果没有使用指定模板, 停止输出并重写.
 - 如果缺少必需章节清单中的任一章节, 停止输出并重写.
 - 如果七模块被压缩成一个表格或几个 bullet, 停止输出并重写.
 - 如果来源矩阵, 检索缺口闭环结果, 事实/观点/推断义务, 压力测试, 后续验证清单或报告合规自检表缺失, 停止输出并重写.
+- 如果缺少 challenges.json, 九列 Pressure Test 摘要与 Ledger 不一致, 或仍有 pending/open/disputed high Challenge, 停止正式登记并继续闭环.
 - 如果资本市场问题缺少 `11.1-11.4`, 停止输出并重写.
 ```

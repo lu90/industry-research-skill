@@ -25,7 +25,12 @@ from truthfulness_contract_check import (
     sample_evidence,
     write_json,
 )
-from report_contract_check import run_profile
+from report_contract_check import (
+    add_sample_trace_ids,
+    englishize_contract_fixture,
+    run_profile,
+    sample_overview_report,
+)
 
 
 def read_cases(path: Path) -> list[dict[str, str]]:
@@ -241,8 +246,9 @@ def apply_valid_mutation(mutation: str, run_dir: Path, report_path: Path) -> Non
             if language == "en"
             else "这条规范正文陈述得到已取得的一手 Evidence 支持."
         )
-        source = REPO_ROOT / "tests" / "fixtures" / "v63" / "valid" / f"overview-{language}.md"
-        report_text = source.read_text(encoding="utf-8")
+        report_text = add_sample_trace_ids(sample_overview_report(20))
+        if language == "en":
+            report_text = englishize_contract_fixture(report_text)
         marker = f"## {heading}"
         report_text = report_text.replace(marker, f"{marker}\n\n{span}", 1)
         report_path.write_text(report_text, encoding="utf-8")

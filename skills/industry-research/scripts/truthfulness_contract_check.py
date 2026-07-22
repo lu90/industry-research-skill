@@ -74,7 +74,7 @@ NUMERIC_CHECK_FIELDS = {
     "review_note",
 }
 NUMERIC_EXCLUSION_FIELDS = {"value", "reason", "review_note"}
-NUMBER_PATTERN = re.compile(r"(?<![\w.])[-+]?\d[\d,]*(?:\.\d+)?%?")
+NUMBER_PATTERN = re.compile(r"(?<![A-Za-z0-9_.])[-+]?\d[\d,]*(?:\.\d+)?%?")
 HEADING_PATTERN = re.compile(r"^(#{1,6})\s+(.+?)\s*$", re.MULTILINE)
 REFUTATION_MARKERS = (
     "不支持",
@@ -983,6 +983,8 @@ def run_self_test(json_output: bool = False) -> int:
     :return: 退出码, 0 表示通过, 1 表示失败.
     """
     failures: list[str] = []
+    if numeric_tokens("销量1286.6万辆, 同比增长35.5%.") != ["1286.6", "35.5%"]:
+        failures.append("cjk_adjacent_numeric_tokens")
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)
         run_dir, report_path = build_valid_self_test(root)

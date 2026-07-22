@@ -19,7 +19,10 @@ Deep Research Engine turns a user request into a traceable research process: pla
 9. Contradiction handling: do not force inconsistent sources into one number. Explain definition, geography, period, or source-incentive differences and assign a shared `contradiction_group` in the Ledger.
 10. Claim admission: after v61 Evidence validation, calculate one status for every final Plan Claim. A Claim is `supported`, `refuted`, `conflicted`, `gapped`, or `orphaned` under the v64 rules below.
 11. Pre-report gate: draft a formal report only when every Plan Claim is `supported` or `refuted`. Keep refuted Claims in the research result, but present the denial, narrowing, or lack of support faithfully.
-12. Synthesis and binding: answer the user's question first when applicable, then present evidence, mechanism, uncertainty, and follow-up checks. Create one canonical `report-claims.json` binding for every Plan Claim and audit the bound numbers before formal registration.
+12. Working draft and initial binding: answer the user's question first when applicable, then present evidence, mechanism, uncertainty, and follow-up checks. Create one canonical `report-claims.json` binding for every Plan Claim and audit the bound numbers.
+13. Pressure Test closure: run `pressure-test.md` against the working draft, write `challenges.json`, route only retrieval Challenges into the Gap Closure Loop, resolve each Challenge, rewrite the report, and obtain reviewer closure.
+14. Post-challenge truthfulness rerun: when Pressure Test changes Claim content, Claim status, Evidence selection, numbers, or body text, rerun affected v64 Claim admission and binding. Then run the v64 final fidelity audit against the revised report.
+15. Formal registration: grant final permission and set Manifest `report_path` only after the v63 structure check, v64 final fidelity check, v65 Challenge Ledger and reader-view checks, and sampling audit pass.
 
 ## v64 Claim Admission
 
@@ -52,6 +55,8 @@ For each high-impact gap:
 
 Do not stop after one broad search if the missing evidence affects market size, lifecycle, financials, valuation, stock movement, policy, regulation, demand, supply, cost, profitability, or core competitive claims. Use the first closure round for the most direct primary source, the second for near-primary or official-adjacent sources, and the third for cross-checking, alternate terms, archive pages, local-language queries, or credible secondary sources clearly marked as limitations.
 
+Pressure Test may add or reuse Gaps only for Challenges with `verification_method: retrieval`. Definition, calculation, logic, scope, and scenario reviews stay in `challenges.json` and do not consume retrieval rounds. The Engine selects each retrieval Challenge Gap and authorizes any closure round; the Protocol does not decide materiality, resolution, report rewrite, reviewer closure, or formal-report permission.
+
 ## Source Matrix
 
 | Layer | Typical claims | Preferred sources | Evidence level |
@@ -78,6 +83,7 @@ Standard and deep reports should include visible traces of the engine without du
 - State evidence gaps and next verification steps.
 - Separate facts, opinions, forecasts, and inferences when the distinction affects the conclusion.
 - Keep `report-claims.json` and `truthfulness-audit.md` internal. The reader-facing report does not need to expose internal Claim IDs outside the existing source matrix.
+- Keep the full `challenges.json` internal. Expose only the canonical nine-column Pressure Test rows required by `pressure-test.md`, plus the truthful `review_mode` disclosure.
 - Bind every Plan Claim to one exact reader-visible sentence or shortest complete statement in a real analytical section. Source matrices, compliance checklists, methodology notes, and disclaimers cannot serve as the canonical body binding.
 
 ## Minimum Visible Output Blocks
@@ -97,4 +103,4 @@ If network access, database access, filings, or primary sources are unavailable,
 
 This Engine owns evidence admission, independent verification, contradiction handling, and the three-round gap-closure decision. It does not define provider-specific search calls, query generation, Search and Visit loops, recursion, saturation, budgets, worker coordination, or run bundles; those are v62 responsibilities.
 
-The Engine also owns the minimum evidence threshold and formal-report permission. A Search Protocol result marked saturated or budget-exhausted is not permission to draft. If any Claim is `conflicted`, `gapped`, or `orphaned`, the Controller must deny a single formal conclusion, keep `report_path` null, and return only the Run Summary, conflicts, and Gaps. A draft does not become formal until the v63 structure checker, v64 final fidelity checker, and Claim sampling audit pass.
+The Engine also owns the minimum evidence threshold and formal-report permission. A Search Protocol result marked saturated or budget-exhausted is not permission to draft. If any Claim is `conflicted`, `gapped`, or `orphaned`, the Controller must deny a single formal conclusion, keep `report_path` null, and return only the Run Summary, conflicts, and Gaps. A draft also remains nonformal when any Challenge is pending or any high Challenge is open or disputed. It becomes formal only after Pressure Test closure, rerun of affected v64 admission and binding, the v63 structure checker, v64 final fidelity checker, v65 ledger and reader-view checks, and Claim sampling audit all pass.

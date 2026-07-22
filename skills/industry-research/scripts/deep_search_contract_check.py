@@ -128,6 +128,53 @@ VISIT_FIELDS = {
 BUDGET_FIELDS = {"search_limit", "visit_limit", "retry_limit", "elapsed_minutes_limit"}
 USAGE_FIELDS = {"search_count", "visit_count", "elapsed_minutes"}
 DEFAULT_BUDGETS = {"search_limit": 60, "visit_limit": 120, "retry_limit": 2, "elapsed_minutes_limit": 30}
+CHALLENGE_FIELDS = {
+    "challenge_id",
+    "reviewer_role",
+    "target_claim_id",
+    "target_section",
+    "challenge",
+    "materiality",
+    "verification_method",
+    "verification_required",
+    "gap_id",
+    "resolution",
+    "evidence_refs",
+    "verification_notes",
+    "report_change",
+    "confidence_action",
+    "reviewer_status",
+    "closed_by",
+    "reviewer_note",
+}
+EVIDENCE_REF_FIELDS = {
+    "source_id",
+    "document_url",
+    "page_or_section",
+    "relation",
+    "evidence_span_sha256",
+}
+REVIEWER_ROLES = {
+    "industry-expert",
+    "investment-researcher",
+    "policy-regulatory",
+    "operator-entrepreneur",
+    "intern",
+    "devils-advocate",
+}
+CORE_REVIEWER_ROLES = {
+    "industry-expert",
+    "investment-researcher",
+    "policy-regulatory",
+    "operator-entrepreneur",
+}
+REVIEW_MODES = {"multi-agent", "single-agent-simulated"}
+MATERIALITIES = {"high", "medium", "low"}
+VERIFICATION_METHODS = {"retrieval", "data-definition", "calculation", "logic", "scope", "scenario"}
+RESOLUTIONS = {"pending", "confirmed", "partially_valid", "refuted", "unresolved", "out_of_scope"}
+CONFIDENCE_ACTIONS = {"unchanged", "downgraded", "withdrawn", "not-applicable"}
+REVIEWER_STATUSES = {"open", "closed", "disputed"}
+CLOSED_BY_VALUES = {"original-reviewer", "organizer"}
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -222,6 +269,220 @@ def source_independence_key(record: dict[str, Any]) -> str:
     :return: 原始数据生成源标识.
     """
     return str(record.get("origin_source_id", "")).strip().casefold()
+
+
+def normalize_evidence_span(value: object) -> str:
+    """
+    规范 Evidence 片段以计算稳定摘要.
+
+    :param value: Evidence 片段值.
+    :return: Unicode 规范化并折叠空白后的文本.
+    """
+    normalized = unicodedata.normalize("NFKC", str(value))
+    return " ".join(normalized.split())
+
+
+def evidence_span_sha256(record: dict[str, Any]) -> str:
+    """
+    计算 Evidence 片段的 SHA-256 定位摘要.
+
+    :param record: Evidence record.
+    :return: 小写十六进制 SHA-256.
+    """
+    span = normalize_evidence_span(record.get("evidence_span", ""))
+    return hashlib.sha256(span.encode("utf-8")).hexdigest()
+
+
+def validate_evidence_reference(
+    reference: object,
+    claim_id: str,
+    evidence: list[dict[str, Any]],
+    label: str,
+) -> list[str]:
+    """
+    校验 Challenge Evidence 复合定位唯一命中同一 Claim.
+
+    :param reference: 待校验的 Evidence reference.
+    :param claim_id: Challenge 目标 Claim ID.
+    :param evidence: 最终 Evidence Ledger records.
+    :param label: 错误位置标签.
+    :return: 错误列表.
+    """
+    if not isinstance(reference, dict):
+        return [f"{label}: evidence reference must be an object"]
+    missing = missing_fields(reference, EVIDENCE_REF_FIELDS)
+    if missing:
+        return [f"{label}: evidence reference missing fields: {', '.join(missing)}"]
+    if set(reference) != EVIDENCE_REF_FIELDS:
+        return [f"{label}: evidence reference has noncanonical fields"]
+    if reference.get("relation") not in {"support", "refute"}:
+        return [f"{label}: invalid evidence relation"]
+    matches = [
+        record
+        for record in evidence
+        if record.get("claim_id") == claim_id
+        and record.get("access_status") == "obtained"
+        and record.get("source_id") == reference.get("source_id")
+        and record.get("document_url") == reference.get("document_url")
+        and record.get("page_or_section") == reference.get("page_or_section")
+        and record.get("relation") == reference.get("relation")
+        and evidence_span_sha256(record) == reference.get("evidence_span_sha256")
+    ]
+    if len(matches) != 1:
+        return [f"{label}: evidence reference must uniquely match one obtained same-Claim record"]
+    return []
+
+
+def validate_challenges(
+    payload: dict[str, Any],
+    run_id: str,
+    claim_ids: set[str],
+    gaps: dict[str, Any],
+    evidence: list[dict[str, Any]],
+    formal_report: bool,
+) -> list[str]:
+    """
+    校验 v65 Challenge Ledger 和跨工件闭环门禁.
+
+    :param payload: challenges.json 顶层对象.
+    :param run_id: 预期 Run ID.
+    :param claim_ids: Plan 中的 Claim ID.
+    :param gaps: Gaps 工件.
+    :param evidence: 最终 Evidence Ledger records.
+    :param formal_report: 当前 Run 是否已登记正式报告.
+    :return: 错误列表.
+    """
+    errors: list[str] = []
+    if set(payload) != {"schema_version", "run_id", "review_mode", "challenges"}:
+        errors.append("challenges: noncanonical top-level fields")
+    if payload.get("schema_version") != "v65":
+        errors.append("challenges: schema_version must be v65")
+    if payload.get("run_id") != run_id:
+        errors.append("challenges: run_id mismatch")
+    if payload.get("review_mode") not in REVIEW_MODES:
+        errors.append("challenges: invalid review_mode")
+    challenges = payload.get("challenges")
+    if not isinstance(challenges, list):
+        return errors + ["challenges: challenges must be a list"]
+    if formal_report and not challenges:
+        errors.append("challenges: formal report requires non-empty Challenge Ledger")
+    final_gaps = {
+        str(gap.get("gap_id", "")): gap
+        for gap in gaps.get("gaps", [])
+        if isinstance(gap, dict)
+    }
+    seen_ids: set[str] = set()
+    seen_roles: set[str] = set()
+    for index, challenge in enumerate(challenges, start=1):
+        label = f"challenges[{index}]"
+        if not isinstance(challenge, dict):
+            errors.append(f"{label}: must be an object")
+            continue
+        missing = missing_fields(challenge, CHALLENGE_FIELDS)
+        if missing:
+            errors.append(f"{label}: missing fields: {', '.join(missing)}")
+            continue
+        if set(challenge) != CHALLENGE_FIELDS:
+            errors.append(f"{label}: noncanonical fields")
+        challenge_id = str(challenge.get("challenge_id", ""))
+        if not re.fullmatch(r"challenge-[a-z0-9]+(?:-[a-z0-9]+)*", challenge_id):
+            errors.append(f"{label}: invalid challenge_id")
+        if challenge_id in seen_ids:
+            errors.append(f"{label}: duplicate challenge_id")
+        seen_ids.add(challenge_id)
+        role = challenge.get("reviewer_role")
+        if role not in REVIEWER_ROLES:
+            errors.append(f"{label}: invalid reviewer_role")
+        else:
+            seen_roles.add(str(role))
+        claim_id = str(challenge.get("target_claim_id", ""))
+        if claim_id not in claim_ids:
+            errors.append(f"{label}: unknown target_claim_id")
+        for field, allowed in (
+            ("materiality", MATERIALITIES),
+            ("verification_method", VERIFICATION_METHODS),
+            ("resolution", RESOLUTIONS),
+            ("confidence_action", CONFIDENCE_ACTIONS),
+            ("reviewer_status", REVIEWER_STATUSES),
+            ("closed_by", CLOSED_BY_VALUES),
+        ):
+            if challenge.get(field) not in allowed:
+                errors.append(f"{label}: invalid {field}")
+        for field in ("target_section", "challenge", "verification_required"):
+            if not isinstance(challenge.get(field), str) or not challenge[field].strip():
+                errors.append(f"{label}: {field} must be non-empty")
+        method = challenge.get("verification_method")
+        gap_id = challenge.get("gap_id")
+        if method == "retrieval":
+            gap = final_gaps.get(str(gap_id)) if isinstance(gap_id, str) else None
+            if gap is None:
+                errors.append(f"{label}: retrieval Challenge requires a known gap_id")
+            elif gap.get("claim_id") != claim_id:
+                errors.append(f"{label}: gap_id must reference the target Claim")
+            else:
+                gap_status = normalize_query(str(gap.get("status", "")))
+                closed_gap_statuses = {"closed", "resolved", normalize_query("已补齐")}
+                open_gap_statuses = {"open", "unresolved", "still open", normalize_query("仍未补齐")}
+                if challenge.get("resolution") in {"confirmed", "refuted", "out_of_scope"} and gap_status in open_gap_statuses:
+                    errors.append(f"{label}: retrieval resolution conflicts with open Gap status")
+                if challenge.get("resolution") == "unresolved" and gap_status in closed_gap_statuses:
+                    errors.append(f"{label}: unresolved retrieval Challenge conflicts with closed Gap status")
+        elif gap_id is not None:
+            errors.append(f"{label}: non-retrieval Challenge requires null gap_id")
+        references = challenge.get("evidence_refs")
+        if not isinstance(references, list):
+            errors.append(f"{label}: evidence_refs must be a list")
+            references = []
+        for reference_index, reference in enumerate(references, start=1):
+            errors.extend(
+                validate_evidence_reference(
+                    reference,
+                    claim_id,
+                    evidence,
+                    f"{label}.evidence_refs[{reference_index}]",
+                )
+            )
+        resolution = challenge.get("resolution")
+        notes = str(challenge.get("verification_notes", "")).strip()
+        report_change = str(challenge.get("report_change", "")).strip()
+        reviewer_note = str(challenge.get("reviewer_note", "")).strip()
+        if method == "retrieval" and resolution in {"confirmed", "partially_valid", "refuted"} and not references:
+            errors.append(f"{label}: retrieval resolution requires an Evidence reference")
+        if resolution != "pending" and not notes:
+            errors.append(f"{label}: resolved Challenge requires verification_notes")
+        if resolution != "pending" and not report_change:
+            errors.append(f"{label}: resolution requires report_change")
+        if resolution == "refuted" and not references and (method == "retrieval" or not notes):
+            errors.append(f"{label}: refuted Challenge requires Evidence or non-retrieval review notes")
+        if resolution == "unresolved" and challenge.get("confidence_action") not in {"downgraded", "withdrawn"}:
+            errors.append(f"{label}: unresolved Challenge requires downgraded or withdrawn confidence")
+        if challenge.get("reviewer_status") == "closed" and not reviewer_note:
+            errors.append(f"{label}: closed Challenge requires reviewer_note")
+        if challenge.get("materiality") == "high":
+            if challenge.get("reviewer_status") == "closed" and challenge.get("closed_by") != "original-reviewer":
+                errors.append(f"{label}: high Challenge must be closed by original reviewer")
+            if formal_report and challenge.get("reviewer_status") in {"open", "disputed"}:
+                errors.append(f"{label}: open or disputed high Challenge blocks formal report")
+        if formal_report and resolution == "pending":
+            errors.append(f"{label}: pending Challenge blocks formal report")
+    if formal_report:
+        missing_roles = sorted(CORE_REVIEWER_ROLES - seen_roles)
+        if missing_roles:
+            errors.append(f"challenges: formal report missing core reviewer roles: {', '.join(missing_roles)}")
+    return errors
+
+
+def validate_challenge_artifact_requirement(manifest: dict[str, Any], challenge_path: Path) -> list[str]:
+    """
+    校验正式报告是否存在 Challenge Ledger 工件.
+
+    :param manifest: Run Manifest.
+    :param challenge_path: challenges.json 路径.
+    :return: 错误列表.
+    """
+    if manifest.get("report_status") == "generated" and not challenge_path.is_file():
+        return ["missing artifact: challenges.json for generated formal report"]
+    return []
 
 
 def is_information_saturated(actions: list[dict[str, Any]]) -> bool:
@@ -662,6 +923,25 @@ def validate_run_bundle(run_dir: Path, repo_root: Path) -> list[str]:
     claim_ids = {str(claim.get("claim_id")) for claim in plan.get("claims", []) if isinstance(claim, dict)}
     errors.extend(validate_gaps(gaps, run_dir.name, claim_ids))
     errors.extend(validate_evidence(evidence))
+    challenge_path = run_dir / "challenges.json"
+    formal_report = manifest.get("report_status") == "generated"
+    errors.extend(validate_challenge_artifact_requirement(manifest, challenge_path))
+    if challenge_path.is_file():
+        try:
+            challenges = read_json(challenge_path)
+        except (ValueError, json.JSONDecodeError) as exc:
+            errors.append(str(exc))
+        else:
+            errors.extend(
+                validate_challenges(
+                    challenges,
+                    run_dir.name,
+                    claim_ids,
+                    gaps,
+                    evidence,
+                    formal_report,
+                )
+            )
     worker_paths = sorted((run_dir / "workers").glob("*-summary.json"))
     evidence_paths = sorted((run_dir / "workers").glob("*-evidence.jsonl"))
     if not worker_paths or not evidence_paths:
@@ -862,7 +1142,7 @@ def run_self_test(json_output: bool = False) -> int:
                 "claim_id": "claim-market-size",
                 "missing_item": "Comparable definition",
                 "impact": "high",
-                "status": "open",
+                "status": "closed",
                 "attempted_actions": [],
                 "unresolved_reason": "",
                 "next_source_route": "registered_canonical",
@@ -872,6 +1152,114 @@ def run_self_test(json_output: bool = False) -> int:
     }
     if validate_gaps(valid_gaps, "run-v62-test", {"claim-market-size"}):
         failures.append("valid_gaps")
+    evidence_hash = evidence_span_sha256(first)
+    base_challenge = {
+        "challenge_id": "challenge-market-definition",
+        "reviewer_role": "industry-expert",
+        "target_claim_id": "claim-market-size",
+        "target_section": "4. Lifecycle Assessment",
+        "challenge": "The market definition may include non-comparable categories.",
+        "materiality": "high",
+        "verification_method": "retrieval",
+        "verification_required": "Check the official dataset definition.",
+        "gap_id": "gap-market-definition",
+        "resolution": "confirmed",
+        "evidence_refs": [
+            {
+                "source_id": first["source_id"],
+                "document_url": first["document_url"],
+                "page_or_section": first["page_or_section"],
+                "relation": first["relation"],
+                "evidence_span_sha256": evidence_hash,
+            }
+        ],
+        "verification_notes": "The official definition includes the disputed category.",
+        "report_change": "The report narrows the market definition.",
+        "confidence_action": "downgraded",
+        "reviewer_status": "closed",
+        "closed_by": "original-reviewer",
+        "reviewer_note": "The revised scope resolves the challenge.",
+    }
+    valid_challenges = {
+        "schema_version": "v65",
+        "run_id": "run-v62-test",
+        "review_mode": "single-agent-simulated",
+        "challenges": [
+            base_challenge,
+            dict(base_challenge, challenge_id="challenge-investment", reviewer_role="investment-researcher", materiality="medium", closed_by="organizer"),
+            dict(base_challenge, challenge_id="challenge-policy", reviewer_role="policy-regulatory", materiality="medium", closed_by="organizer"),
+            dict(base_challenge, challenge_id="challenge-operator", reviewer_role="operator-entrepreneur", materiality="medium", closed_by="organizer"),
+        ],
+    }
+    challenge_errors = validate_challenges(
+        valid_challenges,
+        "run-v62-test",
+        {"claim-market-size"},
+        valid_gaps,
+        [first],
+        True,
+    )
+    if challenge_errors:
+        failures.append(f"valid_challenges: {challenge_errors[0]}")
+    pending_challenges = dict(
+        valid_challenges,
+        challenges=[dict(base_challenge, resolution="pending", reviewer_status="open")],
+    )
+    pending_errors = validate_challenges(
+        pending_challenges,
+        "run-v62-test",
+        {"claim-market-size"},
+        valid_gaps,
+        [first],
+        True,
+    )
+    if not any("pending Challenge blocks formal report" in error for error in pending_errors):
+        failures.append("pending_challenge_report_gate")
+    organizer_high = dict(
+        valid_challenges,
+        challenges=[dict(base_challenge, closed_by="organizer")],
+    )
+    organizer_errors = validate_challenges(
+        organizer_high,
+        "run-v62-test",
+        {"claim-market-size"},
+        valid_gaps,
+        [first],
+        False,
+    )
+    if not any("high Challenge must be closed by original reviewer" in error for error in organizer_errors):
+        failures.append("high_original_reviewer_gate")
+    non_retrieval_gap = dict(
+        valid_challenges,
+        challenges=[dict(base_challenge, verification_method="logic")],
+    )
+    non_retrieval_errors = validate_challenges(
+        non_retrieval_gap,
+        "run-v62-test",
+        {"claim-market-size"},
+        valid_gaps,
+        [first],
+        False,
+    )
+    if not any("non-retrieval Challenge requires null gap_id" in error for error in non_retrieval_errors):
+        failures.append("non_retrieval_gap_gate")
+    open_gap_challenges = json.loads(json.dumps(valid_challenges))
+    open_gap_errors = validate_challenges(
+        open_gap_challenges,
+        "run-v62-test",
+        {"claim-market-size"},
+        dict(valid_gaps, gaps=[dict(valid_gaps["gaps"][0], status="open")]),
+        [first],
+        False,
+    )
+    if not any("retrieval resolution conflicts with open Gap status" in error for error in open_gap_errors):
+        failures.append("retrieval_gap_status_gate")
+    missing_ledger = Path("missing-challenges.json")
+    if validate_challenge_artifact_requirement(valid_manifest, missing_ledger):
+        failures.append("incomplete_challenge_artifact_optional")
+    generated_without_ledger = dict(valid_manifest, report_status="generated")
+    if not validate_challenge_artifact_requirement(generated_without_ledger, missing_ledger):
+        failures.append("generated_challenge_artifact_gate")
     status = "fail" if failures else "pass"
     if json_output:
         print(json.dumps({"status": status, "failures": failures}, ensure_ascii=False, indent=2))

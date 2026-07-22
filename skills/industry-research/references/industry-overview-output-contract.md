@@ -42,6 +42,7 @@ The exact v63 numbered skeleton is in `assets/industry-overview-template.md`. Se
 - Fact, opinion, and inference classification is an independent visible section on this route.
 - Macro and meso layers are required. Micro analysis is optional and only supports representative cases.
 - Before drafting, every Plan Claim must pass v64 admission. Before registration, every Claim must have one exact body binding, complete numeric coverage, and a sampling-audit record.
+- Run the v65 Pressure Test against the working draft, close the Challenge Ledger, rewrite affected analysis, and rerun affected v64 admission and binding before final fidelity audit.
 
 ## Route Failure Conditions
 
@@ -52,6 +53,7 @@ Rewrite before output when the draft:
 - omits trend outlook;
 - substitutes an old v62-or-earlier shared heading or field;
 - puts risk before pressure testing or omits the executable verification checklist;
+- uses the old four-column Pressure Test, omits a core reviewer role, or leaves any pending or open/disputed high Challenge;
 - compresses a standard or deep report into a market summary.
 
 Resolve the active Skill root from the loaded `industry-research/SKILL.md`, then run `python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile overview` from the report workspace and rerun it with `--profile auto` before delivery. Run the v64 final fidelity checker against the matching Research Run before Manifest registration. All results must pass.

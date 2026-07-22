@@ -1,0 +1,20 @@
+[
+  {"name": "legacy-four-column", "expected": "noncanonical contract header"},
+  {"name": "pending-reader-row", "expected": "pending or invalid resolution"},
+  {"name": "open-reader-row", "expected": "open or disputed reviewer status"},
+  {"name": "missing-core-role", "expected": "four core reviewer perspectives"},
+  {"name": "invalid-enum", "expected": "invalid materiality"},
+  {"name": "unknown-claim", "expected": "unknown target_claim_id"},
+  {"name": "retrieval-missing-gap", "expected": "retrieval Challenge requires a known gap_id"},
+  {"name": "retrieval-open-gap", "expected": "retrieval resolution conflicts with open Gap status"},
+  {"name": "non-retrieval-gap", "expected": "non-retrieval Challenge requires null gap_id"},
+  {"name": "evidence-zero-match", "expected": "uniquely match one obtained same-Claim record"},
+  {"name": "confirmed-no-change", "expected": "resolution requires report_change"},
+  {"name": "confirmed-retrieval-no-evidence", "expected": "retrieval resolution requires an Evidence reference"},
+  {"name": "refuted-no-basis", "expected": "refuted Challenge requires Evidence or non-retrieval review notes"},
+  {"name": "refuted-no-report-change", "expected": "resolution requires report_change"},
+  {"name": "unresolved-unchanged", "expected": "unresolved Challenge requires downgraded or withdrawn confidence"},
+  {"name": "high-organizer-close", "expected": "high Challenge must be closed by original reviewer"},
+  {"name": "high-disputed-formal", "expected": "open or disputed high Challenge blocks formal report"},
+  {"name": "pending-formal", "expected": "pending Challenge blocks formal report"}
+]

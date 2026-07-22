@@ -109,10 +109,15 @@ Evidence tier, evidence quality, source status, and confidence use the translati
 
 | Chinese | English |
 |---|---|
+| `质疑 ID` | `Challenge ID` |
 | `视角` | `Perspective` |
-| `质疑` | `Challenge` |
-| `为什么重要` | `Why It Matters` |
-| `需要验证` | `Verification Needed` |
+| `目标 Claim/章节` | `Target Claim/Section` |
+| `重要性` | `Materiality` |
+| `核心质疑` | `Core Challenge` |
+| `裁决` | `Resolution` |
+| `证据/Gap` | `Evidence/Gap` |
+| `报告改动` | `Report Change` |
+| `复核状态` | `Reviewer Status` |
 | `待验证问题` | `Verification Item` |
 | `当前证据状态` | `Current Evidence Status` |
 | `推荐来源` | `Recommended Source` |
