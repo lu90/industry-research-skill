@@ -1,0 +1,20 @@
+[
+  {"name": "primary-support", "mutation": "base"},
+  {"name": "primary-satisfies-near-primary", "mutation": "primary-for-near-primary"},
+  {"name": "single-source-primary", "mutation": "base"},
+  {"name": "independently-verified", "mutation": "independently-verified"},
+  {"name": "high-quality-refute", "mutation": "refuted"},
+  {"name": "supported-with-supplemental-gap", "mutation": "supplemental-gap"},
+  {"name": "direct-number", "mutation": "base"},
+  {"name": "identity", "mutation": "identity"},
+  {"name": "sum", "mutation": "sum"},
+  {"name": "difference", "mutation": "difference"},
+  {"name": "ratio", "mutation": "ratio"},
+  {"name": "share", "mutation": "share"},
+  {"name": "percentage-change", "mutation": "percentage-change"},
+  {"name": "decimal-scale", "mutation": "decimal-scale"},
+  {"name": "manual-number", "mutation": "manual-number"},
+  {"name": "chinese-report-span", "mutation": "chinese-span"},
+  {"name": "complete-overview-english", "mutation": "full-overview-en"},
+  {"name": "complete-overview-chinese", "mutation": "full-overview-zh"}
+]

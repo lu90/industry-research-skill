@@ -17,7 +17,23 @@ Deep Research Engine turns a user request into a traceable research process: pla
 7. Gap status classification: after up to three closure rounds, label each gap as `已补齐`, `部分补齐`, or `仍未补齐`. Keep `仍未补齐` only when the source is inaccessible, requires a paid database, requires login, or public search returns no reliable result.
 8. Cross-verification: for key data and conclusions, compare `origin_source_id` values and try to verify with at least two independent data-generating origins. Use the schema `independence_status`; multiple copies of one original document are not independent.
 9. Contradiction handling: do not force inconsistent sources into one number. Explain definition, geography, period, or source-incentive differences and assign a shared `contradiction_group` in the Ledger.
-10. Synthesis: answer the user's question first when applicable, then present evidence, mechanism, uncertainty, and follow-up checks.
+10. Claim admission: after v61 Evidence validation, calculate one status for every final Plan Claim. A Claim is `supported`, `refuted`, `conflicted`, `gapped`, or `orphaned` under the v64 rules below.
+11. Pre-report gate: draft a formal report only when every Plan Claim is `supported` or `refuted`. Keep refuted Claims in the research result, but present the denial, narrowing, or lack of support faithfully.
+12. Synthesis and binding: answer the user's question first when applicable, then present evidence, mechanism, uncertainty, and follow-up checks. Create one canonical `report-claims.json` binding for every Plan Claim and audit the bound numbers before formal registration.
+
+## v64 Claim Admission
+
+Evidence qualifies for one Claim only when `claim_id` matches, `access_status` is `obtained`, `relation` is `support` or `refute`, `evidence_span` and `page_or_section` are nonempty, and the document tier meets the Claim requirement. Tier admission is monotonic: primary satisfies every tier, near-primary satisfies near-primary through weak, secondary satisfies secondary or weak, and weak satisfies only weak.
+
+| Status | Deterministic meaning | Formal-report behavior |
+|---|---|---|
+| `supported` | At least one qualifying support record and no unresolved material conflict | Admit with Evidence limitations visible |
+| `refuted` | Qualifying refute Evidence and no qualifying support conflict | Admit only as a denied, narrowed, or unsupported proposition |
+| `conflicted` | Qualifying support and refute Evidence coexist, or `unresolved-conflict` remains | Deny a single formal conclusion |
+| `gapped` | No qualifying Evidence and an explicit Gap exists for the same Claim | Finalize the Run as incomplete and return Summary plus Gaps |
+| `orphaned` | No qualifying Evidence and no matching Gap | Contract failure until Evidence or an honest Gap is added |
+
+Do not impose a universal two-source rule. `single-source-primary` may admit an authoritative primary fact with its limitation visible. `independently_verified` still requires two distinct `origin_source_id` values, and same-origin copies never count as independent verification.
 
 ## Retrieval Gap Closure Loop
 
@@ -61,6 +77,8 @@ Standard and deep reports should include visible traces of the engine without du
 - Mark evidence quality for important claims.
 - State evidence gaps and next verification steps.
 - Separate facts, opinions, forecasts, and inferences when the distinction affects the conclusion.
+- Keep `report-claims.json` and `truthfulness-audit.md` internal. The reader-facing report does not need to expose internal Claim IDs outside the existing source matrix.
+- Bind every Plan Claim to one exact reader-visible sentence or shortest complete statement in a real analytical section. Source matrices, compliance checklists, methodology notes, and disclaimers cannot serve as the canonical body binding.
 
 ## Minimum Visible Output Blocks
 
@@ -79,4 +97,4 @@ If network access, database access, filings, or primary sources are unavailable,
 
 This Engine owns evidence admission, independent verification, contradiction handling, and the three-round gap-closure decision. It does not define provider-specific search calls, query generation, Search and Visit loops, recursion, saturation, budgets, worker coordination, or run bundles; those are v62 responsibilities.
 
-The Engine also owns the minimum evidence threshold and formal-report permission. A Search Protocol result marked saturated or budget-exhausted is not permission to draft. If the threshold is unmet, the Controller must finalize the Research Run as `incomplete`, keep `report_path` null, and return only the Run Summary and Gaps.
+The Engine also owns the minimum evidence threshold and formal-report permission. A Search Protocol result marked saturated or budget-exhausted is not permission to draft. If any Claim is `conflicted`, `gapped`, or `orphaned`, the Controller must deny a single formal conclusion, keep `report_path` null, and return only the Run Summary, conflicts, and Gaps. A draft does not become formal until the v63 structure checker, v64 final fidelity checker, and Claim sampling audit pass.

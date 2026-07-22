@@ -88,6 +88,7 @@ Validation and maintenance scripts:
 - Batch Markdown report checker, maintenance only: `scripts/report_batch_check.py`.
 - Source Registry and Evidence Ledger contract checker, maintenance only: `scripts/source_contract_check.py`.
 - Deep Search Protocol and Research Run contract checker, used after formal report generation and during maintenance: `scripts/deep_search_contract_check.py`.
+- Claim admission and report fidelity checker, used before drafting and before formal report registration: `scripts/truthfulness_contract_check.py`.
 
 For industry overview reports, read `references/research-brief-builder.md`, `references/common-report-section-contract.md`, `assets/industry-overview-template.md`, `references/industry-overview-output-contract.md`, `references/output-format.md`, `references/section-depth-playbook.md`, `references/report-depth-rubric.md`, `references/report-compliance.md`, and `references/layered-analysis.md` before writing the report.
 
@@ -97,7 +98,7 @@ For industry-specific questions, read `references/research-brief-builder.md`, `r
 
 When the user asks to generate a prompt, summarize requirements, set the research target, clarify the research scope, or create a reusable instruction for another agent, read `references/research-brief-builder.md` and `assets/research-prompt-template.md`, then output the filled prompt instead of the report.
 
-When maintaining or validating this skill after edits, read `references/report-regression-tests.md` and use it with `references/routing-sanity-check.md`. Use `scripts/report_contract_check.py` on generated Markdown reports, `scripts/report_batch_check.py` for a directory of generated reports, `scripts/source_contract_check.py` for Source Registry or Evidence Ledger contracts, and `scripts/deep_search_contract_check.py` for Deep Search Protocol or Research Run contracts. Do not load these maintenance resources for normal report generation.
+When maintaining or validating this skill after edits, read `references/report-regression-tests.md` and use it with `references/routing-sanity-check.md`. Use `scripts/report_contract_check.py` on generated Markdown reports, `scripts/report_batch_check.py` for a directory of generated reports, `scripts/source_contract_check.py` for Source Registry or Evidence Ledger contracts, `scripts/deep_search_contract_check.py` for Deep Search Protocol or Research Run contracts, and `scripts/truthfulness_contract_check.py` for v64 Claim admission and report fidelity. Do not load these maintenance resources for normal report generation.
 
 For every standard or deep report, read `references/information-sources.md` and `references/source-registry-schema.md`, then load only the registry matching each high-impact Claim. Mixed questions may load multiple registries. Keep the Evidence Ledger internal.
 
@@ -135,6 +136,11 @@ For every standard or deep report, read `references/information-sources.md` and 
 - For standard or deep reports, run the Deep Research Engine before writing the report.
 - When the Deep Research Engine requests the first retrieval pass or a gap-closure round, use `references/deep-search-protocol.md`; keep Engine research policy and Protocol retrieval execution separate.
 - For standard or deep reports, assign stable `claim_id` and `source_id` values and record actual access and independence outcomes through the Evidence Ledger contract in `references/source-registry-schema.md`.
+- Treat every Claim in final `plan.json` as a high-impact Claim. Before drafting, run the v64 pre-report Claim admission gate. Only `supported` and `refuted` Claims permit a formal report; `conflicted`, `gapped`, and `orphaned` Claims deny formal-report permission and return only the Run Summary, conflicts, and Gaps.
+- For every v64 formal report, create internal `report-claims.json` with exactly one canonical binding for every Plan Claim. Bind each Claim to one exact reader-visible `report_span` in its real analytical section and to uniquely located Evidence from the same Claim.
+- Audit every numeric token in each canonical `report_span` as `direct`, safely `derived`, decimal-scale `converted`, `manual`, or an explicit non-Claim exclusion. Complex calculations must use `manual`, set `manual_review_required: true`, and remain visible in the sampling audit.
+- Before registering or returning a formal report, run the v64 final fidelity gate and save `truthfulness-audit.md`. Review at least three Claims, or every Claim when fewer than three exist, and label Agent-only review as `agent-self-check` rather than human review.
+- Do not set Manifest `report_path` or `report_status: generated` until the v63 report checker and v64 final fidelity checker pass. A failed draft remains an internal Run artifact and must not be returned as the formal report.
 - For standard or deep reports, apply the Retrieval Gap Closure Loop in `references/deep-research-engine.md`: high-impact gaps require up to three targeted closure rounds before final drafting, and unresolved gaps must show round-by-round attempted sources, status, unresolved reason, impact, and next primary or near-primary source.
 - Use the layer selector: include macro and meso layers for industry research, include micro only when the request involves a company/product/project/player, and include capital-market layer only for stock price, valuation, expectation, investability, market-cap repair, or rise/fall questions.
 - Stock price, valuation, expectation gap, and rise/fall questions about a listed company must be treated as company/product analysis with a conditional capital-market module, not as a quick market comment.

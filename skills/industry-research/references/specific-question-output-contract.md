@@ -42,6 +42,7 @@ fixed disclaimer
 - The template is self-contained. Do not instruct the writer to look at the overview template for the boundary, map, or pressure-test body.
 - The canonical evidence-chain table is the equivalent fulfillment of the shared fact-opinion-inference obligation. Do not add a duplicate classification chapter.
 - Macro, meso, and issue-tree layers are required. Micro is conditional on a company, product, project, or player being central to the causal mechanism without becoming the report target.
+- The visible evidence-chain table does not replace v64 internal Claim binding. Every Plan Claim still needs one exact body `report_span`, same-Claim Evidence references, numeric coverage, and sampling review.
 
 ## Route Failure Conditions
 
@@ -54,4 +55,4 @@ Rewrite before output when the draft:
 - uses old shared titles or fields;
 - reduces the answer to a short commentary without an explicit short-answer request.
 
-Resolve the active Skill root from the loaded `industry-research/SKILL.md`, then run `python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile specific` from the report workspace and rerun it with `--profile auto` before delivery. Both profiles must return the same result.
+Resolve the active Skill root from the loaded `industry-research/SKILL.md`, then run `python -B "<skill-root>/scripts/report_contract_check.py" <report.md> --profile specific` from the report workspace and rerun it with `--profile auto` before delivery. Run the v64 final fidelity checker against the matching Research Run before Manifest registration. All results must pass.
