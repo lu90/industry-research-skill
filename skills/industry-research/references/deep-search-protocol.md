@@ -9,8 +9,11 @@ Use this provider-neutral protocol whenever the Deep Research Engine requests a 
 | Deep Research Engine | Research plan, high-impact Claims, required Evidence tier, evidence admission, independent-verification requirement, contradiction treatment, gap-closure round decisions, minimum evidence threshold, and formal-report permission. |
 | Deep Search Protocol | Breadth and follow-up query generation, Search, Visit, and Extract actions, recursion inside one Engine-authorized round, deduplication, saturation, safety budgets, Worker coordination, and Research Run artifacts. |
 | v61 source system | Claim routing, Source records, Evidence records, access outcomes, registry status, and source-independence fields. |
+| v65 Pressure Test | Challenge materiality, verification method, resolution, report rewrite, reviewer closure, and Challenge Ledger semantics. |
 
 If rules appear to conflict, the Engine governs research quality and report admission, while this protocol governs retrieval execution. This protocol must not redefine the Engine's evidence threshold, two-origin rule, or three-round gap-closure limit.
+
+Pressure Test calls this protocol only for a Challenge with `verification_method: retrieval` after the Engine selects its Gap and authorizes a bounded closure round. `data-definition`, `calculation`, `logic`, `scope`, and `scenario` Challenges do not enter Search, Visit, and Extract merely to satisfy a process count. The Protocol returns Evidence and Gap progress to the Engine and never assigns Challenge resolution or reviewer closure.
 
 ## Provider-neutral Capabilities
 
@@ -147,7 +150,9 @@ research_runs/<run_id>/
 
 `plan.json` contains the research boundary, Engine-owned Claim queue, source routes, Worker assignments, and Engine-authorized round identifiers. It records policy inputs without redefining them.
 
-`gaps.json` contains `run_id`, `gaps`, and `contradictions`. Each Gap has `gap_id`, `claim_id`, exact missing item, impact, status, attempted rounds or actions, unresolved reason, and next source route.
+`gaps.json` contains `run_id`, `gaps`, and `contradictions`. Each Gap has `gap_id`, `claim_id`, exact missing item, impact, status, attempted rounds or actions, unresolved reason, and next source route. A Pressure Test retrieval Challenge references one same-Claim Gap from this file; non-retrieval Challenges use `gap_id: null`.
+
+`challenges.json` is a v65 audit artifact defined by `pressure-test.md`. This Protocol may append retrieval attempts, Evidence, and Gap progress that support it, but the Organizer and Engine own the Ledger, resolution, report change, re-review, and formal gate.
 
 Each Worker Summary contains `run_id`, `worker_id`, assignment, attempted queries, visited sources, Learnings, remaining Gaps, contradictions, new source candidates, usage, and Worker stop reason. Structure uses JSON, Evidence uses JSONL, and the human review summary uses Markdown.
 

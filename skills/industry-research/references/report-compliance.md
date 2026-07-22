@@ -29,6 +29,7 @@ Run this gate before delivering any standard or deep formal report. This file ag
 - Attempted rounds and sources are traceable to Run actions. Unused rounds are not invented.
 - A formal report is generated only for a `completed` Run with `engine_report_permission: true`.
 - Report filename stem, `run_id`, Manifest `report_path`, and `report_status: generated` form one unique association.
+- `challenges.json` exists for a generated report, shares the Run ID, contains all four core reviewer roles, and passes Challenge schema and cross-artifact validation.
 
 ### Claim Admission And Fidelity
 
@@ -41,13 +42,24 @@ Run this gate before delivering any standard or deep formal report. This file ag
 - Every numeric token is checked or explicitly excluded. Unsupported calculations use `manual` and set `manual_review_required: true`.
 - `truthfulness-audit.md` reviews at least three Claims, or all Claims when fewer than three exist, includes every manual Claim, and truthfully declares `human` or `agent-self-check`.
 - Manifest report registration happens only after report structure and final fidelity checks pass.
+- Pressure Test report changes invalidate affected v64 admission, binding, and fidelity results until those checks are rerun against the revised report.
+
+### Pressure Test Closure
+
+- The working draft is reviewed before Manifest formal registration.
+- Only retrieval Challenges create or reuse a same-Claim Gap and enter the Deep Search Protocol.
+- No Challenge remains `pending`; no high Challenge remains `open` or `disputed`.
+- Every high Challenge is closed by its original reviewer. Medium and low Challenges may be closed by the Organizer.
+- `confirmed` and `partially_valid` Challenges produce concrete report changes. High unresolved Challenges downgrade or withdraw confidence and disclose the limitation.
+- The report discloses `review_mode` and uses the canonical nine-column summary.
+- Every required reader-facing row matches `challenges.json` for ID, target, materiality, challenge, resolution, Evidence or Gap, report change, and reviewer status.
 
 ### Shared Analytical Quality
 
 - Lifecycle assessment includes phase, evidence, counterevidence, confidence, and research implication.
 - Seven modules remain seven independent subsections with all five canonical blocks.
 - Overview and company routes include an independent fact-opinion-inference section. Specific fulfills this through the canonical evidence chain.
-- Pressure testing includes at least industry expert, investment researcher, policy or regulatory, and operator or entrepreneur perspectives for company reports; other routes keep the minimum enforced by the checker.
+- Pressure testing includes at least industry expert, investment researcher, policy or regulatory, and operator or entrepreneur perspectives for every formal route.
 - Risks distinguish fact risk, assumption risk, data gap, upside opportunity, and trigger condition.
 - Verification items include current evidence status, importance, recommended source, and priority.
 - Missing evidence is disclosed, not invented.

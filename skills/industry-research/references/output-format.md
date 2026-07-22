@@ -75,7 +75,7 @@ For standard company/product reports:
 - Priority modules should be longer when the user question depends on them. For listed-company capital-market questions, `5.4 盈利性`, `5.5 估值`, `5.6 外部因素`, and `5.7 景气度` should reach roughly 500-800 Chinese characters.
 - `6. 微观公司/产品分析`: connect company facts to industry conclusions, not only describe the target.
 - `10. 事实, 观点和推断分层`: include evidence tier, source status, and confidence for important claims.
-- `12. 多视角压力测试`: include at least 4 distinct perspectives unless the user explicitly asks for a short answer.
+- `8`, `10`, or `12. 多视角压力测试`: every formal route includes the four core perspectives, discloses review mode, and uses the substantive v65 nine-column closure summary.
 
 For standard listed-company capital-market reports:
 

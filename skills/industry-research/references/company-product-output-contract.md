@@ -55,6 +55,7 @@ fixed disclaimer
 - Recommended next actions are target actions. They do not replace the shared evidence-verification checklist.
 - Company reports keep the independent fact-opinion-inference chapter.
 - Before drafting, every Plan Claim must pass v64 admission. Before registration, every Claim must bind to one exact analytical body span and same-Claim Evidence, with complete numeric coverage and a saved sampling audit.
+- Run the v65 Pressure Test against the working draft, close the Challenge Ledger, rewrite affected company or capital-market analysis, and rerun affected v64 admission and binding before final fidelity audit.
 
 ## Company Depth Gate
 
@@ -93,6 +94,7 @@ Rewrite before output when the draft:
 - uses an empty or wrongly activated conditional module;
 - omits `4.0` or any `11.1-11.4` subsection on a company-capital route;
 - uses old shared titles or fields;
+- uses the old four-column Pressure Test, omits a core reviewer role, or leaves any pending or open/disputed high Challenge;
 - collapses seven modules into a table;
 - gives a target price, guaranteed return, or buy/sell instruction.
 

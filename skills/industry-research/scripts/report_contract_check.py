@@ -313,6 +313,14 @@ ENGLISH_TERM_ALIASES = {
     "Confidence": "置信度",
     "Basis": "依据",
     "Perspective": "视角",
+    "Challenge ID": "质疑 ID",
+    "Target Claim/Section": "目标 Claim/章节",
+    "Materiality": "重要性",
+    "Core Challenge": "核心质疑",
+    "Resolution": "裁决",
+    "Evidence/Gap": "证据/Gap",
+    "Report Change": "报告改动",
+    "Reviewer Status": "复核状态",
     "Challenge": "质疑",
     "Impact": "影响",
     "Verification Needed": "需要验证",
@@ -435,7 +443,7 @@ CANONICAL_FIELD_CONTRACTS = {
                 ("### 2.2 来源矩阵和证据质量", ["关键 Claim", "来源类型", "本报告用途", "证据层级", "证据质量", "来源状态", "独立验证状态", "限制和缺口处理"]),
                 ("### 2.3 检索缺口闭环结果", ["缺口", "已尝试轮次和来源", "当前状态", "为什么仍重要", "未补齐原因", "下一步来源"]),
                 ("## 7. 事实, 观点和推断分层", ["类型", "内容", "来源/依据", "证据层级", "证据质量", "来源状态", "置信度"]),
-                ("## 8. 多视角压力测试", ["视角", "质疑", "为什么重要", "需要验证"]),
+                ("## 8. 多视角压力测试", ["质疑 ID", "视角", "目标 Claim/章节", "重要性", "核心质疑", "裁决", "证据/Gap", "报告改动", "复核状态"]),
                 ("## 10. 后续验证清单", ["待验证问题", "当前证据状态", "为什么重要", "推荐来源", "优先级"]),
                 ("## 11. 报告合规自检表", ["检查项", "是否通过", "说明"]),
             ],
@@ -450,7 +458,7 @@ CANONICAL_FIELD_CONTRACTS = {
                 ("### 2.2 Source Matrix and Evidence Quality", ["Key Claim", "Source Type", "Use in This Report", "Evidence Tier", "Evidence Quality", "Source Status", "Independent Verification Status", "Limitations and Gap Handling"]),
                 ("### 2.3 Retrieval Gap Closure Results", ["Gap", "Attempted Rounds and Sources", "Current Status", "Why It Still Matters", "Unresolved Reason", "Next Source"]),
                 ("## 7. Fact, Opinion, and Inference Layers", ["Type", "Content", "Source/Basis", "Evidence Tier", "Evidence Quality", "Source Status", "Confidence"]),
-                ("## 8. Multi-Perspective Pressure Test", ["Perspective", "Challenge", "Why It Matters", "Verification Needed"]),
+                ("## 8. Multi-Perspective Pressure Test", ["Challenge ID", "Perspective", "Target Claim/Section", "Materiality", "Core Challenge", "Resolution", "Evidence/Gap", "Report Change", "Reviewer Status"]),
                 ("## 10. Follow-up Verification Checklist", ["Verification Item", "Current Evidence Status", "Why It Matters", "Recommended Source", "Priority"]),
                 ("## 11. Report Compliance Checklist", ["Check", "Passed", "Explanation"]),
             ],
@@ -467,7 +475,7 @@ CANONICAL_FIELD_CONTRACTS = {
                 ("### 3.2 来源矩阵和证据质量", ["关键 Claim", "来源类型", "本报告用途", "证据层级", "证据质量", "来源状态", "独立验证状态", "限制和缺口处理"]),
                 ("### 3.3 检索缺口闭环结果", ["缺口", "已尝试轮次和来源", "当前状态", "为什么仍重要", "未补齐原因", "下一步来源"]),
                 ("## 7. 证据链分析", ["子问题", "结论", "事实", "观点", "推断", "来源/依据", "证据层级", "证据质量", "来源状态", "置信度"]),
-                ("## 10. 多视角压力测试", ["视角", "质疑", "为什么重要", "需要验证"]),
+                ("## 10. 多视角压力测试", ["质疑 ID", "视角", "目标 Claim/章节", "重要性", "核心质疑", "裁决", "证据/Gap", "报告改动", "复核状态"]),
                 ("## 12. 后续验证清单", ["待验证问题", "当前证据状态", "为什么重要", "推荐来源", "优先级"]),
                 ("## 13. 报告合规自检表", ["检查项", "是否通过", "说明"]),
             ],
@@ -482,7 +490,7 @@ CANONICAL_FIELD_CONTRACTS = {
                 ("### 3.2 Source Matrix and Evidence Quality", ["Key Claim", "Source Type", "Use in This Report", "Evidence Tier", "Evidence Quality", "Source Status", "Independent Verification Status", "Limitations and Gap Handling"]),
                 ("### 3.3 Retrieval Gap Closure Results", ["Gap", "Attempted Rounds and Sources", "Current Status", "Why It Still Matters", "Unresolved Reason", "Next Source"]),
                 ("## 7. Evidence Chain Analysis", ["Sub-question", "Conclusion", "Fact", "Opinion", "Inference", "Source/Basis", "Evidence Tier", "Evidence Quality", "Source Status", "Confidence"]),
-                ("## 10. Multi-Perspective Pressure Test", ["Perspective", "Challenge", "Why It Matters", "Verification Needed"]),
+                ("## 10. Multi-Perspective Pressure Test", ["Challenge ID", "Perspective", "Target Claim/Section", "Materiality", "Core Challenge", "Resolution", "Evidence/Gap", "Report Change", "Reviewer Status"]),
                 ("## 12. Follow-up Verification Checklist", ["Verification Item", "Current Evidence Status", "Why It Matters", "Recommended Source", "Priority"]),
                 ("## 13. Report Compliance Checklist", ["Check", "Passed", "Explanation"]),
             ],
@@ -502,7 +510,7 @@ COMPANY_FIELD_CONTRACT = {
             ("### 2.2 来源矩阵和证据质量", ["关键 Claim", "来源类型", "本报告用途", "证据层级", "证据质量", "来源状态", "独立验证状态", "限制和缺口处理"]),
             ("### 2.3 检索缺口闭环结果", ["缺口", "已尝试轮次和来源", "当前状态", "为什么仍重要", "未补齐原因", "下一步来源"]),
             ("## 10. 事实, 观点和推断分层", ["类型", "内容", "来源/依据", "证据层级", "证据质量", "来源状态", "置信度"]),
-            ("## 12. 多视角压力测试", ["视角", "质疑", "为什么重要", "需要验证"]),
+            ("## 12. 多视角压力测试", ["质疑 ID", "视角", "目标 Claim/章节", "重要性", "核心质疑", "裁决", "证据/Gap", "报告改动", "复核状态"]),
             ("## 16. 后续验证清单", ["待验证问题", "当前证据状态", "为什么重要", "推荐来源", "优先级"]),
             ("## 17. 报告合规自检表", ["检查项", "是否通过", "说明"]),
         ],
@@ -520,7 +528,7 @@ COMPANY_FIELD_CONTRACT = {
             ("### 2.2 Source Matrix and Evidence Quality", ["Key Claim", "Source Type", "Use in This Report", "Evidence Tier", "Evidence Quality", "Source Status", "Independent Verification Status", "Limitations and Gap Handling"]),
             ("### 2.3 Retrieval Gap Closure Results", ["Gap", "Attempted Rounds and Sources", "Current Status", "Why It Still Matters", "Unresolved Reason", "Next Source"]),
             ("## 10. Fact, Opinion, and Inference Layers", ["Type", "Content", "Source/Basis", "Evidence Tier", "Evidence Quality", "Source Status", "Confidence"]),
-            ("## 12. Multi-Perspective Pressure Test", ["Perspective", "Challenge", "Why It Matters", "Verification Needed"]),
+            ("## 12. Multi-Perspective Pressure Test", ["Challenge ID", "Perspective", "Target Claim/Section", "Materiality", "Core Challenge", "Resolution", "Evidence/Gap", "Report Change", "Reviewer Status"]),
             ("## 16. Follow-up Verification Checklist", ["Verification Item", "Current Evidence Status", "Why It Matters", "Recommended Source", "Priority"]),
             ("## 17. Report Compliance Checklist", ["Check", "Passed", "Explanation"]),
         ],
@@ -880,6 +888,150 @@ def normalize_trace_value(value: object) -> str:
     return normalized.rstrip(".,;:")
 
 
+def pressure_test_heading(profile: str, language: str) -> str:
+    """
+    返回正式 route 对应的 Pressure Test 标题.
+
+    :param profile: 正式报告 profile.
+    :param language: 报告语言.
+    :return: Pressure Test 章节标题.
+    """
+    number = "12" if profile in {"company", "company-capital"} else "10" if profile == "specific" else "8"
+    title = "多视角压力测试" if language == "zh" else "Multi-Perspective Pressure Test"
+    return f"## {number}. {title}"
+
+
+def challenge_requires_reader_row(challenge: dict[str, object]) -> bool:
+    """
+    判断 Challenge 是否必须进入读者可见摘要.
+
+    :param challenge: Challenge Ledger record.
+    :return: 是否必须展示.
+    """
+    if challenge.get("materiality") == "high":
+        return True
+    if challenge.get("resolution") in {"confirmed", "partially_valid", "unresolved"}:
+        return True
+    change = normalize_trace_value(challenge.get("report_change", "")).casefold()
+    no_change_values = {"", "none", "nochange", "noreportchange", "无改动", "无报告改动", "无需改动", "不改动", "未改动"}
+    no_change_prefixes = tuple(f"{marker}{separator}" for marker in no_change_values - {""} for separator in (",", ":", ";"))
+    return change not in no_change_values and not change.startswith(no_change_prefixes)
+
+
+def validate_pressure_test_summary(
+    text: str,
+    profile: str,
+    language: str,
+    challenges_payload: dict[str, object] | None = None,
+) -> list[str]:
+    """
+    校验九列 Pressure Test 摘要及其 Challenge Ledger 绑定.
+
+    :param text: 原始报告文本.
+    :param profile: 正式报告 profile.
+    :param language: 报告语言.
+    :param challenges_payload: 可选的 Challenge Ledger.
+    :return: 错误列表.
+    """
+    errors: list[str] = []
+    heading = pressure_test_heading(profile, language)
+    header, rows = markdown_table_rows(text, heading)
+    expected = (
+        ["质疑 ID", "视角", "目标 Claim/章节", "重要性", "核心质疑", "裁决", "证据/Gap", "报告改动", "复核状态"]
+        if language == "zh"
+        else ["Challenge ID", "Perspective", "Target Claim/Section", "Materiality", "Core Challenge", "Resolution", "Evidence/Gap", "Report Change", "Reviewer Status"]
+    )
+    if header != expected:
+        return [f"pressure-test: noncanonical nine-column summary under {heading}"]
+    if not rows:
+        return [f"pressure-test: summary under {heading} requires non-placeholder rows"]
+    identifiers: set[str] = set()
+    perspectives: set[str] = set()
+    for row_number, row in enumerate(rows, start=1):
+        challenge_id = extract_trace_id(row[0], "challenge")
+        if not challenge_id:
+            errors.append(f"pressure-test row {row_number}: missing unique challenge_id")
+        elif challenge_id in identifiers:
+            errors.append(f"pressure-test row {row_number}: duplicate challenge_id")
+        identifiers.add(challenge_id)
+        perspectives.add(normalize_trace_value(row[1]))
+        if row[3] not in {"high", "medium", "low"}:
+            errors.append(f"pressure-test row {row_number}: invalid materiality")
+        if row[5] not in {"confirmed", "partially_valid", "refuted", "unresolved", "out_of_scope"}:
+            errors.append(f"pressure-test row {row_number}: pending or invalid resolution")
+        if row[8] != "closed":
+            errors.append(f"pressure-test row {row_number}: open or disputed reviewer status")
+        if any(not normalize_trace_value(cell) for cell in row):
+            errors.append(f"pressure-test row {row_number}: empty or placeholder field")
+    section = section_body(text, heading)
+    core_perspectives = [
+        {"industry-expert", "IndustryExpert", "行业专家"},
+        {"investment-researcher", "InvestmentResearcher", "投资研究员"},
+        {"policy-regulatory", "Policy/Regulatory", "政策/监管", "政策或监管研究者"},
+        {"operator-entrepreneur", "Operator/Entrepreneur", "经营者/创业者", "经营者或创业者"},
+    ]
+    if any(not perspective_names.intersection(perspectives) for perspective_names in core_perspectives):
+        errors.append("pressure-test: four core reviewer perspectives are required")
+    if rough_cjk_length(section) < 220:
+        errors.append(f"pressure-test: section under {heading} is too thin")
+    if "multi-agent" not in section and "single-agent-simulated" not in section:
+        errors.append("pressure-test: review_mode disclosure is required")
+    if challenges_payload is None:
+        return errors
+    ledger = {
+        str(item.get("challenge_id", "")): item
+        for item in challenges_payload.get("challenges", [])
+        if isinstance(item, dict)
+    }
+    role_labels = {
+        "industry-expert": {"industry-expert", "IndustryExpert", "行业专家"},
+        "investment-researcher": {"investment-researcher", "InvestmentResearcher", "投资研究员"},
+        "policy-regulatory": {"policy-regulatory", "Policy/Regulatory", "政策/监管", "政策或监管研究者"},
+        "operator-entrepreneur": {"operator-entrepreneur", "Operator/Entrepreneur", "经营者/创业者", "经营者或创业者"},
+        "intern": {"intern", "实习生"},
+        "devils-advocate": {"devils-advocate", "魔鬼代言人"},
+    }
+    for row_number, row in enumerate(rows, start=1):
+        challenge_id = extract_trace_id(row[0], "challenge")
+        challenge = ledger.get(challenge_id)
+        if challenge is None:
+            errors.append(f"pressure-test row {row_number}: challenge_id {challenge_id!r} not found in challenges.json")
+            continue
+        role = str(challenge.get("reviewer_role", ""))
+        if normalize_trace_value(row[1]) not in role_labels.get(role, {role}):
+            errors.append(f"pressure-test row {row_number}: perspective does not match {challenge_id}")
+        target = normalize_trace_value(row[2])
+        if str(challenge.get("target_claim_id", "")) not in row[2] or normalize_trace_value(challenge.get("target_section", "")) not in target:
+            errors.append(f"pressure-test row {row_number}: target does not match {challenge_id}")
+        comparisons = ((3, "materiality"), (4, "challenge"), (5, "resolution"), (7, "report_change"), (8, "reviewer_status"))
+        for column, field in comparisons:
+            if normalize_trace_value(row[column]) != normalize_trace_value(challenge.get(field, "")):
+                errors.append(f"pressure-test row {row_number}: {field} does not match {challenge_id}")
+        gap_id = challenge.get("gap_id")
+        if gap_id and str(gap_id) not in row[6]:
+            errors.append(f"pressure-test row {row_number}: Evidence/Gap does not match {challenge_id}")
+        if not gap_id:
+            source_ids = {
+                str(reference.get("source_id", ""))
+                for reference in challenge.get("evidence_refs", [])
+                if isinstance(reference, dict)
+            }
+            visible_source_ids = set(re.findall(r"[a-z0-9]+(?:-[a-z0-9]+)+", row[6]))
+            if source_ids and not source_ids.issubset(visible_source_ids):
+                errors.append(f"pressure-test row {row_number}: Evidence/Gap does not match {challenge_id}")
+            if not source_ids and str(challenge.get("verification_method", "")) not in row[6]:
+                errors.append(f"pressure-test row {row_number}: Evidence/Gap does not match {challenge_id}")
+    required = {
+        challenge_id
+        for challenge_id, challenge in ledger.items()
+        if challenge_requires_reader_row(challenge)
+    }
+    missing = sorted(required - identifiers)
+    if missing:
+        errors.append(f"pressure-test: required Challenge rows missing: {', '.join(missing)}")
+    return errors
+
+
 def validate_reader_view_consistency(
     report_path: Path,
     text: str,
@@ -904,6 +1056,10 @@ def validate_reader_view_consistency(
     plan = json.loads((run_dir / "plan.json").read_text(encoding="utf-8"))
     evidence = read_jsonl(run_dir / "evidence.jsonl")
     gaps_payload = json.loads((run_dir / "gaps.json").read_text(encoding="utf-8"))
+    challenge_path = run_dir / "challenges.json"
+    if not challenge_path.is_file():
+        return ["reader-view binding: challenges.json is required"]
+    challenges_payload = json.loads(challenge_path.read_text(encoding="utf-8"))
     run_id = manifest.get("run_id")
     if manifest.get("status") != "completed" or manifest.get("engine_report_permission") is not True:
         errors.append("reader-view binding: formal report requires completed Run and Engine permission")
@@ -1032,6 +1188,12 @@ def validate_reader_view_consistency(
                 errors.append(
                     f"reader-view gap row {row_number}: next source does not match {gap_id}"
                 )
+    if challenges_payload.get("run_id") != run_id:
+        errors.append("reader-view binding: challenges run_id mismatch")
+    review_mode = str(challenges_payload.get("review_mode", ""))
+    if review_mode not in section_body(text, pressure_test_heading(profile, language)):
+        errors.append("reader-view binding: review_mode disclosure does not match challenges.json")
+    errors.extend(validate_pressure_test_summary(text, profile, language, challenges_payload))
     return errors
 
 
@@ -2277,6 +2439,8 @@ def run_profile(text: str, profile: str, language: str = "auto") -> list[str]:
         errors = check_short(normalized_text)
     else:
         raise ValueError(f"unknown profile: {resolved_profile}")
+    if resolved_profile in {"company-capital", "company", "overview", "specific"}:
+        errors.extend(validate_pressure_test_summary(text, resolved_profile, resolved_language))
     return language_errors + errors
 
 
@@ -2391,9 +2555,13 @@ def sample_overview_report(body_repeat: int) -> str:
     )
     pressure_test_body = "\n".join(
         [
-            "| 视角 | 质疑 | 为什么重要 | 需要验证 |",
-            "|---|---|---|---|",
-            "| 行业专家 | 行业判断可能过于乐观 | 影响行业结论 | 验证行业数据 |",
+            "review_mode: single-agent-simulated. 以下角色视角由同一 Agent 分别执行, 不代表独立 Agent 审查.",
+            "| 质疑 ID | 视角 | 目标 Claim/章节 | 重要性 | 核心质疑 | 裁决 | 证据/Gap | 报告改动 | 复核状态 |",
+            "|---|---|---|---|---|---|---|---|---|",
+            "| challenge-industry | 行业专家 | claim-market-size / 4. 生命周期判断 | high | 行业判断可能过于乐观 | confirmed | gap-market-definition | 收窄生命周期结论并披露定义限制 | closed |",
+            "| challenge-investment | 投资研究员 | claim-market-size / 5.4 盈利性 | medium | 盈利假设可能高估 | refuted | source-example | 保留原结论并补充复核依据 | closed |",
+            "| challenge-policy | 政策/监管 | claim-market-size / 5.6 外部因素 | medium | 监管边界可能遗漏 | out_of_scope | source-policy | 在研究边界中明确排除项 | closed |",
+            "| challenge-operator | 经营者/创业者 | claim-market-size / 5.1 可行性 | medium | 执行难度可能被低估 | partially_valid | source-operator | 下调执行置信度并增加条件 | closed |",
             body,
         ]
     )
@@ -2527,9 +2695,13 @@ def sample_specific_report(body_repeat: int) -> str:
     )
     pressure_test_body = "\n".join(
         [
-            "| 视角 | 质疑 | 为什么重要 | 需要验证 |",
-            "|---|---|---|---|",
-            "| 行业专家 | 问题判断可能过于乐观 | 影响直接回答 | 验证行业数据 |",
+            "review_mode: single-agent-simulated. 以下角色视角由同一 Agent 分别执行, 不代表独立 Agent 审查.",
+            "| 质疑 ID | 视角 | 目标 Claim/章节 | 重要性 | 核心质疑 | 裁决 | 证据/Gap | 报告改动 | 复核状态 |",
+            "|---|---|---|---|---|---|---|---|---|",
+            "| challenge-industry | 行业专家 | claim-market-size / 8. 生命周期判断 | high | 问题判断可能过于乐观 | confirmed | gap-market-definition | 收窄直接回答并披露限制 | closed |",
+            "| challenge-investment | 投资研究员 | claim-market-size / 9.4 盈利性 | medium | 盈利影响可能高估 | refuted | source-example | 保留原结论并补充复核依据 | closed |",
+            "| challenge-policy | 政策/监管 | claim-market-size / 9.6 外部因素 | medium | 政策影响可能遗漏 | out_of_scope | source-policy | 在研究边界中明确排除项 | closed |",
+            "| challenge-operator | 经营者/创业者 | claim-market-size / 9.1 可行性 | medium | 执行影响可能低估 | partially_valid | source-operator | 下调置信度并增加适用条件 | closed |",
             body,
         ]
     )
@@ -3103,12 +3275,13 @@ def sample_company_capital_pass() -> str:
     )
     pressure_test_body = "\n".join(
         [
-            "| 视角 | 质疑 | 为什么重要 | 需要验证 |",
-            "|---|---|---|---|",
-            "| 行业专家 | 价值链和生命周期判断可能过于乐观, 行业利润池未必向目标环节转移 | 影响中观行业结论和七模块盈利性判断可靠性 | 验证行业规模, 竞争结构, 产能利用率和利润池分布数据 |",
-            "| 投资研究员 | 估值修复可能依赖过高盈利假设, 市场可能把短期订单当成长期利润 | 影响资本市场预期差和估值锚判断 | 验证毛利率, 自由现金流, 分部利润和同业估值 |",
-            "| 政策/监管研究者 | 监管约束可能改变业务增长节奏, 安全合规事件可能提高风险折现 | 影响风险折现, 外部因素和情景分析 | 查证监管文件, 处罚案例, 召回公告和政策口径 |",
-            "| 经营者/创业者 | 执行难度可能高于战略叙事, 交付和售后能力可能成为瓶颈 | 影响交付节奏, 成本结构和组织能力判断 | 验证渠道质量, 供应链稳定性, 售后投入和用户投诉数据 |",
+            "review_mode: multi-agent. 四个核心角色独立审查同一工作草稿和研究工件.",
+            "| 质疑 ID | 视角 | 目标 Claim/章节 | 重要性 | 核心质疑 | 裁决 | 证据/Gap | 报告改动 | 复核状态 |",
+            "|---|---|---|---|---|---|---|---|---|",
+            "| challenge-industry | 行业专家 | claim-market-size / 4.4 生命周期判断 | high | 价值链和生命周期判断可能过于乐观, 行业利润池未必向目标环节转移 | confirmed | gap-market-definition | 收窄生命周期结论并补充利润池限制 | closed |",
+            "| challenge-investment | 投资研究员 | claim-market-size / 11.3 估值逻辑和市场预期差 | medium | 估值修复可能依赖过高盈利假设, 市场可能把短期订单当成长期利润 | refuted | source-example | 保留估值框架并补充复核依据 | closed |",
+            "| challenge-policy | 政策/监管 | claim-market-size / 5.6 外部因素 | medium | 监管约束可能改变业务增长节奏, 安全合规事件可能提高风险折现 | out_of_scope | source-policy | 在研究边界中澄清监管排除项 | closed |",
+            "| challenge-operator | 经营者/创业者 | claim-market-size / 6. 微观公司/产品分析 | medium | 执行难度可能高于战略叙事, 交付和售后能力可能成为瓶颈 | partially_valid | source-operator | 下调执行置信度并增加跟踪指标 | closed |",
         ]
     )
     risk_body = "\n\n".join(
@@ -3454,14 +3627,13 @@ def sample_company_capital_total_length_fail() -> str:
     capital_one_paragraph = "上涨触发器下跌风险情景分析跟踪指标不构成投资建议" * 16
     pressure_test_body = "\n".join(
         [
-            "| 视角 | 质疑 | 为什么重要 | 需要验证 |",
-            "|---|---|---|---|",
-            "| 行业专家 | 行业结构和生命周期判断可能偏乐观 | 影响行业结论 | 验证市场规模和利润池 |",
-            "| 投资研究员 | 估值和现金流假设可能偏乐观 | 影响估值判断 | 验证利润和现金流 |",
-            "| 政策/监管研究者 | 政策监管约束可能遗漏 | 影响风险边界 | 查证监管文件 |",
-            "| 经营者/创业者 | 执行路径可能不现实 | 影响落地判断 | 验证渠道和供应链 |",
-            "| 反方审稿人 | 核心结论可能被薄弱证据支撑 | 重要因为会影响报告结论可靠性 | 验证事实观点推断和证据等级 |",
-            "| 方法论审稿人 | 样本和口径可能不一致 | 重要因为会影响可比性 | 验证统计口径和样本范围 |",
+            "review_mode: single-agent-simulated. 以下角色视角由同一 Agent 分别执行, 不代表独立 Agent 审查.",
+            "| 质疑 ID | 视角 | 目标 Claim/章节 | 重要性 | 核心质疑 | 裁决 | 证据/Gap | 报告改动 | 复核状态 |",
+            "|---|---|---|---|---|---|---|---|---|",
+            "| challenge-industry | 行业专家 | claim-market-size / 4.4 生命周期判断 | high | 行业结构和生命周期判断可能偏乐观 | confirmed | gap-market-definition | 收窄生命周期结论并补充边界 | closed |",
+            "| challenge-investment | 投资研究员 | claim-market-size / 5.5 估值 | medium | 估值和现金流假设可能偏乐观 | refuted | source-example | 保留估值判断并补充复核依据 | closed |",
+            "| challenge-policy | 政策/监管 | claim-market-size / 5.6 外部因素 | medium | 政策监管约束可能遗漏 | out_of_scope | source-policy | 在研究边界中澄清排除项 | closed |",
+            "| challenge-operator | 经营者/创业者 | claim-market-size / 6. 微观公司/产品分析 | medium | 执行路径可能不现实 | partially_valid | source-operator | 下调执行置信度并增加跟踪指标 | closed |",
         ]
     )
     risk_body = "风险机会行业结构目标公司目标产品竞争监管成本品牌渠道现金流质量交付机会验证" * 8
@@ -3889,12 +4061,13 @@ def sample_english_specific_report() -> str:
             "### 9.6 External Factors\n\n" + module_body,
             "### 9.7 Prosperity\n\n" + module_body,
             "## 10. Multi-Perspective Pressure Test\n\n"
-            "| Perspective | Challenge | Why It Matters | Verification Needed |\n"
-            "|---|---|---|---|\n"
-            "| Industry Expert | Industry structure may differ | Changes the conclusion | Verify industry data |\n"
-            "| Investment Researcher | Profitability may be weaker | Changes valuation logic | Verify financial data |\n"
-            "| Policy/Regulatory | Policy may tighten | Changes the risk boundary | Verify official policy |\n"
-            "| Operator/Entrepreneur | Execution may be harder | Changes feasibility | Verify operating data |",
+            "review_mode: single-agent-simulated. These role perspectives were simulated by one Agent and are not independent Agent reviews.\n\n"
+            "| Challenge ID | Perspective | Target Claim/Section | Materiality | Core Challenge | Resolution | Evidence/Gap | Report Change | Reviewer Status |\n"
+            "|---|---|---|---|---|---|---|---|---|\n"
+            "| challenge-industry | Industry Expert | claim-market-size / 8. Lifecycle Assessment | high | Industry structure may differ | confirmed | gap-market-definition | Narrowed the lifecycle conclusion and disclosed the limitation | closed |\n"
+            "| challenge-investment | Investment Researcher | claim-market-size / 9.5 Valuation | medium | Profitability may be weaker | refuted | source-example | Retained the conclusion and added review grounds | closed |\n"
+            "| challenge-policy | Policy/Regulatory | claim-market-size / 9.6 External Factors | medium | Policy may tighten | out_of_scope | source-policy | Clarified the exclusion in the research scope | closed |\n"
+            "| challenge-operator | Operator/Entrepreneur | claim-market-size / 9.1 Feasibility | medium | Execution may be harder | partially_valid | source-operator | Downgraded confidence and added operating conditions | closed |",
             "## 11. Risks, Opportunities, and Uncertainties\n\nFact Risk, Assumption Risk, Data Gap, Upside Opportunity, and Trigger Condition are assessed separately. " + analysis,
             "## 12. Follow-up Verification Checklist\n\n"
             "| Verification Item | Current Evidence Status | Why It Matters | Recommended Source | Priority |\n"
@@ -4279,6 +4452,72 @@ def run_reader_view_self_test() -> list[str]:
             ),
             encoding="utf-8",
         )
+        challenge_rows = [
+            {
+                "challenge_id": "challenge-industry",
+                "reviewer_role": "industry-expert",
+                "target_claim_id": "claim-market-size",
+                "target_section": "4. 生命周期判断",
+                "materiality": "high",
+                "challenge": "行业判断可能过于乐观",
+                "resolution": "confirmed",
+                "gap_id": "gap-market-definition",
+                "evidence_refs": [],
+                "report_change": "收窄生命周期结论并披露定义限制",
+                "reviewer_status": "closed",
+            },
+            {
+                "challenge_id": "challenge-investment",
+                "reviewer_role": "investment-researcher",
+                "target_claim_id": "claim-market-size",
+                "target_section": "5.4 盈利性",
+                "materiality": "medium",
+                "challenge": "盈利假设可能高估",
+                "resolution": "refuted",
+                "gap_id": None,
+                "evidence_refs": [{"source_id": "source-example"}],
+                "report_change": "保留原结论并补充复核依据",
+                "reviewer_status": "closed",
+            },
+            {
+                "challenge_id": "challenge-policy",
+                "reviewer_role": "policy-regulatory",
+                "target_claim_id": "claim-market-size",
+                "target_section": "5.6 外部因素",
+                "materiality": "medium",
+                "challenge": "监管边界可能遗漏",
+                "resolution": "out_of_scope",
+                "gap_id": None,
+                "evidence_refs": [{"source_id": "source-policy"}],
+                "report_change": "在研究边界中明确排除项",
+                "reviewer_status": "closed",
+            },
+            {
+                "challenge_id": "challenge-operator",
+                "reviewer_role": "operator-entrepreneur",
+                "target_claim_id": "claim-market-size",
+                "target_section": "5.1 可行性",
+                "materiality": "medium",
+                "challenge": "执行难度可能被低估",
+                "resolution": "partially_valid",
+                "gap_id": None,
+                "evidence_refs": [{"source_id": "source-operator"}],
+                "report_change": "下调执行置信度并增加条件",
+                "reviewer_status": "closed",
+            },
+        ]
+        (run_dir / "challenges.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": "v65",
+                    "run_id": run_id,
+                    "review_mode": "single-agent-simulated",
+                    "challenges": challenge_rows,
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
         valid_errors = validate_reader_view_consistency(
             report_path, report, "overview", "zh", run_dir, repo_root
         )
@@ -4317,6 +4556,56 @@ def run_reader_view_self_test() -> list[str]:
         )
         if not any("unresolved reason does not match" in error for error in gap_mismatch_errors):
             failures.append("reader_view_gap_identity_mismatch")
+
+        challenge_mismatch_errors = validate_reader_view_consistency(
+            report_path,
+            report.replace("| confirmed | gap-market-definition |", "| refuted | gap-market-definition |", 1),
+            "overview",
+            "zh",
+            run_dir,
+            repo_root,
+        )
+        if not any("resolution does not match challenge-industry" in error for error in challenge_mismatch_errors):
+            failures.append("reader_view_challenge_resolution_mismatch")
+
+        fabricated_errors = validate_reader_view_consistency(
+            report_path,
+            report.replace("challenge-industry", "challenge-fabricated", 1),
+            "overview",
+            "zh",
+            run_dir,
+            repo_root,
+        )
+        if not any("not found in challenges.json" in error for error in fabricated_errors):
+            failures.append("reader_view_fabricated_challenge_id")
+
+        report_change_errors = validate_reader_view_consistency(
+            report_path,
+            report.replace("收窄生命周期结论并披露定义限制", "未执行约定改写", 1),
+            "overview",
+            "zh",
+            run_dir,
+            repo_root,
+        )
+        if not any("report_change does not match challenge-industry" in error for error in report_change_errors):
+            failures.append("reader_view_challenge_report_change_mismatch")
+
+        missing_required_report = re.sub(
+            r"(?m)^\| challenge-industry \|.*\n",
+            "",
+            report,
+            count=1,
+        )
+        missing_required_errors = validate_reader_view_consistency(
+            report_path,
+            missing_required_report,
+            "overview",
+            "zh",
+            run_dir,
+            repo_root,
+        )
+        if not any("required Challenge rows missing" in error for error in missing_required_errors):
+            failures.append("reader_view_missing_required_challenge")
 
         barrier_report = report.replace(
             "| obtained | independently_verified |",
@@ -4879,9 +5168,6 @@ def run_self_test(json_output: bool = False) -> int:
         generated_fixture_root = Path(temporary) / "v63"
         write_v63_fixtures(generated_fixture_root)
         failures.extend(validate_v63_fixture_directory(generated_fixture_root))
-    fixture_root = find_v63_fixture_root()
-    if fixture_root is not None:
-        failures.extend(validate_v63_fixture_directory(fixture_root))
     failures.extend(run_reader_view_self_test())
 
     if failures:

@@ -1,0 +1,10 @@
+[
+  {"file": "overview-zh.md", "profile": "overview", "language": "zh"},
+  {"file": "overview-en.md", "profile": "overview", "language": "en"},
+  {"file": "specific-zh.md", "profile": "specific", "language": "zh"},
+  {"file": "specific-en.md", "profile": "specific", "language": "en"},
+  {"file": "company-zh.md", "profile": "company", "language": "zh"},
+  {"file": "company-en.md", "profile": "company", "language": "en"},
+  {"file": "company-capital-zh.md", "profile": "company-capital", "language": "zh"},
+  {"file": "company-capital-en.md", "profile": "company-capital", "language": "en"}
+]
