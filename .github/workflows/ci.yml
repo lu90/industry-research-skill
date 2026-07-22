@@ -33,8 +33,10 @@ jobs:
           python -B skills/industry-research/scripts/deep_search_contract_check.py --self-test
           python -B skills/industry-research/scripts/truthfulness_contract_check.py --self-test
 
-      - name: Validate v63 fixtures
-        run: python -B skills/industry-research/scripts/report_batch_check.py tests/fixtures/v63/valid --json
+      - name: Validate v65 fixtures
+        run: |
+          python -B tests/run_v65_fixtures.py
+          python -B skills/industry-research/scripts/report_batch_check.py tests/fixtures/v65/valid --json
 
       - name: Validate v64 fixtures
         run: python -B tests/run_v64_fixtures.py
